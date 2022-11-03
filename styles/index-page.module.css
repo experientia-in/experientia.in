@@ -1,0 +1,19 @@
+
+
+.cover{
+    height: 100vh;
+    background-color: #212121;
+    background-image: url('/img/bhca3.png');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+
+}
+/* .cover_bg{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-position: right;
+    position: absolute;
+    z-index: 0;
+} */
