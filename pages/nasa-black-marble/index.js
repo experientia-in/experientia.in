@@ -1,10 +1,11 @@
 import { Canvas} from "@react-three/fiber";
 import Earth from "./component/earth";
 import styles from "./styles/main.module.css";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
+import OpenLayers from "./component/openLayers";
 export default function index() {
 
-  const OpenLayers = dynamic(() => import("./component/openLayers"), {ssr: false})
+  // const OpenLayers = dynamic(() => import("./component/openLayers"), {ssr: false})
   
   return (
     <>
