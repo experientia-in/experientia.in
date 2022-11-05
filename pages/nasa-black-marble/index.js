@@ -8,13 +8,13 @@ export default function index() {
   
   return (
     <>
-      {/* <section className={styles.container}>
+      <section className={styles.container}>
         <div className={styles.canvas_area}>
           <Canvas camera={[35,0, 0]}>
             <Earth/>
           </Canvas>
         </div>
-      </section> */}
+      </section>
       <OpenLayers/>
     </>
   );
