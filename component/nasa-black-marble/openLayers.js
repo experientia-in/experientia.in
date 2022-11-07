@@ -4,7 +4,7 @@ import TileLayer from "ol/layer/Tile";
 import XYZ from "ol/source/XYZ";
 import { useEffect } from "react";
 export default function OpenLayers() {
-  useEffect(()=>{
+  useEffect(() => {
     new Map({
       target: "map",
       layers: [
@@ -21,14 +21,12 @@ export default function OpenLayers() {
         zoom: 2,
       }),
     });
-  })
-  
+  }, []);
 
   return (
     <>
       <div id="container">
         <div id="map" style={{ height: "500px", width: "1000px" }}></div>
-
       </div>
     </>
   );
