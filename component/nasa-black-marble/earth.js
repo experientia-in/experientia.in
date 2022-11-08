@@ -5,16 +5,15 @@ export default function Earth() {
   const textureRef = useRef();
   const mapContainer = document.getElementById('map');
   const mapCanvas = useRef(mapContainer.getElementsByTagName('canvas')[0]);
-
-  console.log(mapCanvas.current);
+// try creating div and append element then passing it to useRef()
   if (textureRef.current) {
-    textureRef.current.needsUpdate = true;
+    textureRef.current.needsUpdate = true ;
   }
   return (
     <>
       <mesh>
-        <ambientLight intensity={10} />
-        <directionalLight position={[0, 5, 5]} />
+        <ambientLight intensity={1} />
+        {/* <directionalLight position={[0, 5, 5]} /> */}
         <sphereGeometry args={[3, 64, 64]} />
         <meshStandardMaterial>
           <canvasTexture
