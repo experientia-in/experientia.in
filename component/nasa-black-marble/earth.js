@@ -1,21 +1,20 @@
 import { OrbitControls, useTexture } from "@react-three/drei";
 import { useRef } from "react";
 export default function Earth() {
-  // const [colorMap] = useTexture(["img/bhca3.png"]);
+  const colorMap = useTexture("img/BlackMarble_2016.jpg");
   const textureRef = useRef();
-  const mapContainer = document.getElementById('map');
-  const mapCanvas = useRef(mapContainer.getElementsByTagName('canvas')[0]);
-// try creating div and append element then passing it to useRef()
+  const mapContainer = document.getElementById("map");
+  const mapCanvas = useRef(mapContainer.getElementsByTagName("canvas")[0]);
   if (textureRef.current) {
-    textureRef.current.needsUpdate = true ;
+    textureRef.current.needsUpdate = true;
   }
   return (
     <>
       <mesh>
         <ambientLight intensity={1} />
-        {/* <directionalLight position={[0, 5, 5]} /> */}
-        <sphereGeometry args={[3, 64, 64]} />
-        <meshStandardMaterial>
+        {/* <directionalLight position={[0, 5, 5]} intensity={0.1}/> */}
+        <sphereGeometry args={[1, 64, 64]} />
+        <meshStandardMaterial >
           <canvasTexture
           ref={textureRef}
           attach="map"
