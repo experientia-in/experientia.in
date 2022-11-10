@@ -10,7 +10,7 @@ export default function OpenLayers() {
       layers: [
         new TileLayer({
           source: new XYZ({
-            url: "https://nrsa.s3.ap-south-1.amazonaws.com/{z}/{x}/{y}.png",
+            url: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev/NasaBlackMarble/XYZ/2016/{z}/{x}/{y}.png",
             crossOrigin: "anonymous",
           }),
         }),
