@@ -11,7 +11,7 @@ export default function OpenLayers() {
         new TileLayer({
           source: new XYZ({
             url: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev/NasaBlackMarble/XYZ/2016/{z}/{x}/{y}.png",
-            // crossOrigin: "anonymous",
+            crossOrigin: "anonymous",
           }),
         }),
       ],
