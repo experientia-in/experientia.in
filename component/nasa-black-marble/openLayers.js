@@ -11,7 +11,7 @@ export default function OpenLayers() {
         new TileLayer({
           source: new XYZ({
             url: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev/NasaBlackMarble/XYZ/2016/{z}/{x}/{y}.png",
-            crossOrigin: "anonymous",
+            crossOrigin: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev",
             tileSize: 256
           }),
         }),
@@ -20,7 +20,7 @@ export default function OpenLayers() {
         projection: "EPSG:4326",
         extent: [-180, -85, 180, 85],
         center: [0, 0],
-        zoom: 2, maxZoom: 9
+        zoom: 2, maxZoom: 10
       }),
     });
   }, []);
