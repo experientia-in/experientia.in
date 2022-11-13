@@ -12,7 +12,7 @@ export default function OpenLayers() {
           source: new XYZ({
             url: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev/NasaBlackMarble/XYZ/2016/{z}/{x}/{y}.png",
             crossOrigin: "https://pub-7bcf0427281b46fa9e69d8347eeea435.r2.dev",
-            tileSize: 256
+            tileSize: 256,
           }),
         }),
       ],
@@ -20,15 +20,16 @@ export default function OpenLayers() {
         projection: "EPSG:4326",
         extent: [-180, -85, 180, 85],
         center: [0, 0],
-        zoom: 2, maxZoom: 10
+        zoom: 2,
+        maxZoom: 10,
       }),
     });
   }, []);
 
   return (
     <>
-      <div id="container" >
-        <div id="map" style={{ height: "500px", width: "1000px"}}></div>
+      <div id="container">
+        <div id="map" style={{ height: "100%", width: "100%", position: "absolute" }}></div>
       </div>
     </>
   );

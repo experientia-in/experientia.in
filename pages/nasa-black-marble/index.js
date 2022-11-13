@@ -7,7 +7,7 @@ export default function index() {
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
-          <Canvas>
+          <Canvas linear flat>
             <Earth />
           </Canvas>
         </div>
