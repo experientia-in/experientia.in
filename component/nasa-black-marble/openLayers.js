@@ -29,7 +29,7 @@ export default function OpenLayers() {
   return (
     <>
       <div id="container">
-        <div id="map" style={{ height: "100%", width: "100%", position: "absolute" }}></div>
+        <div id="map" style={{ height: "500px", width: "1000px" }}></div>
       </div>
     </>
   );

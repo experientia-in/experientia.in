@@ -10,8 +10,8 @@ export default function Earth() {
   return (
     <>
       <mesh>
-        <ambientLight intensity={1} />
-        {/* <directionalLight position={[0, 5, 5]} intensity={0.1}/> */}
+        <ambientLight intensity={2} />
+        <directionalLight position={[0, 5, 5]} intensity={0.1}/>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial color='white'>
           <canvasTexture
