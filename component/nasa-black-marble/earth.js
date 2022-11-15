@@ -1,4 +1,5 @@
-import { OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 export default function Earth() {
   const textureRef = useRef();
@@ -7,6 +8,9 @@ export default function Earth() {
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
   }
+useFrame(state => {
+  // console.log(state.camera.zoom)
+})
   return (
     <>
       <mesh>
