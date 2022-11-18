@@ -1,0 +1,49 @@
+.cover {
+    height: 100vh;
+    background-color: #212121;
+    background-image: url("/assets/img/bhca3.png");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+  .cover_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-left: 1rem;
+  }
+  .cover_head {
+    color: #f7f7f7;
+    font-family: Righteous;
+    top: 50%;
+    font-size: 3rem;
+  }
+  .cover_head_info {
+    font-family: Playfair-Regular;
+    color: #f7f7f7;
+    font-size: 1.2rem;
+    width: 500px;
+    text-shadow: white 5px solid;
+  
+  }
+  
+  @font-face {
+    font-family: Righteous;
+    src: url("/assets/fonts/Righteous-Regular.ttf");
+  }
+  @font-face {
+    font-family: Playfair-Regular;
+    src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: Playfair-Italics;
+    src: url("/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf");
+  }
+  
+  @media screen and (max-width: 480px) {
+      
+    .cover_head_info {
+      width: 300px;
+    }
+  }
