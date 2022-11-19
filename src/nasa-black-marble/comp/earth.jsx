@@ -18,7 +18,9 @@ export default function Earth(props) {
   // })
   useEffect(()=>{
     console.log(actions["CameraAction.001"])
+    actions["CameraAction.001"].getClip()
     actions["CameraAction.001"].play()
+    actions["CameraAction.001"].time = 2
   },[])
   return (
     <>
