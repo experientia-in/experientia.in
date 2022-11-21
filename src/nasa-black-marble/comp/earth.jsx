@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 export default function Earth(props) {
   const textureRef = useRef();
+  const animateRef = useRef(false)
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/assets/model/Black _marble_final_v1.glb");
   const { actions } = useAnimations(animations, group);
@@ -11,17 +12,12 @@ export default function Earth(props) {
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
   }
-  // useEffect(() => void (actions["CameraAction.001"].play().paused = true), [])
-  // useFrame((state)=>{
-  //   actions['CameraAction.001'].time = 2
-  // // console.log(actions['CameraAction.001'].time)
-  // })
-  useEffect(()=>{
-    console.log(actions["CameraAction.001"])
-    actions["CameraAction.001"].getClip()
-    actions["CameraAction.001"].play()
-    actions["CameraAction.001"].time = 2
-  },[])
+  useEffect(() => void (actions["CameraAction.001"].play().paused = true), [])
+  useFrame((state)=>{
+    // actions['CameraAction.001'].time = state.clock.elapsedTime * 0.1
+  // console.log(actions['CameraAction.001'].time)
+  })
+  
   return (
     <>
     <group ref={group} {...props} dispose={null}>
@@ -34,7 +30,7 @@ export default function Earth(props) {
           near={0.1}
           fov={22.9}
           position={[0, 0, 6.11]}
-          
+          // aspect={window.innerWidth/window.innerHeight}
           rotation={[0.52, 0.49, -0.32]}
         />
         <ambientLight intensity={2}/>
