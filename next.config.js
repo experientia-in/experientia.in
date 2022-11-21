@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: false
 };
 const withTM = require("next-transpile-modules")(["three"]);
 const withTM2 = require("next-transpile-modules")(["ol"]);
