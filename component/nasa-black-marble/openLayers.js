@@ -45,7 +45,7 @@ export default function OpenLayers() {
   return (
     <>
 
-      <div id="container" >
+      <div id="container"  style={{height: 0, overflow: 'hidden'}}>
         <div id="map" style={{ height: "500px", width: "1000px" }}></div>
       </div>
     </>
