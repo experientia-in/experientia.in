@@ -3,7 +3,7 @@ import Earth from "../../component/nasa-black-marble/earth";
 import styles from "./styles/main.module.css";
 import OpenLayers from "../../component/nasa-black-marble/openLayers";
 import { Suspense, useRef } from "react";
-export default function index() {
+export default function Index() {
   const animateRef = useRef(true)
   return (
     <>
