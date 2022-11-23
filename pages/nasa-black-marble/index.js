@@ -9,13 +9,13 @@ export default function index() {
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
-          <Canvas>
+          <Canvas linear>
           <Suspense fallback={null}>
             <Earth ref={animateRef} />
             </Suspense>
           </Canvas>
         </div>
-        <button style={{position: 'absolute', top : '50%'}} onClick={() => {animateRef.current = !animateRef.current; console.log(animateRef.current)}}>Play pause</button>
+        {/* <button style={{position: 'absolute', top : '50%'}} onClick={() => {animateRef.current = !animateRef.current; console.log(animateRef.current)}}>Play pause</button> */}
       </section>
       <OpenLayers />
     </>

@@ -19,7 +19,7 @@ export default function OpenLayers() {
         projection: 'EPSG:4326',
         extent: [-180, -90, 180, 90],
         center: [0, 0],
-        zoom: 2,
+        zoom: 4,
         maxZoom: 10,
       }),
     });
@@ -46,7 +46,7 @@ export default function OpenLayers() {
     <>
 
       <div id="container"  style={{height: 0, overflow: 'hidden'}}>
-        <div id="map" style={{ height: "500px", width: "1000px" }}></div>
+        <div id="map" style={{ height: "2000px", width: "4000px" }}></div>
       </div>
     </>
   );

@@ -3,8 +3,8 @@ import {
   useGLTF,
   PerspectiveCamera,
   useAnimations,
+  useTexture,
 } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect, forwardRef } from "react";
 import gsap from "gsap";
 function Earth(props, animateRef) {
@@ -18,7 +18,9 @@ function Earth(props, animateRef) {
   const mapCanvas = useRef(mapContainer.getElementsByTagName("canvas")[0]);
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
+    mapCanvas.current.needsUpdate = true;
   }
+  const colorMap = useTexture("/img/bhca3.png");
   // useEffect(() => void (actions["CameraAction.001"].play().paused = true), [])
   let scrollCount = 0;
   // useFrame(({ clock }) => {
@@ -64,20 +66,20 @@ function Earth(props, animateRef) {
             // castShadow
             // receiveShadow
             geometry={nodes.Sphere.geometry}
-            material={materials["Material.001"]}
+            // material={materials["Material.001"]}
           >
-            {/* <meshStandardMaterial>
-          <canvasTexture
-          ref={textureRef}
-          attach="map"
-          image={mapCanvas.current}
-          />
-        </meshStandardMaterial> */}
+            <meshStandardMaterial>
+              <canvasTexture
+                ref={textureRef}
+                attach="map"
+                image={mapCanvas.current} flipY={false}
+              />
+            </meshStandardMaterial>
           </mesh>
         </group>
       </group>
 
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </>
   );
 }
