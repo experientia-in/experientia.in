@@ -9,7 +9,7 @@ export default function Index() {
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
-          <Canvas linear>
+          <Canvas>
           <Suspense fallback={null}>
             <Earth ref={animateRef} />
             </Suspense>

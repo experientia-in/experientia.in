@@ -20,23 +20,9 @@ function Earth(props, animateRef) {
     textureRef.current.needsUpdate = true;
     mapCanvas.current.needsUpdate = true;
   }
-  const colorMap = useTexture("/img/bhca3.png");
   // useEffect(() => void (actions["CameraAction.001"].play().paused = true), [])
   let scrollCount = 0;
-  // useFrame(({ clock }) => {
-  //   // console.log(animateRef.current, actions["CameraAction.001"].getClip().duration );
-  //   const time = Math.floor(clock.elapsedTime);
-  //   if (time > 0) {
-  //     actions["CameraAction.001"].play();
-  //     // actions["CameraAction.001"].time = 3
-  //   }
-  //   if (time > 6) {
-  //     actions["CameraAction.001"].time = 6;
-  //     // actions["CameraAction.001"].stop()
-  //     actions["CameraAction.001"].play().paused = true;
-  //     // console.log(time)
-  //   }
-  // });
+  
   useEffect(()=>{
     actions["CameraAction.001"].play()
     window.addEventListener('mouseup', ()=>{
@@ -66,15 +52,15 @@ function Earth(props, animateRef) {
             // castShadow
             // receiveShadow
             geometry={nodes.Sphere.geometry}
-            // material={materials["Material.001"]}
+            material={materials["Material.001"]}
           >
-            <meshStandardMaterial>
+            {/* <meshStandardMaterial>
               <canvasTexture
                 ref={textureRef}
                 attach="map"
                 image={mapCanvas.current} flipY={false}
               />
-            </meshStandardMaterial>
+            </meshStandardMaterial> */}
           </mesh>
         </group>
       </group>
