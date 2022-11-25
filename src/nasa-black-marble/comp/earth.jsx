@@ -5,6 +5,7 @@ import {
   useAnimations,
 } from "@react-three/drei";
 import { useRef, useEffect } from "react";
+
 export default function Earth(props) {
   const textureRef = useRef();
   const group = useRef();
@@ -17,6 +18,7 @@ export default function Earth(props) {
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
   }
+
   if (mapCanvas.current) {
     mapCanvas.current.needsUpdate = true;
   }
@@ -53,6 +55,7 @@ export default function Earth(props) {
                 attach="map"
                 image={mapCanvas.current}
                 flipY={false}
+                clone={true}
               />
             </meshStandardMaterial>
           </mesh>

@@ -35,7 +35,7 @@ export default function OpenLayers() {
     });
     const image_2016 = new ImageLayer({
       source: new Static({
-        url: "/assets/img/BlackMarble_2016.jpg",
+        url: "/assets/img/BlackMarble_2016.webp",
         projection: new Projection({
           code: "BlackMarble_2016",
           units: "pixels",
@@ -46,7 +46,7 @@ export default function OpenLayers() {
     });
     const image_2012 = new ImageLayer({
       source: new Static({
-        url: "/assets/img/BlackMarble_2012.jpg",
+        url: "/assets/img/BlackMarble_2012.webp",
         projection: new Projection({
           code: "BlackMarble_2012",
           units: "pixels",
@@ -55,21 +55,10 @@ export default function OpenLayers() {
         imageExtent: [-180, -90, 180, 90],
       }),
     });
-    map.addLayer(tiles2012);
-    map.addLayer(tiles2016);
+    // map.addLayer(tiles2012);
+    // map.addLayer(tiles2016);
     map.addLayer(image_2016);
-    // new Map({
-    //   layers: [layer, image_2016],
-    //   target: 'map',
-    // view: new View({
-    //   projection: 'EPSG:4326',
-    //   extent: [-180, -90, 180, 90],
-    //   center: [0, 0],
-    //   zoom: 2,
-    //   maxZoom: 10,
-    // }),
-    // });
-    // tiles2016.on("postrender", (event) => {
+    // image_2016.on("postrender", (event) => {
     //   event.context.globalCompositeOperation = "destination-over";
     //   event.context.fillStyle = "rgb(4 5 15)";
     //   event.context.fillRect(
@@ -87,11 +76,12 @@ export default function OpenLayers() {
     //   );
     //   event.context.globalCompositeOperation = "source-over";
     // });
+    
   }, []);
   return (
     <>
-      <div id="container" style={{ height: 0, overflow: "hidden" }}>
-        <div id="map" style={{ height: "6500px", width: "13500px" }}></div>
+      <div id="container" style={{ height: '0', overflow: "hidden" }}>
+        <div id="map" style={{ height: "500px", width: "1000px" }}></div>
       </div>
     </>
   );

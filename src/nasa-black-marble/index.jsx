@@ -9,9 +9,9 @@ export default function BlackMarble() {
       <section className={styles.container}>
         <div className={styles.canvas_area}>
           <Canvas linear flat>
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}> */}
               <Earth />
-            </Suspense>
+            {/* </Suspense> */}
           </Canvas>
         </div>
       </section>
