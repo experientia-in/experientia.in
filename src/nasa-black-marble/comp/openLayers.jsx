@@ -7,7 +7,7 @@ import Static from "ol/source/ImageStatic";
 import Projection from "ol/proj/Projection";
 import { forwardRef, useEffect } from "react";
 
- function OpenLayers(props, ref) {
+export default function OpenLayers() {
   useEffect(() => {
     var map = new Map({
       target: "map",
@@ -84,15 +84,23 @@ import { forwardRef, useEffect } from "react";
     //   mapCanvas.width = size[0];
     //   mapCanvas.height = size[1];
     //   var mapContext = mapCanvas.getContext("2d");
-      
+    //   alert('loaded')
+
     // });
   }, []);
   return (
     <>
-      <div id="container" >
-        <div id="map" ref={ref} style={{ height: "6570px", width: "13500px", visibility:'hidden', position: 'fixed' }}></div>
+      <div id="container">
+        <div
+          id="map"
+          style={{
+            height: "6570px",
+            width: "13500px",
+            visibility: "hidden",
+            position: "fixed",
+          }}
+        ></div>
       </div>
     </>
   );
 }
-export default forwardRef(OpenLayers)

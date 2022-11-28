@@ -4,7 +4,8 @@ import {
   PerspectiveCamera,
   useAnimations,
 } from "@react-three/drei";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { LinearFilter } from "three";
 
 export default function Earth(props) {
   const textureRef = useRef();
@@ -13,13 +14,24 @@ export default function Earth(props) {
     "/assets/model/black_marble_no_texture.glb"
   );
   const { actions } = useAnimations(animations, group);
-  const mapContainer = document.getElementById("map");
-  const mapCanvas = useRef(mapContainer.getElementsByTagName("canvas")[0]);
-  console.log(mapCanvas.current)
+  // const mapContainer = document.getElementById("map");
+  // const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
+  // console.log(mapCanvas.current)
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
   }
-  
+  const [canvasTexture, setCanvasTexture] = useState(null);
+  useEffect(() => {
+    const canvasIntervalCheck = setInterval(() => {
+      const mapContainer = document.getElementById("map");
+      const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
+      if (mapCanvas) {
+        setCanvasTexture(mapCanvas);
+        clearInterval(canvasIntervalCheck);
+      }
+    }, 10);
+  }, []);
+
   // if (mapCanvas.current) {
   //   mapCanvas.current.needsUpdate = true;
   // }
@@ -55,9 +67,8 @@ export default function Earth(props) {
               <canvasTexture
                 ref={textureRef}
                 attach="map"
-                image={mapCanvas.current}
+                image={canvasTexture}
                 flipY={false}
-                clone
               />
             </meshStandardMaterial>
           </mesh>

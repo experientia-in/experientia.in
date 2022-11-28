@@ -4,8 +4,6 @@ import Earth from "./comp/earth";
 import OpenLayers from "./comp/openLayers";
 import styles from "./style/main.module.css";
 export default function BlackMarble() {
-  const mapData = useRef()
-  console.log(mapData.current)
   return (
     <>
       <section className={styles.container}>
@@ -17,7 +15,7 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
-      <OpenLayers ref={mapData} />
+      <OpenLayers />
     </>
   );
 }
