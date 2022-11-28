@@ -1,21 +1,23 @@
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense } from "react";
+import React, { Suspense, useRef } from "react";
 import Earth from "./comp/earth";
 import OpenLayers from "./comp/openLayers";
 import styles from "./style/main.module.css";
 export default function BlackMarble() {
+  const mapData = useRef()
+  console.log(mapData.current)
   return (
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
           <Canvas linear flat>
-            {/* <Suspense fallback={null}> */}
+            <Suspense fallback={null}>
               <Earth />
-            {/* </Suspense> */}
+            </Suspense>
           </Canvas>
         </div>
       </section>
-      <OpenLayers />
+      <OpenLayers ref={mapData} />
     </>
   );
 }

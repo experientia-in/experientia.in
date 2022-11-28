@@ -15,16 +15,18 @@ export default function Earth(props) {
   const { actions } = useAnimations(animations, group);
   const mapContainer = document.getElementById("map");
   const mapCanvas = useRef(mapContainer.getElementsByTagName("canvas")[0]);
+  console.log(mapCanvas.current)
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
   }
+  
+  // if (mapCanvas.current) {
+  //   mapCanvas.current.needsUpdate = true;
+  // }
+  // useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
-  if (mapCanvas.current) {
-    mapCanvas.current.needsUpdate = true;
-  }
-  useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
   useEffect(() => {
-    actions["CameraAction.001"].time = 2;
+    actions["CameraAction.001"].play();
   }, []);
 
   return (
@@ -55,14 +57,14 @@ export default function Earth(props) {
                 attach="map"
                 image={mapCanvas.current}
                 flipY={false}
-                clone={true}
+                clone
               />
             </meshStandardMaterial>
           </mesh>
         </group>
       </group>
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   );
 }
