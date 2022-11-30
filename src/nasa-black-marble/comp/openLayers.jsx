@@ -5,7 +5,7 @@ import XYZ from "ol/source/XYZ";
 import ImageLayer from "ol/layer/Image";
 import Static from "ol/source/ImageStatic";
 import Projection from "ol/proj/Projection";
-import { forwardRef, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function OpenLayers() {
   useEffect(() => {
@@ -15,8 +15,8 @@ export default function OpenLayers() {
         projection: "EPSG:4326",
         extent: [-180, -90, 180, 90],
         center: [0, 0],
-        zoom: 2,
-        maxZoom: 10,
+        zoom: 0,
+        // maxZoom: 10,
       }),
     });
     // const tiles2016 = new TileLayer({
@@ -35,7 +35,7 @@ export default function OpenLayers() {
     // });
     const image_2016 = new ImageLayer({
       source: new Static({
-        url: "/assets/img/BlackMarble_2016.webp",
+        url: "/assets/img/nasaBlackMarble/2016_nasaBlackMarble_8K_bin.webp",
         projection: new Projection({
           code: "BlackMarble_2016",
           units: "pixels",
@@ -47,7 +47,7 @@ export default function OpenLayers() {
     map.addLayer(image_2016);
     // const image_2012 = new ImageLayer({
     //   source: new Static({
-    //     url: "/assets/img/BlackMarble_2012.webp",
+    //     url: "/assets/img/BlackMarble_2012_8k.webp",
     //     projection: new Projection({
     //       code: "BlackMarble_2012",
     //       units: "pixels",
@@ -77,16 +77,11 @@ export default function OpenLayers() {
     //   );
     //   event.context.globalCompositeOperation = "source-over";
     // });
-    // map.on("rendercomplete", function (mapData) {
-    //   var mapCanvas = document.createElement("canvas");
-    //   mapData.current = mapCanvas
-    //   var size = map.getSize();
-    //   mapCanvas.width = size[0];
-    //   mapCanvas.height = size[1];
-    //   var mapContext = mapCanvas.getContext("2d");
-    //   alert('loaded')
-
-    // });
+    map.on('postrender',  (event) => {
+      // event.context.globalCompositeOperation = 'destination-over';
+      // event.context.imageSmoothingEnabled = false;
+      // event.context.globalCompositeOperation = 'source-over';
+    });
   }, []);
   return (
     <>
@@ -94,8 +89,8 @@ export default function OpenLayers() {
         <div
           id="map"
           style={{
-            height: "6570px",
-            width: "13500px",
+            height: "4096px",
+            width: "8192px",
             visibility: "hidden",
             position: "fixed",
           }}
