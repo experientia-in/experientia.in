@@ -3,6 +3,7 @@ import React, { Suspense, useRef } from "react";
 import Earth from "./comp/earth";
 import OpenLayers from "./comp/openLayers";
 import styles from "./style/main.module.css";
+import Overlay from "./comp/overlay";
 export default function BlackMarble() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
+      <Overlay/>
       <OpenLayers />
     </>
   );

@@ -1,0 +1,209 @@
+:root {
+  --introSecShadowDark: -23px 6px 45px -8px rgba(0, 0, 0, 0.4);
+  --introSecShadowLight: -23px 6px 45px -8px rgba(255, 255, 255, 0.2);
+  --introSecShadowDark_m: -0px -4px 30px -1px rgba(0, 0, 0, 0.4);
+  --introSecShadowLight_m: -0px -4px 30px -1px rgba(255, 255, 255, 0.3);
+  --introSecBoxCorner: 50px 0px 0px 0px;
+  --introSecBoxCorner_m: 30px 30px 0px 0px;
+}
+/* ------------ global Section--------------------- */
+.overlay_wrapper {
+  position: absolute;
+  z-index: 2;
+  max-height: auto;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.intro {
+  height: 100vh;
+  width: 100%;
+  background-color: #e4f5fd;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ------------ Desktop Section--------------------- */
+.streetMap {
+  position: absolute;
+  z-index: 3;
+  width: 90%;
+  height: 100%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/streetMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark);
+  border-radius: var(--introSecBoxCorner);
+}
+.basicMap {
+  position: absolute;
+  z-index: 4;
+  height: 100%;
+  width: 85%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/basicMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark);
+  border-radius: var(--introSecBoxCorner);
+}
+.outdoorMap {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 80%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/outdoorMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark);
+  border-radius: var(--introSecBoxCorner);
+}
+.darkMonoChromeMap {
+  position: absolute;
+  z-index: 6;
+  height: 100%;
+  width: 75%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/darkMonoChrome.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark);
+  border-radius: var(--introSecBoxCorner);
+}
+.physicalMap {
+  position: absolute;
+  z-index: 7;
+  height: 100%;
+  width: 70%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/physicalMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowLight);
+  border-radius: var(--introSecBoxCorner);
+}
+.whiteMonoChromeMap {
+  position: absolute;
+  z-index: 8;
+  height: 100%;
+  width: 65%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/whiteMonoChrome.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowLight);
+  border-radius: var(--introSecBoxCorner);
+}
+.winterMap {
+  position: absolute;
+  z-index: 9;
+  height: 100%;
+  width: 60%;
+  right: 0;
+  background-image: url("assets/img/nasaBlackMarble/winterMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark);
+  border-radius: var(--introSecBoxCorner);
+  transform: translateX(0);
+}
+/* ------------ Mobile Section--------------------- */
+
+.streetMap_m {
+  position: absolute;
+  z-index: 3;
+  background-image: url("assets/img/nasaBlackMarble/streetMap.webp");
+  height: calc(100% - 100px);
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  bottom: 0;
+  box-shadow: var(--introSecShadowDark_m);
+  /* transform: translateY(0); */
+  border-radius: var(--introSecBoxCorner_m);
+}
+.basicMap_m {
+  position: absolute;
+  z-index: 4;
+  height: calc(100% - 175px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/basicMap.webp");
+  background-position: center -40px;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark_m);
+  border-radius: var(--introSecBoxCorner_m);
+}
+.outdoorMap_m {
+  position: absolute;
+  z-index: 5;
+  height: calc(100% - 250px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/outdoorMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark_m);
+  border-radius: var(--introSecBoxCorner_m);
+}
+.darkMonoChromeMap_m {
+  position: absolute;
+  z-index: 6;
+  height: calc(100% - 325px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/darkMonoChrome.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark_m);
+  border-radius: var(--introSecBoxCorner_m);
+}
+.physicalMap_m {
+  position: absolute;
+  z-index: 7;
+  height: calc(100% - 400px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/physicalMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowLight_m);
+  border-radius: var(--introSecBoxCorner_m);
+}
+.whiteMonoChromeMap_m {
+  position: absolute;
+  z-index: 8;
+  height: calc(100% - 475px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/whiteMonoChrome.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowLight_m);
+  border-radius: var(--introSecBoxCorner_m);
+}
+.winterMap_m {
+  position: absolute;
+  z-index: 9;
+  height: calc(100% - 550px);
+  width: 100%;
+  bottom: 0;
+  background-image: url("assets/img/nasaBlackMarble/winterMap.webp");
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--introSecShadowDark_m);
+  transform: translateY(0);
+  border-radius: var(--introSecBoxCorner_m);
+}
+/* ------------ Media Queries--------------------- */
+@media screen and (max-width: 500px) {
+  .bigScreen {
+    display: none;
+  }
+}
+@media screen and (min-width: 500px) {
+  .smallScreen {
+    display: none;
+  }
+}
