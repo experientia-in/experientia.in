@@ -23,6 +23,11 @@
 }
 
 /* ------------ Desktop Section--------------------- */
+
+.mapCards {
+  transform: translateX(100%);
+}
+
 .streetMap {
   position: absolute;
   z-index: 3;
@@ -106,9 +111,12 @@
   background-size: cover;
   box-shadow: var(--introSecShadowDark);
   border-radius: var(--introSecBoxCorner);
-  transform: translateX(0);
 }
 /* ------------ Mobile Section--------------------- */
+
+.mapCards_m {
+  transform: translateY(100%);
+}
 
 .streetMap_m {
   position: absolute;
@@ -120,7 +128,6 @@
   background-size: cover;
   bottom: 0;
   box-shadow: var(--introSecShadowDark_m);
-  /* transform: translateY(0); */
   border-radius: var(--introSecBoxCorner_m);
 }
 .basicMap_m {
@@ -193,7 +200,6 @@
   background-position: center;
   background-size: cover;
   box-shadow: var(--introSecShadowDark_m);
-  transform: translateY(0);
   border-radius: var(--introSecBoxCorner_m);
 }
 /* ------------ Media Queries--------------------- */
