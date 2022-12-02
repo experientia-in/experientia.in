@@ -11,6 +11,7 @@ export default function OpenLayers() {
   useEffect(() => {
     var map = new Map({
       target: "map",
+      pixelRatio: 1,
       view: new View({
         projection: "EPSG:4326",
         extent: [-180, -90, 180, 90],
@@ -36,6 +37,7 @@ export default function OpenLayers() {
     const image_2016 = new ImageLayer({
       source: new Static({
         url: "/assets/img/nasaBlackMarble/2016_nasaBlackMarble_8K_bin.webp",
+        // interpolate: false,
         projection: new Projection({
           code: "BlackMarble_2016",
           units: "pixels",
@@ -77,7 +79,7 @@ export default function OpenLayers() {
     //   );
     //   event.context.globalCompositeOperation = "source-over";
     // });
-    map.on('postrender',  (event) => {
+    map.on("postrender", (event) => {
       // event.context.globalCompositeOperation = 'destination-over';
       // event.context.imageSmoothingEnabled = false;
       // event.context.globalCompositeOperation = 'source-over';

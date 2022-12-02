@@ -24,18 +24,15 @@ export default function Earth(props) {
       const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
       if (mapCanvas) {
         setCanvasTexture(mapCanvas);
+        props.canvasStatus(true)
         clearInterval(canvasIntervalCheck);
       }
     }, 10);
   }, []);
-
-  // if (mapCanvas.current) {
-  //   mapCanvas.current.needsUpdate = true;
-  // }
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
-    actions["CameraAction.001"].time = 14;
+    actions["CameraAction.001"].time = 27;
   }, []);
 
   return (
