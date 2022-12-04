@@ -1,15 +1,59 @@
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import "../style/overlay.css";
 
 export default function Overlay() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(".mapCards", { duration: 0.5, translateX: "0%", stagger: 0.25, ease: 'Power4.out' });
-      gsap.to(".mapCards_m", { duration: 0.5, translateY: "0%", stagger: 0.25, ease: 'Power4.out' });
-      gsap.to(".info_blur_reveal", {duration: 0.75, clipPath : 'circle(100%)', ease: 'Power4.out' }, '<2')
-      gsap.to(".info_data", { duration: 0.3, translateY: "0%", ease: 'Power4.out' }, '<0.25');
-      gsap.to(".data_backGround_control", { duration: 0.5, backgroundColor: "rgba(0, 0, 0, 0.5)", ease: 'Power3.inOut' }, '<0.5');
+      gsap.to(".mapCards", {
+        duration: 0.5,
+        translateX: "0%",
+        stagger: 0.25,
+        ease: "Power4.out",
+      });
+      gsap.to(".mapCards_m", {
+        duration: 0.5,
+        translateY: "0%",
+        stagger: 0.25,
+        ease: "Power4.out",
+      });
+      gsap.to(
+        ".info_blur_reveal",
+        { duration: 0.75, clipPath: "circle(100%)", ease: "Power4.out" },
+        "<2"
+      );
+      gsap.to(
+        ".info_data",
+        { duration: 0.3, translateY: "0%", ease: "Power4.out" },
+        "<0.25"
+      );
+      gsap.to(
+        ".data_backGround_control",
+        {
+          duration: 0.5,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          ease: "Power3.inOut",
+        },
+        "<0.5"
+      );
+      gsap.to(
+        ".data_grid_holder",
+        {
+          duration: 0.4,
+          opacity: 1 ,
+          ease: "Power4.in",
+        },
+        "<0.5"
+      );
+      gsap.from(
+        ".scroll_footer_section",
+        {
+          duration: 0.2,
+          bottom: -100,
+          ease: "Power4.out",
+        },
+        "<0.5"
+      );
     });
 
     return () => {
@@ -43,16 +87,21 @@ export default function Overlay() {
               <div className="info_data">
                 <div className="data_backGround_control">
                   <div className="data_grid_holder">
-                  <div className="data_heading">
-                    Nasa Black Marble
+                    <div className="data_heading">Nasa Black Marble</div>
+                    <div className="data_paragraph">
+                      Maps gives us critical awareness about the world that we live in.
+                      But, none of them tells us the maginificient story about
+                      humanity and where we actually live as what Nasa's Black
+                      Marble does.
+                    </div>
+                    <div className="author_info">
+                      Made by{" "}
+                      <a href="https://rahulahire.com" target="_blank">
+                        Rahul Ahire
+                      </a>.
+                    </div>
                   </div>
-                  <div className="data_paragraph">
-                    I'm sure 
-                  </div>
-                  </div>
-                  <div className="scroll_footer_section">
-                    scroll down
-                  </div>
+                  <div className="scroll_footer_section"><span>scroll down</span></div>
                 </div>
               </div>
             </div>
