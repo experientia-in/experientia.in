@@ -28,6 +28,10 @@
   font-family: playFair-regular;
   src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
 }
+@font-face {
+  font-family: spaceMono-regular;
+  src: url("/assets/fonts/SpaceMono-Regular.ttf");
+}
 /* ------------ global Section--------------------- */
 .overlay_wrapper {
   position: absolute;
@@ -248,6 +252,13 @@
   font-family: openSans-regular;
   padding-left: 25px;
   padding-right: 25px;
+}
+.country_feature_info a{
+  color: #f7f7f7;
+}
+.country_year{
+  font-size: 1.25rem;
+  font-family: spaceMono-regular;
 }
 /* ------------ Mobile Section--------------------- */
 
