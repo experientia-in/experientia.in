@@ -32,7 +32,7 @@ export default function Earth(props) {
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
-    actions["CameraAction.001"].time = 27;
+    actions["CameraAction.001"].time = 2;
   }, []);
 
   return (

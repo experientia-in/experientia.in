@@ -107,6 +107,19 @@ export default function Overlay() {
             </div>
           </div>
         </div>
+        <div className="country_section">
+          <div className="country_name">
+            Afghanistan
+          </div>
+          <div className="country_card">
+            <div className="country_feature_image">
+              <img src="https://static.experientia.in/nasaBlackMarble/afghanistan_mountain.webp" alt="country_image_feature" />
+            </div>
+            <div className="country_feature_info">
+              On map, Afghanistan may look like a decent size country but majority of its land is covered by tall mountains in central area some of them ranging more than 7Km. Cities in Afghanistan mostly form a ring pattern which are connected by highways.
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
