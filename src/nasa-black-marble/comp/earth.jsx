@@ -5,14 +5,14 @@ import {
   useAnimations,
   useTexture,
 } from "@react-three/drei";
-import { useRef, useEffect, useState } from "react";
+import { useThree as three } from "@react-three/fiber";
+import { useRef, useEffect, useState, useLayoutEffect } from "react";
 
 export default function Earth(props) {
   const textureRef = useRef();
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "/assets/model/black_marble_no_texture.glb"
-  );
+
+  const { nodes, materials, animations } = useGLTF(props.earthGlb);
   const { actions } = useAnimations(animations, group);
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
@@ -24,15 +24,16 @@ export default function Earth(props) {
       const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
       if (mapCanvas) {
         setCanvasTexture(mapCanvas);
-        props.canvasStatus(true)
+        props.canvasStatus(true);
         clearInterval(canvasIntervalCheck);
       }
     }, 10);
   }, []);
+
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
-    actions["CameraAction.001"].time = 27 ;
+    actions["CameraAction.001"].time = 3;
   }, []);
 
   return (
@@ -63,14 +64,13 @@ export default function Earth(props) {
                 attach="map"
                 image={canvasTexture}
                 flipY={false}
-                
               />
             </meshStandardMaterial>
           </mesh>
         </group>
       </group>
 
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </>
   );
 }

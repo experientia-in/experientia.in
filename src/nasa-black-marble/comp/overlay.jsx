@@ -1,11 +1,10 @@
 import gsap from "gsap";
-import { useState } from "react";
-import { useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import "../style/overlay.css";
 
 export default function Overlay() {
   const [year, setYear] = useState('2016')
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(".mapCards", {
         duration: 0.5,
