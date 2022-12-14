@@ -32,14 +32,14 @@ export default function OpenLayers() {
     //   }),
     // });
     // map.addLayer(iceland);
-    // const egypt_middleEast = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/egypt_middleEast_2016.webp",
-    //     interpolate: false,
-    //     imageExtent: [28.000000000,12.345833333,61.195833333,38.212500000],
-    //   }),
-    // });
-    // map.addLayer(egypt_middleEast)
+    const egypt_middleEast = new ImageLayer({
+      source: new Static({
+        url: "/assets/img/nasaBlackMarble/egypt_middleEast_2016.webp",
+        interpolate: false,
+        imageExtent: [28.000000000,12.345833333,61.195833333,38.212500000],
+      }),
+    });
+    map.addLayer(egypt_middleEast)
     
   }, []);
   return (

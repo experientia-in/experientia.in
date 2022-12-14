@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useState, useEffect } from "react";
 import "../style/overlay.css";
 
@@ -62,7 +63,7 @@ export default function Overlay() {
     };
   }, []);
   return (
-    <>
+    <section className="overlay_container">
       <section className="overlay_wrapper">
         <div className="intro">
           <div className="bigScreen">
@@ -292,6 +293,6 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }

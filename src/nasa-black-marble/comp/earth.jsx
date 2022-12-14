@@ -3,16 +3,16 @@ import {
   useGLTF,
   PerspectiveCamera,
   useAnimations,
-  useTexture,
 } from "@react-three/drei";
-import { useThree as three } from "@react-three/fiber";
-import { useRef, useEffect, useState, useLayoutEffect } from "react";
-
+import gsap from "gsap";
+import { useRef, useEffect, useState} from "react";
 export default function Earth(props) {
+  
+  let {earthGlb, scrollDirection} =  props
   const textureRef = useRef();
   const group = useRef();
 
-  const { nodes, materials, animations } = useGLTF(props.earthGlb);
+  const { nodes, materials, animations } = useGLTF(earthGlb);
   const { actions } = useAnimations(animations, group);
   if (textureRef.current) {
     textureRef.current.needsUpdate = true;
@@ -31,11 +31,45 @@ export default function Earth(props) {
   }, []);
 
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
-
   useEffect(() => {
-    actions["CameraAction.001"].time = 3;
+    window.addEventListener('scroll', ()=> {
+      let scrollPosition = Math.floor((window.scrollY / window.innerHeight) + 0.01) 
+      console.log(window.scrollY / window.innerHeight, scrollPosition)
+      // if (scrollPosition > 0.99 && scrollPosition < 2){
+      //   cameraTime(2, 2)
+      //   if(cameraTime(2,2)){
+      //     console.log(cameraTime(2,2))
+      //   }
+      // }
+      // if (scrollPosition > 1.99 && scrollPosition < 3){
+      //   cameraTime(3, 1)
+      // }
+      // if (scrollPosition > 2.99 && scrollPosition < 4){
+        
+      //   cameraTime(6, 3)
+      // }
+      switch (scrollPosition) {
+        case 1:
+          cameraTime(2, 2)
+          break;
+        case 2:
+          cameraTime(3,1)
+          break;
+          case 3:
+            cameraTime(6,3)
+            break;   
+      
+        default:
+          break;
+      }
+    })
   }, []);
-
+const cameraTime = (t, d) => {
+  gsap.to(actions["CameraAction.001"], {
+    time : t,
+    duration: d
+  })
+}
   return (
     <>
       <group ref={group} {...props} dispose={null}>
@@ -70,7 +104,7 @@ export default function Earth(props) {
         </group>
       </group>
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   );
 }
