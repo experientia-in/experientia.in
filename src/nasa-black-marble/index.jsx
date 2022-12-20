@@ -12,9 +12,10 @@ export default function BlackMarble() {
     const isMobile = window.innerWidth < 501; 
     setEarthGlb(isMobile ? '/assets/model/black_marble_no_texture_m.glb' : '/assets/model/black_marble_no_texture.glb');
   },[])
+  let oldValue = 0;
+  let newValue = 0;
+  // let scrollDirection = 'up'
   useEffect(() => {
-    let oldValue = 0;
-    let newValue = 0;
     window.addEventListener("scroll", () => {
       newValue = window.pageYOffset;
       if (oldValue < newValue) {
@@ -25,7 +26,7 @@ export default function BlackMarble() {
       }
       oldValue = newValue;
     });
-  }, []);
+  }, [scrollDirection]);
   return (
     <>
       <section className={styles.container}>

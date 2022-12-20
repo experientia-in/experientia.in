@@ -33,6 +33,15 @@
   src: url("/assets/fonts/SpaceMono-Regular.ttf");
 }
 /* ------------ global Section--------------------- */
+
+.scroll_container{
+  scroll-snap-type: y mandatory;
+  /* overflow-y: scroll; */
+  height: 100vh;
+}
+.snap_point{
+  scroll-snap-align: start;
+}
 .overlay_wrapper {
   position: absolute;
   z-index: 2;
@@ -45,7 +54,6 @@
   background-color: #e4f5fd;
   position: relative;
   overflow: hidden;
-  /* scroll-snap-align: start; */
 }
 .intro_info_container{
   position: absolute;

@@ -64,9 +64,9 @@ export default function Overlay() {
   }, []);
   return (
     <section className="overlay_container">
-      <section className="overlay_wrapper">
-        <div className="intro">
-          <div className="bigScreen">
+      <section className="overlay_wrapper scroll_container">
+        <div className="intro snap_point">
+          <div className="bigScreen ">
             <div className="streetMap mapCards"></div>
             <div className="basicMap mapCards"></div>
             <div className="outdoorMap mapCards"></div>
@@ -109,7 +109,7 @@ export default function Overlay() {
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Afghanistan
           </div>
@@ -122,7 +122,7 @@ export default function Overlay() {
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Iceland
           </div>
@@ -135,7 +135,7 @@ export default function Overlay() {
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Argentina
           </div>
@@ -148,7 +148,7 @@ export default function Overlay() {
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Russia
           </div>
@@ -162,7 +162,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Australia
           </div>
@@ -175,11 +175,11 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             USA
           </div>
-          <div className="country_card">
+          <div className="country_card snap_point">
             <div className="country_feature_image">
               <img src="https://static.experientia.in/nasaBlackMarble/usa_nycStatue.webp" alt="country_image_feature" />
             </div>
@@ -188,7 +188,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Egypt
           </div>
@@ -201,7 +201,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             Pakistan
           </div>
@@ -214,7 +214,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
-        <div className="country_section">
+        <div className="country_section snap_point">
           <div className="country_name">
             India <span className="country_year">{year}</span>
           </div>
