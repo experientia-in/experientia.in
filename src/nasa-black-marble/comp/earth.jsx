@@ -26,7 +26,7 @@ export default function Earth(props) {
         props.canvasStatus(true);
         clearInterval(canvasIntervalCheck);
       }
-    }, 10);
+    }, 1000);
   }, []);
 
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
