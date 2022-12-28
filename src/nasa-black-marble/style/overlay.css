@@ -8,6 +8,7 @@
   --headingFontSize : 3rem;
   --headingFontSize_m : 2.5rem;
   --countryNameFontSize : 4rem;
+  --countryNameFontSize_m : 2.5rem;
   --countryCardInfoFontSize : 20px;
 }
 
@@ -33,20 +34,20 @@
   src: url("/assets/fonts/SpaceMono-Regular.ttf");
 }
 /* ------------ global Section--------------------- */
-
-.scroll_container{
+/* .scroll_container{
   scroll-snap-type: y mandatory;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   height: 100vh;
 }
 .snap_point{
   scroll-snap-align: start;
-}
+} */
+
 .overlay_wrapper {
   position: absolute;
   z-index: 2;
   width: 100%;
-  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 .intro {
   height: 100vh;
@@ -113,7 +114,7 @@
 .scroll_footer_section{
   position: absolute;
   color: #f7f7f7;
-  bottom: 50px;
+  bottom: -100px;
   width: 100%;
   height: 40px;
   color: #f7f7f7;
@@ -227,7 +228,6 @@
   width: 100%;
   height: 100vh;
   position: relative;
-  scroll-snap-align: start;
 }
 .country_name{
   color: #f7f7f7;
@@ -359,6 +359,36 @@
   box-shadow: var(--introSecShadowDark_m);
   border-radius: var(--introSecBoxCorner_m);
 }
+.country_section_m{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  /* overflow-x: hidden; */
+}
+.country_name_m{
+  color: #f7f7f7;
+  font-family: gilroy-bold;
+  font-size: var(--countryNameFontSize_m);
+  padding-left: 25px;
+  padding-top: 40px;
+  /* position: absolute;
+  z-index: 1; */
+}
+.country_feature_image_m{
+  padding-left: 25px;
+  padding-top: 25px;
+}
+.country_feature_image_m img{
+  height: 100px;
+  border-radius: 15px;
+}
+.country_card_m{
+  position: absolute;
+  /* height: 300px; */
+  bottom: 0;
+  z-index: 1;
+  background: linear-gradient(to top,  rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
 /* ------------ Media Queries--------------------- */
 @media screen and (max-width: 500px) {
   .bigScreen {
@@ -368,10 +398,27 @@
     font-size: var(--headingFontSize_m);
     padding-top: 250px;
   }
-  
+  .country_section{
+    display: none;
+  }
+  .country_feature_info{
+    font-size: 19px;
+  }
+  .country_year{
+    font-size: 1rem;
+  }
+  .country_feature_info{
+    padding-bottom: 40px;
+  }
 }
 @media screen and (min-width: 500px) {
   .smallScreen {
+    display: none;
+  }
+  /* .country_section{
+    opacity: 0;
+  } */
+  .country_section_m{
     display: none;
   }
 }

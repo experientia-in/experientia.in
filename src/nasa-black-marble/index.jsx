@@ -7,26 +7,11 @@ import Overlay from "./comp/overlay";
 export default function BlackMarble() {
   const [canvasLoaded, setCanvasLoaded] = useState(false);
   const [earthGlb, setEarthGlb] = useState(null);
-  const [scrollDirection, setScrollDirection] = useState('')
   useLayoutEffect(()=>{
     const isMobile = window.innerWidth < 501; 
     setEarthGlb(isMobile ? '/assets/model/black_marble_no_texture_m.glb' : '/assets/model/black_marble_no_texture.glb');
   },[])
-  let oldValue = 0;
-  let newValue = 0;
-  // let scrollDirection = 'up'
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      newValue = window.pageYOffset;
-      if (oldValue < newValue) {
-        setScrollDirection('up')
-      }
-      else if (oldValue > newValue) {
-        setScrollDirection('down')
-      }
-      oldValue = newValue;
-    });
-  }, [scrollDirection]);
+ 
   return (
     <>
       <section className={styles.container}>
@@ -38,7 +23,6 @@ export default function BlackMarble() {
                   setCanvasLoaded(canvasLoaded);
                 }}
                 earthGlb={earthGlb}
-                scrollDirection={scrollDirection}
               />
             </Suspense>
           </Canvas>
