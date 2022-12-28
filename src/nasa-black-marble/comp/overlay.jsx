@@ -82,20 +82,18 @@ export default function Overlay() {
       })
     });
 
-    let sl = new Scroll(50);
+    let scroll = new Scroll(50);
 
-    let overlayCount = 0
-    let pagePostion = window.scrollY
     let windowHeight = window.innerHeight
     const windowScrollTo = (number) => {
       gsap.to(window, {duration: 0.5, scrollTo: windowHeight * number, ease: "circ.out"});
     };
+    let overlayCount = 0
     const overlayCounter = (number) => {
       setTimeout(() => {
         overlayCount = number
-      }, 1500);
+      }, 1000);
     }
-
     // const overlayScrollLogic = (number) => {
     //   let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
     //   console.log(scrollPosition, pagePostion, overlayCount);
@@ -104,9 +102,23 @@ export default function Overlay() {
     //     overlayCounter(number + 1)
     //   }
     // }
-    sl.addEventListener("end", function () {
+    let oldValue = 0
+    let newValue = 0
+    let scrollDirection
+    window.addEventListener("scroll", () => {
+      newValue = window.pageYOffset;
+      if (oldValue < newValue) {
+        scrollDirection = 'up';
+      } else if (oldValue > newValue) {
+        scrollDirection = 'down'
+      }
+      oldValue = newValue;
+    })
+
+    scroll.addEventListener("end", () => {
+      let pagePostion = window.scrollY
       let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
-      console.log(scrollPosition, pagePostion, overlayCount);
+      // console.log(scrollDirection, scrollPosition, pagePostion, overlayCount);
       if(scrollPosition === 0 && overlayCount === 0){
         windowScrollTo(1)
         overlayCounter(1)
@@ -135,21 +147,137 @@ export default function Overlay() {
         windowScrollTo(7)
         overlayCounter(7)
       }
+      if(scrollPosition === 7 && overlayCount === 7){
+        windowScrollTo(8)
+        overlayCounter(8)
+      }
+      if(scrollPosition === 8 && overlayCount === 8){
+        windowScrollTo(9)
+        overlayCounter(9)
+      }
+      if(scrollPosition === 9 && overlayCount === 9){
+        windowScrollTo(10)
+        overlayCounter(10)
+      }
+      if(scrollPosition === 10 && overlayCount === 10){
+        windowScrollTo(11)
+        overlayCounter(11)
+      }
+      if(scrollPosition === 11 && overlayCount === 11){
+        windowScrollTo(12)
+        overlayCounter(12)
+      }
+      if(scrollPosition === 12 && overlayCount === 12){
+        windowScrollTo(13)
+        overlayCounter(13)
+      }
+      if(scrollPosition === 13 && overlayCount === 13){
+        windowScrollTo(14)
+        overlayCounter(14)
+      }
+      if(scrollPosition === 14 && overlayCount === 14){
+        windowScrollTo(15)
+        overlayCounter(15)
+      }
+      if(scrollPosition === 15 && overlayCount === 15){
+        windowScrollTo(16)
+        overlayCounter(16)
+      }
+      if(scrollPosition === 16 && overlayCount === 16){
+        windowScrollTo(17)
+        overlayCounter(17)
+      }
+      if(scrollPosition === 17 && overlayCount === 17){
+        windowScrollTo(18)
+        overlayCounter(18)
+      }
+      if(scrollPosition === 18 && overlayCount === 18){
+        windowScrollTo(19)
+        overlayCounter(19)
+      }
+      
+    if(scrollDirection == 'down'){
+      // console.log('down', scrollPosition, pagePostion, overlayCount)
+      if(scrollPosition === 18 && overlayCount === 19){
+        windowScrollTo(18)
+        overlayCounter(18)
+      }
+      if(scrollPosition === 17 && overlayCount === 18){
+        windowScrollTo(17)
+        overlayCounter(17)
+      }
+      if(scrollPosition === 16 && overlayCount === 17){
+        windowScrollTo(16)
+        overlayCounter(16)
+      }
+      if(scrollPosition === 15 && overlayCount === 16){
+        windowScrollTo(15)
+        overlayCounter(15)
+      }
+      if(scrollPosition === 14 && overlayCount === 15){
+        windowScrollTo(14)
+        overlayCounter(14)
+      }
+      if(scrollPosition === 13 && overlayCount === 14){
+        windowScrollTo(13)
+        overlayCounter(13)
+      }
+      if(scrollPosition === 12 && overlayCount === 13){
+        windowScrollTo(12)
+        overlayCounter(12)
+      }
+      if(scrollPosition === 11 && overlayCount === 12){
+        windowScrollTo(11)
+        overlayCounter(11)
+      }
+      if(scrollPosition === 10 && overlayCount === 11){
+        windowScrollTo(10)
+        overlayCounter(10)
+      }
+      if(scrollPosition === 9 && overlayCount === 10){
+        windowScrollTo(9)
+        overlayCounter(9)
+      }
+      if(scrollPosition === 8 && overlayCount === 9){
+        windowScrollTo(8)
+        overlayCounter(8)
+      }
+      if(scrollPosition === 7 && overlayCount === 8){
+        windowScrollTo(7)
+        overlayCounter(7)
+      }
+      if(scrollPosition === 6 && overlayCount === 7){
+        windowScrollTo(6)
+        overlayCounter(6)
+      }
+      if(scrollPosition === 5 && overlayCount === 6){
+        windowScrollTo(5)
+        overlayCounter(5)
+      }
+      if(scrollPosition === 4 && overlayCount === 5){
+        windowScrollTo(4)
+        overlayCounter(4)
+      }
+      if(scrollPosition === 3 && overlayCount === 4){
+        windowScrollTo(3)
+        overlayCounter(3)
+      }
+      if(scrollPosition === 2 && overlayCount === 3){
+        windowScrollTo(2)
+        overlayCounter(2)
+      }
+      if(scrollPosition === 1 && overlayCount === 2){
+        windowScrollTo(1)
+        overlayCounter(1)
+      }
+      if(scrollPosition === 0 && overlayCount === 1){
+        windowScrollTo(0)
+        overlayCounter(0)
+      }
+    }
 
   });
     
-    // window.addEventListener('scroll', () => {
-    
-
-    //   console.log(scrollPosition, overlayCount)
-    //   if(scrollPosition == 0 && overlayCount == 0){
-    //     
-    //   if(scrollPosition == 1 && overlayCount == 1){
-    //     gsap.to(window, {duration: 0.5, scrollTo: windowHeight*2});
-    //     overlayCount = 2
-    //   }
-      
-    // })
     
     return () => {
       ctx.revert();

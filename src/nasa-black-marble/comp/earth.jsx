@@ -5,6 +5,7 @@ import {
   useAnimations,
 } from "@react-three/drei";
 import gsap from "gsap";
+import Scroll from "./scrollStatus";
 import { useRef, useEffect, useState } from "react";
 export default function Earth(props) {
   let { earthGlb, canvasStatus } = props;
@@ -35,9 +36,21 @@ export default function Earth(props) {
   let newValue = 0;
   let scrollDirection
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    let scroll = new Scroll(50)
+    window.addEventListener('scroll', () => {
+      newValue = window.scrollY;
+      if (oldValue < newValue) {
+        scrollDirection = 'up'
+      }
+      else if (oldValue > newValue) {
+        scrollDirection = 'down'
+      }
+      oldValue = newValue;
+    })
+
+    scroll.addEventListener("end", () => {
       let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
-      // console.log(scrollPosition)
+      console.log(scrollPosition, scrollCount)
       if (scrollPosition == 1 && scrollCount == 0) { // Afghanistan (default height for all is 100vh or 1 scrollposition)
         cameraTime(2, 2);
         scrollCount = 1;
@@ -92,17 +105,69 @@ export default function Earth(props) {
       }
       if (scrollPosition == 18 && scrollCount == 13) { // Syria - 2 scrollPosition
         cameraTime(27, 1);
-        scrollCount = 14;
+        scrollCount = 14
       }
 
-      newValue = window.scrollY;
-      if (oldValue < newValue) {
-        scrollDirection = 'up'
+      if(scrollDirection === 'down'){
+        if (scrollPosition == 17 && scrollCount == 14) { // Yemen - 2 scrollPosition
+          cameraTime(26, 1);
+          scrollCount = 13;
+        }
+        if (scrollPosition == 15 && scrollCount == 13) { // Korea
+          cameraTime(24, 2);
+          scrollCount = 12;
+        }
+        if (scrollPosition == 14 && scrollCount == 12) { // Africa
+          cameraTime(22, 2);
+          scrollCount = 11;
+        }
+        if (scrollPosition == 13 && scrollCount == 11) { // China
+          cameraTime(20, 2);
+          scrollCount = 10;
+        }
+        if (scrollPosition == 11 && scrollCount == 10) { // India
+          cameraTime(19, 1);
+          scrollCount = 9;
+        }
+        if (scrollPosition == 9 && scrollCount == 9) { // Pakistan
+          cameraTime(18, 1);
+          scrollCount = 8;
+        }
+        if (scrollPosition == 8 && scrollCount == 8) { // Egypt
+          cameraTime(16, 2);
+          scrollCount = 7;
+        }
+        if (scrollPosition == 7 && scrollCount == 7) { // USA
+          cameraTime(14, 2);
+          scrollCount = 6;
+        }
+        if (scrollPosition == 6 && scrollCount == 6) { // Australia
+          cameraTime(12, 2);
+          scrollCount = 5;
+        }
+        if (scrollPosition == 5 && scrollCount == 5) { // Russia
+          cameraTime(8, 4);
+          scrollCount = 4;
+        }
+        if (scrollPosition == 4 && scrollCount == 4) { // Argentina
+          cameraTime(6, 2);
+          scrollCount = 3;
+        }
+        if (scrollPosition == 2 && scrollCount == 3) { // Iceland
+          cameraTime(3, 3);
+          scrollCount = 2;
+        }
+        if (scrollPosition == 1 && scrollCount == 2) { // Afghanistan
+          cameraTime(2, 1);
+          scrollCount = 1;
+        }
+        if (scrollPosition == 0 && scrollCount == 1) { // Start
+          cameraTime(0, 2);
+          scrollCount = 0;
+        }
+
       }
-      else if (oldValue > newValue) {
-        scrollDirection = 'down'
-      }
-      oldValue = newValue;
+      
     });
   }, []);
   const cameraTime = (t, d) => {
