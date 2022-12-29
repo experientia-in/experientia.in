@@ -48,122 +48,326 @@ export default function Earth(props) {
       oldValue = newValue;
     })
 
+    let afghanistan = true;
+    let iceland = true;
+    let argentina = true;
+    let russia = true;
+    let australia = true;
+    let usa = true;
+    let egypt = true;
+    let pakistan = true;
+    let india = true;
+    let china = true;
+    let africa = true;
+    let korea = true;
+    let yemen = true;
+    let syria = true;
+
     scroll.addEventListener("end", () => {
-      let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
-      console.log(scrollPosition, scrollCount)
-      if (scrollPosition == 1 && scrollCount == 0) { // Afghanistan (default height for all is 100vh or 1 scrollposition)
-        cameraTime(2, 2);
-        scrollCount = 1;
+      let scrollPosition = window.scrollY / window.innerHeight * 100;
+      console.log(Math.round(scrollPosition), scrollDirection)
+
+      if(scrollDirection === 'up'){
+
+        if (scrollPosition > 75 && scrollPosition < 175 && afghanistan) { // Afghanistan (default height for all is 100vh or 1 scrollposition)
+          cameraTime(2, 2);
+          afghanistan = false
+        }
+        if (scrollPosition > 175 && scrollPosition < 275 && iceland) { // Iceland
+          cameraTime(3, 1);
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 275 && scrollPosition < 375 && argentina) { // Argentina - 2 scrollPosition
+          cameraTime(6, 3);
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 475 && scrollPosition < 575 && russia) { // Russia
+          cameraTime(9, 3);
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 575 && scrollPosition < 675 && australia) { // Australia
+          cameraTime(12, 3);
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 675 && scrollPosition < 775 && usa) { // USA
+          cameraTime(14, 2);
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 775 && scrollPosition < 875 && egypt) { // Egypt
+          cameraTime(16, 2);
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 875 && scrollPosition < 975 && pakistan) { // Pakistan
+          cameraTime(18, 2);
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 975 && scrollPosition < 1175 && india) { // India - 2 scrollPosition
+          cameraTime(19, 1);
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 1175 && scrollPosition < 1375 && china) { // China - 2 scrollPosition
+          cameraTime(20, 1);
+          china = false;
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 1375 && scrollPosition < 1475 && africa) { // Africa
+          cameraTime(22, 2);
+          africa = false;
+          china = false;
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 1475 && scrollPosition < 1575 && korea) { // Korea
+          cameraTime(24, 2);
+          korea = false;
+          africa = false;
+          china = false;
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 1575 && scrollPosition < 1775 && yemen) { // Yemen - 2 scrollPosition
+          cameraTime(26, 2);
+          yemen = false;
+          korea = false;
+          africa = false;
+          china = false;
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if (scrollPosition > 1775 && scrollPosition < 2000 && syria) { // Syria - 2 scrollPosition
+          cameraTime(27, 1);
+          syria = false;
+          yemen = false;
+          korea = false;
+          africa = false;
+          china = false;
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+ 
+        }
       }
-      if (scrollPosition == 2 && scrollCount == 1) { // Iceland
-        cameraTime(3, 1);
-        scrollCount = 2;
-      }
-      if (scrollPosition == 3 && scrollCount == 2) { // Argentina - 2 scrollPosition
-        cameraTime(6, 3);
-        scrollCount = 3;
-      }
-      if (scrollPosition == 5 && scrollCount == 3) { // Russia
-        cameraTime(9, 3);
-        scrollCount = 4;
-      }
-      if (scrollPosition == 6 && scrollCount == 4) { // Australia
-        cameraTime(12, 3);
-        scrollCount = 5;
-      }
-      if (scrollPosition == 7 && scrollCount == 5) { // USA
-        cameraTime(14, 2);
-        scrollCount = 6;
-      }
-      if (scrollPosition == 8 && scrollCount == 6) { // Egypt
-        cameraTime(16, 2);
-        scrollCount = 7;
-      }
-      if (scrollPosition == 9 && scrollCount == 7) { // Pakistan
-        cameraTime(18, 2);
-        scrollCount = 8;
-      }
-      if (scrollPosition == 10 && scrollCount == 8) { // India - 2 scrollPosition
-        cameraTime(19, 1);
-        scrollCount = 9;
-      }
-      if (scrollPosition == 12 && scrollCount == 9) { // China - 2 scrollPosition
-        cameraTime(20, 1);
-        scrollCount = 10;
-      }
-      if (scrollPosition == 14 && scrollCount == 10) { // Africa
-        cameraTime(22, 2);
-        scrollCount = 11;
-      }
-      if (scrollPosition == 15 && scrollCount == 11) { // Korea
-        cameraTime(24, 2);
-        scrollCount = 12;
-      }
-      if (scrollPosition == 16 && scrollCount == 12) { // Yemen - 2 scrollPosition
-        cameraTime(26, 2);
-        scrollCount = 13;
-      }
-      if (scrollPosition == 18 && scrollCount == 13) { // Syria - 2 scrollPosition
-        cameraTime(27, 1);
-        scrollCount = 14
-      }
+      
 
       if(scrollDirection === 'down'){
-        if (scrollPosition == 17 && scrollCount == 14) { // Yemen - 2 scrollPosition
+        if (scrollPosition > 1625 && scrollPosition < 1725 && !yemen) { // Yemen - 2 scrollPosition
           cameraTime(26, 1);
-          scrollCount = 13;
+          syria = true
         }
-        if (scrollPosition == 15 && scrollCount == 13) { // Korea
+        if (scrollPosition > 1425 && scrollPosition < 1525 && !korea) { // Korea
           cameraTime(24, 2);
-          scrollCount = 12;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 14 && scrollCount == 12) { // Africa
+        if (scrollPosition > 1325 && scrollPosition < 1425 && !africa) { // Africa
           cameraTime(22, 2);
-          scrollCount = 11;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 13 && scrollCount == 11) { // China
+        if (scrollPosition > 1125 && scrollPosition < 1325 && !china) { // China - 2 scrollPosition
           cameraTime(20, 2);
-          scrollCount = 10;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 11 && scrollCount == 10) { // India
+        if (scrollPosition > 925 && scrollPosition < 1125 && !india) { // India - 2 scrollPosition
           cameraTime(19, 1);
-          scrollCount = 9;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 9 && scrollCount == 9) { // Pakistan
+        if (scrollPosition > 825 && scrollPosition < 925 && !pakistan) { // Pakistan
           cameraTime(18, 1);
-          scrollCount = 8;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 8 && scrollCount == 8) { // Egypt
+        if (scrollPosition > 725 && scrollPosition < 825 && !egypt) { // Egypt
           cameraTime(16, 2);
-          scrollCount = 7;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 7 && scrollCount == 7) { // USA
+        if (scrollPosition > 625 && scrollPosition < 725 && !usa) { // USA
           cameraTime(14, 2);
-          scrollCount = 6;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 6 && scrollCount == 6) { // Australia
+        if (scrollPosition > 525 && scrollPosition < 625 && !australia) { // Australia
           cameraTime(12, 2);
-          scrollCount = 5;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 5 && scrollCount == 5) { // Russia
+        if (scrollPosition > 425 && scrollPosition < 525 && !russia) { // Russia
           cameraTime(8, 4);
-          scrollCount = 4;
+          australia = true;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 4 && scrollCount == 4) { // Argentina
+        if (scrollPosition > 225 && scrollPosition < 425 && !argentina) { // Argentina - 2 scrollPosition
           cameraTime(6, 2);
-          scrollCount = 3;
+          russia = true;
+          australia = true;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 2 && scrollCount == 3) { // Iceland
+        if (scrollPosition > 125 && scrollPosition < 225 && !iceland) { // Iceland
           cameraTime(3, 3);
-          scrollCount = 2;
+          argentina = true;
+          russia = true;
+          australia = true;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 1 && scrollCount == 2) { // Afghanistan
+        if (scrollPosition > 25 && scrollPosition < 125 && !afghanistan) { // Afghanistan
           cameraTime(2, 1);
-          scrollCount = 1;
+          iceland = true;
+          argentina = true;
+          russia = true;
+          australia = true;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
         }
-        if (scrollPosition == 0 && scrollCount == 1) { // Start
+        if (scrollPosition < 25) { // Start
           cameraTime(0, 2);
-          scrollCount = 0;
+          afghanistan = true;
+          iceland = true;
+          argentina = true;
+          russia = true;
+          australia = true;
+          usa = true;
+          egypt = true;
+          pakistan = true;
+          india = true;
+          china = true;
+          africa = true;
+          korea = true;
+          yemen = true;
+          syria = true;
+
         }
 
       }
