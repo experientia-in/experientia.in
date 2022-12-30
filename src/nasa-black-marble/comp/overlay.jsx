@@ -114,167 +114,544 @@ export default function Overlay() {
       }
       oldValue = newValue;
     })
-
+    let afghanistan = true;
+    let iceland = true;
+    let argentina = true;
+    let argentina2 = true
+    let russia = true;
+    let australia = true;
+    let usa = true;
+    let egypt = true;
+    let pakistan = true;
+    let india = true;
+    let india2 = true
+    let china = true;
+    let china2 = true
+    let africa = true;
+    let korea = true;
+    let yemen = true;
+    let yemen2 = true
+    let syria = true;
+    let syria2 = true;
     scroll.addEventListener("end", () => {
-      let pagePostion = window.scrollY
-      let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
-      // console.log(scrollDirection, scrollPosition, pagePostion, overlayCount);
-      // if(scrollPosition === 0 && overlayCount === 0){
-      //   windowScrollTo(1)
-      //   overlayCounter(1)
-      // }
-      // if(scrollPosition === 1 && overlayCount === 1){
-      //   windowScrollTo(2)
-      //   overlayCounter(2)
-      // }
-      // if(scrollPosition === 2 && overlayCount === 2){
-      //   windowScrollTo(3)
-      //   overlayCounter(3)
-      // }
-      // if(scrollPosition === 3 && overlayCount === 3){
-      //   windowScrollTo(4)
-      //   overlayCounter(4)
-      // }
-      // if(scrollPosition === 4 && overlayCount === 4){
-      //   windowScrollTo(5)
-      //   overlayCounter(5)
-      // }
-      // if(scrollPosition === 5 && overlayCount === 5){
-      //   windowScrollTo(6)
-      //   overlayCounter(6)
-      // }
-      // if(scrollPosition === 6 && overlayCount === 6){
-      //   windowScrollTo(7)
-      //   overlayCounter(7)
-      // }
-      // if(scrollPosition === 7 && overlayCount === 7){
-      //   windowScrollTo(8)
-      //   overlayCounter(8)
-      // }
-      // if(scrollPosition === 8 && overlayCount === 8){
-      //   windowScrollTo(9)
-      //   overlayCounter(9)
-      // }
-      // if(scrollPosition === 9 && overlayCount === 9){
-      //   windowScrollTo(10)
-      //   overlayCounter(10)
-      // }
-      // if(scrollPosition === 10 && overlayCount === 10){
-      //   windowScrollTo(11)
-      //   overlayCounter(11)
-      // }
-      // if(scrollPosition === 11 && overlayCount === 11){
-      //   windowScrollTo(12)
-      //   overlayCounter(12)
-      // }
-      // if(scrollPosition === 12 && overlayCount === 12){
-      //   windowScrollTo(13)
-      //   overlayCounter(13)
-      // }
-      // if(scrollPosition === 13 && overlayCount === 13){
-      //   windowScrollTo(14)
-      //   overlayCounter(14)
-      // }
-      // if(scrollPosition === 14 && overlayCount === 14){
-      //   windowScrollTo(15)
-      //   overlayCounter(15)
-      // }
-      // if(scrollPosition === 15 && overlayCount === 15){
-      //   windowScrollTo(16)
-      //   overlayCounter(16)
-      // }
-      // if(scrollPosition === 16 && overlayCount === 16){
-      //   windowScrollTo(17)
-      //   overlayCounter(17)
-      // }
-      // if(scrollPosition === 17 && overlayCount === 17){
-      //   windowScrollTo(18)
-      //   overlayCounter(18)
-      // }
-      // if(scrollPosition === 18 && overlayCount === 18){
-      //   windowScrollTo(19)
-      //   overlayCounter(19)
-      // }
       
-    // if(scrollDirection == 'down'){
-    //   // console.log('down', scrollPosition, pagePostion, overlayCount)
-    //   if(scrollPosition === 18 && overlayCount === 19){
-    //     windowScrollTo(18)
-    //     overlayCounter(18)
-    //   }
-    //   if(scrollPosition === 17 && overlayCount === 18){
-    //     windowScrollTo(17)
-    //     overlayCounter(17)
-    //   }
-    //   if(scrollPosition === 16 && overlayCount === 17){
-    //     windowScrollTo(16)
-    //     overlayCounter(16)
-    //   }
-    //   if(scrollPosition === 15 && overlayCount === 16){
-    //     windowScrollTo(15)
-    //     overlayCounter(15)
-    //   }
-    //   if(scrollPosition === 14 && overlayCount === 15){
-    //     windowScrollTo(14)
-    //     overlayCounter(14)
-    //   }
-    //   if(scrollPosition === 13 && overlayCount === 14){
-    //     windowScrollTo(13)
-    //     overlayCounter(13)
-    //   }
-    //   if(scrollPosition === 12 && overlayCount === 13){
-    //     windowScrollTo(12)
-    //     overlayCounter(12)
-    //   }
-    //   if(scrollPosition === 11 && overlayCount === 12){
-    //     windowScrollTo(11)
-    //     overlayCounter(11)
-    //   }
-    //   if(scrollPosition === 10 && overlayCount === 11){
-    //     windowScrollTo(10)
-    //     overlayCounter(10)
-    //   }
-    //   if(scrollPosition === 9 && overlayCount === 10){
-    //     windowScrollTo(9)
-    //     overlayCounter(9)
-    //   }
-    //   if(scrollPosition === 8 && overlayCount === 9){
-    //     windowScrollTo(8)
-    //     overlayCounter(8)
-    //   }
-    //   if(scrollPosition === 7 && overlayCount === 8){
-    //     windowScrollTo(7)
-    //     overlayCounter(7)
-    //   }
-    //   if(scrollPosition === 6 && overlayCount === 7){
-    //     windowScrollTo(6)
-    //     overlayCounter(6)
-    //   }
-    //   if(scrollPosition === 5 && overlayCount === 6){
-    //     windowScrollTo(5)
-    //     overlayCounter(5)
-    //   }
-    //   if(scrollPosition === 4 && overlayCount === 5){
-    //     windowScrollTo(4)
-    //     overlayCounter(4)
-    //   }
-    //   if(scrollPosition === 3 && overlayCount === 4){
-    //     windowScrollTo(3)
-    //     overlayCounter(3)
-    //   }
-    //   if(scrollPosition === 2 && overlayCount === 3){
-    //     windowScrollTo(2)
-    //     overlayCounter(2)
-    //   }
-    //   if(scrollPosition === 1 && overlayCount === 2){
-    //     windowScrollTo(1)
-    //     overlayCounter(1)
-    //   }
-    //   if(scrollPosition === 0 && overlayCount === 1){
-    //     windowScrollTo(0)
-    //     overlayCounter(0)
-    //   }
-    // }
+      let scrollPosition = window.scrollY / window.innerHeight * 100
+
+      if(scrollDirection === 'up'){
+        if(scrollPosition > 25 && scrollPosition < 125 && afghanistan){
+          windowScrollTo(1);
+          afghanistan = false;
+        }
+        if(scrollPosition > 125 && scrollPosition < 225 && iceland){
+          windowScrollTo(2)
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 225 && scrollPosition < 325 && argentina){
+          windowScrollTo(3)
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 325 && scrollPosition < 425 && argentina2){
+          windowScrollTo(4);
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 425 && scrollPosition < 525 && russia){
+          windowScrollTo(5)
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 525 && scrollPosition < 625 && australia){
+          windowScrollTo(6);
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 625 && scrollPosition < 725 && usa){
+          windowScrollTo(7);
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 725 && scrollPosition < 825 && egypt){
+          windowScrollTo(8);
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 825 && scrollPosition < 925 && pakistan){
+          windowScrollTo(9);
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 925 && scrollPosition < 1025 && india){
+          windowScrollTo(10);
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1025 && scrollPosition < 1125 && india2){
+          windowScrollTo(11)
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1125 && scrollPosition < 1225 && china){
+          windowScrollTo(12);
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1225 && scrollPosition < 1325 && china2){
+          windowScrollTo(13);
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1325 && scrollPosition < 1425 && africa){
+          windowScrollTo(14);
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+
+          
+        }
+        if(scrollPosition > 1425 && scrollPosition < 1525 && korea){
+          windowScrollTo(15);
+          korea = false;
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+
+        }
+        if(scrollPosition > 1525 && scrollPosition < 1625 && yemen){
+          windowScrollTo(16);
+          yemen = false;
+          korea = false;
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1625 && scrollPosition < 1725 && yemen2){
+          windowScrollTo(17)
+          yemen2 = false
+          yemen = false;
+          korea = false;
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+        if(scrollPosition > 1725 && scrollPosition < 1825 && syria){
+          windowScrollTo(18);
+          syria = false;
+          yemen2 = false
+          yemen = false;
+          korea = false;
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+        }
+        if(scrollPosition > 1825 && scrollPosition < 1925 && syria2){
+          windowScrollTo(19)
+          syria2 = false
+          syria = false;
+          yemen2 = false
+          yemen = false;
+          korea = false;
+          africa = false;
+          china2 = false
+          china = false;
+          india2 = false
+          india = false;
+          pakistan = false;
+          egypt = false;
+          usa = false;
+          australia = false;
+          russia = false;
+          argentina2 = false
+          argentina = false;
+          iceland = false;
+          afghanistan = false;
+          
+        }
+
+      }
+
+      
+      
+    if(scrollDirection == 'down'){
+      if(scrollPosition > 1799 && scrollPosition < 1899 && !syria2){ // go to syria
+        windowScrollTo(18);
+        syria2 = true
+      }
+      if(scrollPosition > 1699 && scrollPosition < 1799 && !syria){  
+        windowScrollTo(17);
+        syria = true;
+        syria2 = true
+      }
+      if(scrollPosition > 1599 && scrollPosition < 1699 && !yemen2){ 
+        windowScrollTo(16);
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 1499 && scrollPosition < 1599 && !yemen){ 
+        windowScrollTo(15);
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 1399 && scrollPosition < 1499 && !korea){ 
+        windowScrollTo(14);
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 1299 && scrollPosition < 1399 && !africa){ 
+        windowScrollTo(13);
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+        
+      }
+      if(scrollPosition > 1199 && scrollPosition < 1299 && !china2){ 
+        windowScrollTo(12);
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+        
+      }
+      if(scrollPosition > 1099 && scrollPosition < 1199 && !china){ 
+        windowScrollTo(11);
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+        
+      }
+      if(scrollPosition > 999 && scrollPosition < 1099 && !india2){ 
+        windowScrollTo(10);
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 899 && scrollPosition < 999 && !india){ 
+        windowScrollTo(9);
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 799 && scrollPosition < 899 && !pakistan){ 
+        windowScrollTo(8);
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 699 && scrollPosition < 799 && !egypt){ 
+        windowScrollTo(7);
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 599 && scrollPosition < 699 && !usa){ 
+        windowScrollTo(6);
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 499 && scrollPosition < 599 && !australia){ 
+        windowScrollTo(5);
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 399 && scrollPosition < 499 && !russia){ 
+        windowScrollTo(4);
+        russia = true;
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 299 && scrollPosition < 399 && !argentina2){ 
+        windowScrollTo(3);
+        argentina2 = true
+        russia = true;
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 199 && scrollPosition < 299 && !argentina){ 
+        windowScrollTo(2);
+        argentina = true;
+        argentina2 = true
+        russia = true;
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition > 99 && scrollPosition < 199 && !iceland){ 
+        windowScrollTo(1);
+        iceland = true;
+        argentina = true;
+        argentina2 = true
+        russia = true;
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+      if(scrollPosition < 99 && !afghanistan){ 
+        windowScrollTo(0);
+        afghanistan = true;
+        iceland = true;
+        argentina = true;
+        argentina2 = true
+        russia = true;
+        australia = true;
+        usa = true;
+        egypt = true;
+        pakistan = true;
+        india = true;
+        india2 = true
+        china = true;
+        china2 = true
+        africa = true;
+        korea = true;
+        yemen = true;
+        yemen2 = true
+        syria = true;
+        syria2 = true;
+      }
+    }
 
   });
     

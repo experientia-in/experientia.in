@@ -65,7 +65,7 @@ export default function Earth(props) {
 
     scroll.addEventListener("end", () => {
       let scrollPosition = window.scrollY / window.innerHeight * 100;
-      console.log(Math.round(scrollPosition), scrollDirection)
+      console.log(Math.round(scrollPosition), scrollDirection, `Afghanistan: ${afghanistan}, Iceland: ${iceland}`)
 
       if(scrollDirection === 'up'){
 
@@ -221,29 +221,30 @@ export default function Earth(props) {
       
 
       if(scrollDirection === 'down'){
-        if (scrollPosition > 1625 && scrollPosition < 1725 && !yemen) { // Yemen - 2 scrollPosition
+        // console.log(`Russia: ${russia}, Argentina : ${argentina}`)
+        if (scrollPosition > 1599 && scrollPosition < 1799 && !yemen) { // Yemen - 2 scrollPosition
           cameraTime(26, 1);
           syria = true
         }
-        if (scrollPosition > 1425 && scrollPosition < 1525 && !korea) { // Korea
+        if (scrollPosition > 1499 && scrollPosition < 1599 && !korea) { // Korea
           cameraTime(24, 2);
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 1325 && scrollPosition < 1425 && !africa) { // Africa
+        if (scrollPosition > 1399 && scrollPosition < 1499 && !africa) { // Africa
           cameraTime(22, 2);
           korea = true;
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 1125 && scrollPosition < 1325 && !china) { // China - 2 scrollPosition
+        if (scrollPosition > 1199 && scrollPosition < 1399 && !china) { // China - 2 scrollPosition
           cameraTime(20, 2);
           africa = true;
           korea = true;
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 925 && scrollPosition < 1125 && !india) { // India - 2 scrollPosition
+        if (scrollPosition > 999 && scrollPosition < 1199 && !india) { // India - 2 scrollPosition
           cameraTime(19, 1);
           china = true;
           africa = true;
@@ -251,7 +252,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 825 && scrollPosition < 925 && !pakistan) { // Pakistan
+        if (scrollPosition > 899 && scrollPosition < 999 && !pakistan) { // Pakistan
           cameraTime(18, 1);
           india = true;
           china = true;
@@ -260,7 +261,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 725 && scrollPosition < 825 && !egypt) { // Egypt
+        if (scrollPosition > 799 && scrollPosition < 899 && !egypt) { // Egypt
           cameraTime(16, 2);
           pakistan = true;
           india = true;
@@ -270,7 +271,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 625 && scrollPosition < 725 && !usa) { // USA
+        if (scrollPosition > 699 && scrollPosition < 799 && !usa) { // USA
           cameraTime(14, 2);
           egypt = true;
           pakistan = true;
@@ -281,7 +282,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 525 && scrollPosition < 625 && !australia) { // Australia
+        if (scrollPosition > 599 && scrollPosition < 699 && !australia) { // Australia
           cameraTime(12, 2);
           usa = true;
           egypt = true;
@@ -293,7 +294,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 425 && scrollPosition < 525 && !russia) { // Russia
+        if (scrollPosition > 499 && scrollPosition < 599 && !russia) { // Russia
           cameraTime(8, 4);
           australia = true;
           usa = true;
@@ -306,7 +307,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 225 && scrollPosition < 425 && !argentina) { // Argentina - 2 scrollPosition
+        if (scrollPosition > 299 && scrollPosition < 499 && !argentina) { // Argentina - 2 scrollPosition
           cameraTime(6, 2);
           russia = true;
           australia = true;
@@ -320,7 +321,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 125 && scrollPosition < 225 && !iceland) { // Iceland
+        if (scrollPosition > 199 && scrollPosition < 299 && !iceland) { // Iceland
           cameraTime(3, 3);
           argentina = true;
           russia = true;
@@ -335,7 +336,7 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 25 && scrollPosition < 125 && !afghanistan) { // Afghanistan
+        if (scrollPosition > 99 && scrollPosition < 199 && !afghanistan) { // Afghanistan
           cameraTime(2, 1);
           iceland = true;
           argentina = true;
@@ -352,7 +353,7 @@ export default function Earth(props) {
           syria = true;
         }
         if (scrollPosition < 25) { // Start
-          cameraTime(0, 2);
+          // cameraTime(0, 2);
           afghanistan = true;
           iceland = true;
           argentina = true;
