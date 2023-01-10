@@ -88,12 +88,11 @@ export default function Overlay() {
     const windowScrollTo = (number) => {
       gsap.to(window, {duration: 0.5, scrollTo: windowHeight * number, ease: "circ.out"});
     };
-    let overlayCount = 0
-    const overlayCounter = (number) => {
-      setTimeout(() => {
-        overlayCount = number
-      }, 1000);
-    }
+
+    window.addEventListener('resize', () => {
+      windowHeight = window.innerHeight;
+      console.log(windowHeight)
+    })
     // const overlayScrollLogic = (number) => {
     //   let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
     //   console.log(scrollPosition, pagePostion, overlayCount);
@@ -135,7 +134,7 @@ export default function Overlay() {
     let syria2 = true;
     scroll.addEventListener("end", () => {
       
-      let scrollPosition = window.scrollY / window.innerHeight * 100
+      let scrollPosition = window.scrollY / windowHeight * 100
 
       if(scrollDirection === 'up'){
         if(scrollPosition > 25 && scrollPosition < 125 && afghanistan){
@@ -155,7 +154,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 325 && scrollPosition < 425 && argentina2){
           windowScrollTo(4);
-          argentina2 = false
+          argentina2 = false;
           argentina = false;
           iceland = false;
           afghanistan = false;
@@ -225,8 +224,9 @@ export default function Overlay() {
           
         }
         if(scrollPosition > 1025 && scrollPosition < 1125 && india2){
-          windowScrollTo(11)
-          india2 = false
+          windowScrollTo(11);
+          setYear(2012);
+          india2 = false;
           india = false;
           pakistan = false;
           egypt = false;
@@ -241,6 +241,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 1125 && scrollPosition < 1225 && china){
           windowScrollTo(12);
+          setYear(2016);
           china = false;
           india2 = false
           india = false;
@@ -257,6 +258,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 1225 && scrollPosition < 1325 && china2){
           windowScrollTo(13);
+          setYear(2012);
           china2 = false
           china = false;
           india2 = false
@@ -274,6 +276,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 1325 && scrollPosition < 1425 && africa){
           windowScrollTo(14);
+          setYear(2016);
           africa = false;
           china2 = false
           china = false;
@@ -331,7 +334,8 @@ export default function Overlay() {
           
         }
         if(scrollPosition > 1625 && scrollPosition < 1725 && yemen2){
-          windowScrollTo(17)
+          windowScrollTo(17);
+          setYear(2012);
           yemen2 = false
           yemen = false;
           korea = false;
@@ -353,6 +357,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 1725 && scrollPosition < 1825 && syria){
           windowScrollTo(18);
+          setYear(2016);
           syria = false;
           yemen2 = false
           yemen = false;
@@ -373,7 +378,8 @@ export default function Overlay() {
           afghanistan = false;
         }
         if(scrollPosition > 1825 && scrollPosition < 1925 && syria2){
-          windowScrollTo(19)
+          windowScrollTo(19);
+          setYear(2012);
           syria2 = false
           syria = false;
           yemen2 = false
@@ -403,15 +409,18 @@ export default function Overlay() {
     if(scrollDirection == 'down'){
       if(scrollPosition > 1799 && scrollPosition < 1899 && !syria2){ // go to syria
         windowScrollTo(18);
+        setYear(2016);
         syria2 = true
       }
       if(scrollPosition > 1699 && scrollPosition < 1799 && !syria){  
         windowScrollTo(17);
+        setYear(2012);
         syria = true;
         syria2 = true
       }
       if(scrollPosition > 1599 && scrollPosition < 1699 && !yemen2){ 
         windowScrollTo(16);
+        setYear(2016);
         yemen2 = true
         syria = true;
         syria2 = true;
@@ -433,6 +442,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 1299 && scrollPosition < 1399 && !africa){ 
         windowScrollTo(13);
+        setYear(2012);
         africa = true;
         korea = true;
         yemen = true;
@@ -443,6 +453,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 1199 && scrollPosition < 1299 && !china2){ 
         windowScrollTo(12);
+        setYear(2016);
         china2 = true
         africa = true;
         korea = true;
@@ -454,6 +465,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 1099 && scrollPosition < 1199 && !china){ 
         windowScrollTo(11);
+        setYear(2012);
         china = true;
         china2 = true
         africa = true;
@@ -466,6 +478,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 999 && scrollPosition < 1099 && !india2){ 
         windowScrollTo(10);
+        setYear(2016);
         india2 = true
         china = true;
         china2 = true
@@ -663,7 +676,7 @@ export default function Overlay() {
   }, [])
   return (
     <>
-      <section className="overlay_wrapper">
+      <section className="overlay_wrapper" id="fullscreen">
         <div className="intro">
           <div className="bigScreen ">
             <div className="streetMap mapCards"></div>
@@ -796,7 +809,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/egypt_pyramid.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-              Egypt being situated in amidst of Desert, the river Nile support almost every Egyptian's lifeline as a result almost 90% of Egypt's population live near to the river.
+              Egypt being situated in amidst of Desert, the river Nile support almost every Egyptian's lifeline as a result 90% of Egypt's population live near to the river.
             </div>
           </div>
         </div>
@@ -822,7 +835,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/india_bharatnatyam.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-              India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition in content to India is shows us the drastic change as just in span of 4 years 100's of Million have got access to electricity which previous they were deprived of. Learn more about it <a href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics" target='_blank'>here</a>. 
+              India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition shows us the drastic change as just in span of 4 years 100's of Million of Indians have got access to electricity which previous they were deprived of. Learn more about it <a href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics" target='_blank'>here</a>. 
             </div>
           </div>
         </div>
@@ -861,7 +874,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/korea_bts.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-              In recent times, the korean culture may have got popular of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to authoritarian regime in North Korea. Learn more about it <a href="https://youtu.be/Jt7hE12n11s" target="_blank" rel="noopener noreferrer"></a>.
+              In recent times, the korean culture may have got popular because of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to authoritarian regime in North Korea. Learn more about it <a href="https://youtu.be/Jt7hE12n11s" target="_blank" rel="noopener noreferrer">here</a>.
             </div>
           </div>
         </div>
@@ -979,7 +992,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/egypt_pyramid.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-            In terms of population distribution, USA truly reflect its East vs West divide. The tall rocky mountains in the central region stop the rainy wind travelling war in the West as compared to the East side where land is more fertile thus supporting many lives.
+            Egypt being situated in amidst of Desert, the river Nile support almost every Egyptian's lifeline as a result 90% of Egypt's population live near to the river.
             </div>
           </div>
         </div>
@@ -1005,7 +1018,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/india_bharatnatyam.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-            India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition in content to India is shows us the drastic change as just in span of 4 years 100's of Million have got access to electricity which previous they were deprived of. Learn more about it <a href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics" target='_blank'>here</a>.
+            India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition shows us the drastic change as just in span of 4 years 100's of Million of Indians have got access to electricity which previous they were deprived of. Learn more about it <a href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics" target='_blank'>here</a>.
             </div>
           </div>
         </div>
@@ -1044,7 +1057,7 @@ Why is Russia So DAMN BIG?" rel="noopener noreferrer">here</a>.
               <img src="https://static.experientia.in/nasaBlackMarble/korea_bts.webp" alt="country_image_feature" />
             </div>
             <div className="country_feature_info">
-            In recent times, the korean culture may have got popular of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to authoritarian regime in North Korea. Learn more about it.
+            In recent times, the korean culture may have got popular because of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to authoritarian regime in North Korea. Learn more about it.
             </div>
           </div>
         </div>

@@ -3,35 +3,46 @@ import {
   useGLTF,
   PerspectiveCamera,
   useAnimations,
+  useTexture,
+  useKTX2
 } from "@react-three/drei";
 import gsap from "gsap";
 import Scroll from "./scrollStatus";
 import { useRef, useEffect, useState } from "react";
 export default function Earth(props) {
   let { earthGlb, canvasStatus } = props;
-  const textureRef = useRef();
+  // const textureRef = useRef();
   const group = useRef();
-
   const { nodes, materials, animations } = useGLTF(earthGlb);
   const { actions } = useAnimations(animations, group);
-  if (textureRef.current) {
-    textureRef.current.needsUpdate = true;
-  }
-  const [canvasTexture, setCanvasTexture] = useState(null);
-  useEffect(() => {
-    const canvasIntervalCheck = setInterval(() => {
-      const mapContainer = document.getElementById("map");
-      const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
-      if (mapCanvas) {
-        setCanvasTexture(mapCanvas);
-        canvasStatus(true);
-        clearInterval(canvasIntervalCheck);
-      }
-    }, 1000);
-  }, []);
+  
+  // const [midLayer, setLayer] = useState('');
+  // const [topLayer, setTopLayer] = useState('assets/img/nasaBlackMarble/afghanistan_hlg.webp')
+  
+  // let baseMapAddress = useRef('assets/img/nasaBlackMarble/2016_nasaBlackMarble_15K_bin.webp') 
+  // let baseLayerTexture = useTexture('assets/img/nasaBlackMarble/2016_nasaBlackMarble_15K_bin.webp')
+  // let topLayerTexture = useTexture(topLayer)
+  const texture = useKTX2('assets/img/nasaBlackMarble/2016-Nasa-Black-Marble-16k-bin.ktx2')
+  // console.log(baseMap)
+
+
+  // if (textureRef.current) {
+  //   textureRef.current.needsUpdate = true;
+  // }
+  // const [canvasTexture, setCanvasTexture] = useState(null);
+  // useEffect(() => {
+  //   const canvasIntervalCheck = setInterval(() => {
+  //     const mapContainer = document.getElementById("map");
+  //     const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
+  //     if (mapCanvas) {
+  //       setCanvasTexture(mapCanvas);
+  //       canvasStatus(true);
+  //       clearInterval(canvasIntervalCheck);
+  //     }
+  //   }, 1000);
+  // }, []);
 
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
-  let scrollCount = 0;
   let oldValue = 0;
   let newValue = 0;
   let scrollDirection
@@ -47,6 +58,13 @@ export default function Earth(props) {
       }
       oldValue = newValue;
     })
+
+    const cameraTime = (t, d) => {
+      gsap.to(actions["CameraAction.001"], {
+        time: t,
+        duration: d,
+      }); 
+    };
 
     let afghanistan = true;
     let iceland = true;
@@ -65,7 +83,7 @@ export default function Earth(props) {
 
     scroll.addEventListener("end", () => {
       let scrollPosition = window.scrollY / window.innerHeight * 100;
-      console.log(Math.round(scrollPosition), scrollDirection, `Afghanistan: ${afghanistan}, Iceland: ${iceland}`)
+      // console.log(Math.round(scrollPosition), scrollDirection, `Afghanistan: ${afghanistan}, Iceland: ${iceland}`)
 
       if(scrollDirection === 'up'){
 
@@ -83,6 +101,10 @@ export default function Earth(props) {
           argentina = false;
           iceland = false;
           afghanistan = false;
+          setTopLayer('assets/img/nasaBlackMarble/argentina_hlg.webp')
+        }
+        if(scrollPosition > 375 && scrollPosition < 475 && !argentina){
+          setTopLayer('assets/img/nasaBlackMarble/argentinaRailway_hlg.webp')
         }
         if (scrollPosition > 475 && scrollPosition < 575 && russia) { // Russia
           cameraTime(9, 3);
@@ -375,12 +397,6 @@ export default function Earth(props) {
       
     });
   }, []);
-  const cameraTime = (t, d) => {
-    gsap.to(actions["CameraAction.001"], {
-      time: t,
-      duration: d,
-    }); 
-  };
   return (
     <>
       <group ref={group} {...props} dispose={null}>
@@ -397,21 +413,27 @@ export default function Earth(props) {
           />
           <ambientLight intensity={1.5} />
           <mesh
-            name="Sphere"
-            castShadow
-            receiveShadow
-            geometry={nodes.Sphere.geometry}
+            name="base2016"
+            geometry={nodes.base2016.geometry}
             // material={materials["Material.001"]}
           >
-            <meshStandardMaterial>
-              <canvasTexture
-                ref={textureRef}
-                attach="map"
-                image={canvasTexture}
-                flipY={false}
-              />
-            </meshStandardMaterial>
+            <meshStandardMaterial map={texture} map-flipY={false} needsUpdate={true}/>
           </mesh>
+          {/* <mesh
+            name="mid"
+            geometry={nodes.mid.geometry}
+            // material={materials.mid}
+          >
+            <meshStandardMaterial  needsUpdate={true} transparent={true} opacity={0}/>
+          </mesh> */}
+          {/* <mesh
+            name="top"
+            geometry={nodes.top.geometry}
+            // material={materials.top}
+          >
+            <meshStandardMaterial map={topLayerTexture} map-flipY={false} needsUpdate={true} transparent={true}/>
+          </mesh> */}
+          
         </group>
       </group>
 
@@ -419,4 +441,4 @@ export default function Earth(props) {
     </>
   );
 }
-useGLTF.preload("/assets/model/black_marble_no_texture.glb");
+useGLTF.preload('/assets/model/nasaBlackMarble/black_marble_no_texture.glb');

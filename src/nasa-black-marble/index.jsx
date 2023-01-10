@@ -9,14 +9,14 @@ export default function BlackMarble() {
   const [earthGlb, setEarthGlb] = useState(null);
   useLayoutEffect(()=>{
     const isMobile = window.innerWidth < 501; 
-    setEarthGlb(isMobile ? '/assets/model/black_marble_no_texture_m.glb' : '/assets/model/black_marble_no_texture.glb');
+    setEarthGlb(isMobile ? '/assets/model/nasaBlackMarble/black_marble_no_texture_m.glb' : '/assets/model/nasaBlackMarble/black_marble_no_texture.glb');
   },[])
  
   return (
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
-          <Canvas linear flat>
+          <Canvas flat dpr={2}>
             <Suspense fallback={null}>
               <Earth
                 canvasStatus={(canvasLoaded) => {
@@ -28,8 +28,8 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
-      {canvasLoaded && <Overlay />}
-      <OpenLayers />
+      <Overlay />
+      {/* <OpenLayers /> */}
     </>
   );
 }
