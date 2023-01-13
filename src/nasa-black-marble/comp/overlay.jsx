@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
-import Scroll from './scrollStatus'
+import Scroll from './scrollStatus';
 import "../style/overlay.css";
 
 export default function Overlay() {
   const [year, setYear] = useState('2016')
 
   useEffect(() => {
+    
+   
     const ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       gsap.to(".mapCards", {
@@ -88,11 +90,6 @@ export default function Overlay() {
     const windowScrollTo = (number) => {
       gsap.to(window, {duration: 0.5, scrollTo: windowHeight * number, ease: "circ.out"});
     };
-
-    window.addEventListener('resize', () => {
-      windowHeight = window.innerHeight;
-      console.log(windowHeight)
-    })
     // const overlayScrollLogic = (number) => {
     //   let scrollPosition = Math.floor(window.scrollY / window.innerHeight + 0.01);
     //   console.log(scrollPosition, pagePostion, overlayCount);

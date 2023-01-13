@@ -3,28 +3,82 @@ import {
   useGLTF,
   PerspectiveCamera,
   useAnimations,
-  useTexture,
-  useKTX2
+  useKTX2,
 } from "@react-three/drei";
 import gsap from "gsap";
 import Scroll from "./scrollStatus";
 import { useRef, useEffect, useState } from "react";
+import { set } from "ol/transform";
 export default function Earth(props) {
   let { earthGlb, canvasStatus } = props;
   // const textureRef = useRef();
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(earthGlb);
   const { actions } = useAnimations(animations, group);
-  
-  // const [midLayer, setLayer] = useState('');
-  // const [topLayer, setTopLayer] = useState('assets/img/nasaBlackMarble/afghanistan_hlg.webp')
-  
-  // let baseMapAddress = useRef('assets/img/nasaBlackMarble/2016_nasaBlackMarble_15K_bin.webp') 
-  // let baseLayerTexture = useTexture('assets/img/nasaBlackMarble/2016_nasaBlackMarble_15K_bin.webp')
-  // let topLayerTexture = useTexture(topLayer)
-  const texture = useKTX2('assets/img/nasaBlackMarble/2016-Nasa-Black-Marble-16k-bin.ktx2')
-  // console.log(baseMap)
 
+  const china2012 = "assets/img/nasaBlackMarble/2012_china.ktx2";
+  const egypt2012 = "assets/img/nasaBlackMarble/2012_egyptMiddleEast.ktx2";
+  const india2012 = "assets/img/nasaBlackMarble/2012_india.ktx2";
+  const nasaBlackMarble2016 =
+    "assets/img/nasaBlackMarble/2016_nasaBlackMarble_16K_bin.ktx2";
+  const nasaBlackMarble2012 =
+    "assets/img/nasaBlackMarble/2012_nasaBlackMarble_16K_bin.ktx2";
+  const afg_hlg = "assets/img/nasaBlackMarble/afghanistan_hlg.ktx2";
+  const arg_hlg = "assets/img/nasaBlackMarble/argentina_hlg.ktx2";
+  const argRailway_hlg = "assets/img/nasaBlackMarble/argentinaRailway_hlg.ktx2";
+  const pak_hlg = "assets/img/nasaBlackMarble/pakistan_hlg.ktx2";
+  const rus_hlg = "assets/img/nasaBlackMarble/russia_hlg.ktx2";
+  const syr_hlg = "assets/img/nasaBlackMarble/syria_hlg.ktx2";
+  const yem_hlg = "assets/img/nasaBlackMarble/yemen_hlg.ktx2";
+
+  // const [preload, setPreLoad] = useState({afg: afg_hlg, arg: arg_hlg})
+  // const [topLayer, setTopLayer] = useState(afg_hlg);
+
+  // useKTX2.preload(afg_hlg);
+  // useKTX2.preload(arg_hlg);
+  // useKTX2.preload(argRailway_hlg);
+  // useKTX2.preload(rus_hlg);
+  // useKTX2.preload(pak_hlg);
+  // useKTX2.preload(syr_hlg);
+  // useKTX2.preload(yem_hlg);
+  // useKTX2.preload(china2012);
+  // useKTX2.preload(egypt2012);
+  // useKTX2.preload(india2012);
+  // useKTX2.preload(nasaBlackMarble2012);
+
+  const [
+    nasa2016,
+    afgTexture,
+    argTexture,
+    argRailwayTexture,
+    rusTexture,
+    pakTexture,
+    syrTexture,
+    yemTexture,
+    china2012Texture,
+    india2012Texture,
+    egypt2012Texture,
+    nasa2012,
+  ] = useKTX2([
+    nasaBlackMarble2016,
+    afg_hlg,
+    arg_hlg,
+    argRailway_hlg,
+    rus_hlg,
+    pak_hlg,
+    syr_hlg,
+    yem_hlg,
+    china2012,
+    india2012,
+    egypt2012,
+    nasaBlackMarble2012,
+  ]);
+  const [baseLayer, setBaseLayer] = useState(nasa2016);
+  const [topLayer, setTopLayer] = useState(afgTexture);
+  const [topLayerOpacity, setTopLayerOpacity] = useState(0);
+
+  // const [midLayer, setMidLayer] = useState(india2012Texture);
+  // const [midLayerOpacity, setMidLayerOpacity] = useState(0);
 
   // if (textureRef.current) {
   //   textureRef.current.needsUpdate = true;
@@ -45,26 +99,30 @@ export default function Earth(props) {
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
   let oldValue = 0;
   let newValue = 0;
-  let scrollDirection
+  let scrollDirection;
   useEffect(() => {
-    let scroll = new Scroll(50)
-    window.addEventListener('scroll', () => {
+    let scroll = new Scroll(50);
+    window.addEventListener("scroll", () => {
       newValue = window.scrollY;
       if (oldValue < newValue) {
-        scrollDirection = 'up'
-      }
-      else if (oldValue > newValue) {
-        scrollDirection = 'down'
+        scrollDirection = "up";
+      } else if (oldValue > newValue) {
+        scrollDirection = "down";
       }
       oldValue = newValue;
-    })
+    });
 
     const cameraTime = (t, d) => {
       gsap.to(actions["CameraAction.001"], {
         time: t,
         duration: d,
-      }); 
+      });
     };
+    const topLayerOpacityController = (opacity, time) => {
+      setTimeout(() => {
+        setTopLayerOpacity(opacity)
+      }, time * 1000);
+    }
 
     let afghanistan = true;
     let iceland = true;
@@ -82,46 +140,56 @@ export default function Earth(props) {
     let syria = true;
 
     scroll.addEventListener("end", () => {
-      let scrollPosition = window.scrollY / window.innerHeight * 100;
+      let scrollPosition = (window.scrollY / window.innerHeight) * 100;
       // console.log(Math.round(scrollPosition), scrollDirection, `Afghanistan: ${afghanistan}, Iceland: ${iceland}`)
 
-      if(scrollDirection === 'up'){
-
-        if (scrollPosition > 75 && scrollPosition < 175 && afghanistan) { // Afghanistan (default height for all is 100vh or 1 scrollposition)
+      if (scrollDirection === "up") {
+        if (scrollPosition > 75 && scrollPosition < 175 && afghanistan) {
+          // Afghanistan (default height for all is 100vh or 1 scrollposition)
           cameraTime(2, 2);
-          afghanistan = false
+          topLayerOpacityController(1, 2.5)
+          afghanistan = false;
         }
-        if (scrollPosition > 175 && scrollPosition < 275 && iceland) { // Iceland
+        if (scrollPosition > 175 && scrollPosition < 275 && iceland) {
+          // Iceland
           cameraTime(3, 1);
+          topLayerOpacityController(0, 1)
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 275 && scrollPosition < 375 && argentina) { // Argentina - 2 scrollPosition
+        if (scrollPosition > 275 && scrollPosition < 475 && argentina) {
+          // Argentina - 2 scrollPosition
           cameraTime(6, 3);
+          setTopLayer(argTexture);
+          topLayerOpacityController(1, 3.5)
           argentina = false;
           iceland = false;
           afghanistan = false;
-          setTopLayer('assets/img/nasaBlackMarble/argentina_hlg.webp')
         }
-        if(scrollPosition > 375 && scrollPosition < 475 && !argentina){
-          setTopLayer('assets/img/nasaBlackMarble/argentinaRailway_hlg.webp')
+        if (scrollPosition > 375 && scrollPosition < 475 && !argentina) {
+          setTopLayer(argRailwayTexture);
         }
-        if (scrollPosition > 475 && scrollPosition < 575 && russia) { // Russia
+        if (scrollPosition > 475 && scrollPosition < 575 && russia) {
+          // Russia
           cameraTime(9, 3);
+          setTopLayer(rusTexture);
           russia = false;
           argentina = false;
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 575 && scrollPosition < 675 && australia) { // Australia
+        if (scrollPosition > 575 && scrollPosition < 675 && australia) {
+          // Australia
           cameraTime(12, 3);
+          topLayerOpacityController(0, 0)
           australia = false;
           russia = false;
           argentina = false;
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 675 && scrollPosition < 775 && usa) { // USA
+        if (scrollPosition > 675 && scrollPosition < 775 && usa) {
+          // USA
           cameraTime(14, 2);
           usa = false;
           australia = false;
@@ -130,7 +198,8 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 775 && scrollPosition < 875 && egypt) { // Egypt
+        if (scrollPosition > 775 && scrollPosition < 875 && egypt) {
+          // Egypt
           cameraTime(16, 2);
           egypt = false;
           usa = false;
@@ -140,8 +209,11 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 875 && scrollPosition < 975 && pakistan) { // Pakistan
+        if (scrollPosition > 875 && scrollPosition < 975 && pakistan) {
+          // Pakistan
           cameraTime(18, 2);
+          setTopLayer(pakTexture);
+          topLayerOpacityController(1, 2.5)
           pakistan = false;
           egypt = false;
           usa = false;
@@ -151,8 +223,10 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 975 && scrollPosition < 1175 && india) { // India - 2 scrollPosition
+        if (scrollPosition > 975 && scrollPosition < 1175 && india) {
+          // India - 2 scrollPosition
           cameraTime(19, 1);
+          topLayerOpacityController(0, 0)
           india = false;
           pakistan = false;
           egypt = false;
@@ -163,7 +237,12 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 1175 && scrollPosition < 1375 && china) { // China - 2 scrollPosition
+        if (scrollPosition > 1075 && scrollPosition < 1175 && !india) {
+          setTopLayer(india2012Texture);
+          topLayerOpacityController(1, 0)
+        }
+        if (scrollPosition > 1175 && scrollPosition < 1375 && china) {
+          // China - 2 scrollPosition
           cameraTime(20, 1);
           china = false;
           india = false;
@@ -176,8 +255,15 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 1375 && scrollPosition < 1475 && africa) { // Africa
+        if (scrollPosition > 1275 && scrollPosition < 1375 && !china) {
+          setBaseLayer(nasa2012);
+          setTopLayer(china2012Texture);
+        }
+        if (scrollPosition > 1375 && scrollPosition < 1475 && africa) {
+          // Africa
           cameraTime(22, 2);
+          setBaseLayer(nasa2016);
+          topLayerOpacityController(0, 2);
           africa = false;
           china = false;
           india = false;
@@ -190,7 +276,8 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 1475 && scrollPosition < 1575 && korea) { // Korea
+        if (scrollPosition > 1475 && scrollPosition < 1575 && korea) {
+          // Korea
           cameraTime(24, 2);
           korea = false;
           africa = false;
@@ -205,8 +292,11 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 1575 && scrollPosition < 1775 && yemen) { // Yemen - 2 scrollPosition
+        if (scrollPosition > 1575 && scrollPosition < 1775 && yemen) {
+          // Yemen - 2 scrollPosition
           cameraTime(26, 2);
+          setTopLayer(yemTexture);
+          topLayerOpacityController(1, 2.5)
           yemen = false;
           korea = false;
           africa = false;
@@ -221,8 +311,14 @@ export default function Earth(props) {
           iceland = false;
           afghanistan = false;
         }
-        if (scrollPosition > 1775 && scrollPosition < 2000 && syria) { // Syria - 2 scrollPosition
+        if (scrollPosition > 1675 && scrollPosition < 1775 && !yemen) {
+          setBaseLayer(nasa2012);
+        }
+        if (scrollPosition > 1775 && scrollPosition < 2000 && syria) {
+          // Syria - 2 scrollPosition
           cameraTime(27, 1);
+          setBaseLayer(nasa2016);
+          setTopLayer(syrTexture);
           syria = false;
           yemen = false;
           korea = false;
@@ -237,36 +333,58 @@ export default function Earth(props) {
           argentina = false;
           iceland = false;
           afghanistan = false;
- 
+        }
+        if (scrollPosition > 1875 && scrollPosition < 1975 && !syria) {
+          setBaseLayer(nasa2012);
         }
       }
-      
 
-      if(scrollDirection === 'down'){
-        // console.log(`Russia: ${russia}, Argentina : ${argentina}`)
-        if (scrollPosition > 1599 && scrollPosition < 1799 && !yemen) { // Yemen - 2 scrollPosition
-          cameraTime(26, 1);
-          syria = true
+      if (scrollDirection === "down") {
+        if (scrollPosition > 1799 && scrollPosition < 1899) {
+          setBaseLayer(nasa2016);
         }
-        if (scrollPosition > 1499 && scrollPosition < 1599 && !korea) { // Korea
+        if (scrollPosition > 1599 && scrollPosition < 1799 && !yemen) {
+          // Yemen - 2 scrollPosition
+          cameraTime(26, 1);
+          setBaseLayer(nasa2012);
+          setTopLayer(yemTexture);
+          syria = true;
+        }
+        if (scrollPosition > 1599 && scrollPosition < 1699){
+          setBaseLayer(nasa2016)
+        }
+        if (scrollPosition > 1499 && scrollPosition < 1599 && !korea) {
+          // Korea
           cameraTime(24, 2);
+          topLayerOpacityController(0, 2)
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 1399 && scrollPosition < 1499 && !africa) { // Africa
+        if (scrollPosition > 1399 && scrollPosition < 1499 && !africa) {
+          // Africa
           cameraTime(22, 2);
+          setTopLayer(china2012Texture);
+          topLayerOpacityController(1, 0);
           korea = true;
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 1199 && scrollPosition < 1399 && !china) { // China - 2 scrollPosition
+        if (scrollPosition > 1199 && scrollPosition < 1399 && !china) {
+          // China - 2 scrollPosition
           cameraTime(20, 2);
+          setBaseLayer(nasa2012);
           africa = true;
           korea = true;
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 999 && scrollPosition < 1199 && !india) { // India - 2 scrollPosition
+        if (scrollPosition > 1199 && scrollPosition < 1299){
+          setTopLayer(india2012Texture)
+          setBaseLayer(nasa2016)
+
+        }
+        if (scrollPosition > 999 && scrollPosition < 1199 && !india) {
+          // India - 2 scrollPosition
           cameraTime(19, 1);
           china = true;
           africa = true;
@@ -274,8 +392,14 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 899 && scrollPosition < 999 && !pakistan) { // Pakistan
+        if (scrollPosition > 999 && scrollPosition < 1099){
+          topLayerOpacityController(0, 0);
+          setTopLayer(pakTexture)
+        }
+        if (scrollPosition > 899 && scrollPosition < 999 && !pakistan) {
+          // Pakistan
           cameraTime(18, 1);
+          topLayerOpacityController(1, 1.5);
           india = true;
           china = true;
           africa = true;
@@ -283,8 +407,10 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 799 && scrollPosition < 899 && !egypt) { // Egypt
+        if (scrollPosition > 799 && scrollPosition < 899 && !egypt) {
+          // Egypt
           cameraTime(16, 2);
+          topLayerOpacityController(0, 2);
           pakistan = true;
           india = true;
           china = true;
@@ -293,7 +419,8 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 699 && scrollPosition < 799 && !usa) { // USA
+        if (scrollPosition > 699 && scrollPosition < 799 && !usa) {
+          // USA
           cameraTime(14, 2);
           egypt = true;
           pakistan = true;
@@ -304,7 +431,8 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 599 && scrollPosition < 699 && !australia) { // Australia
+        if (scrollPosition > 599 && scrollPosition < 699 && !australia) {
+          // Australia
           cameraTime(12, 2);
           usa = true;
           egypt = true;
@@ -316,8 +444,11 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 499 && scrollPosition < 599 && !russia) { // Russia
+        if (scrollPosition > 499 && scrollPosition < 599 && !russia) {
+          // Russia
           cameraTime(8, 4);
+          setTopLayer(rusTexture);
+          topLayerOpacityController(1, 3.5);
           australia = true;
           usa = true;
           egypt = true;
@@ -329,8 +460,10 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 299 && scrollPosition < 499 && !argentina) { // Argentina - 2 scrollPosition
+        if (scrollPosition > 299 && scrollPosition < 499 && !argentina) {
+          // Argentina - 2 scrollPosition
           cameraTime(6, 2);
+          setTopLayer(argRailwayTexture);
           russia = true;
           australia = true;
           usa = true;
@@ -343,8 +476,13 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 199 && scrollPosition < 299 && !iceland) { // Iceland
+        if (scrollPosition > 299 && scrollPosition < 399){
+          setTopLayer(argTexture)
+        }
+        if (scrollPosition > 199 && scrollPosition < 299 && !iceland) {
+          // Iceland
           cameraTime(3, 3);
+          topLayerOpacityController(0, 3);
           argentina = true;
           russia = true;
           australia = true;
@@ -358,8 +496,11 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition > 99 && scrollPosition < 199 && !afghanistan) { // Afghanistan
+        if (scrollPosition > 99 && scrollPosition < 199 && !afghanistan) {
+          // Afghanistan
           cameraTime(2, 1);
+          setTopLayer(afgTexture);
+          topLayerOpacityController(1, 1.5);
           iceland = true;
           argentina = true;
           russia = true;
@@ -374,8 +515,10 @@ export default function Earth(props) {
           yemen = true;
           syria = true;
         }
-        if (scrollPosition < 25) { // Start
-          // cameraTime(0, 2);
+        if (scrollPosition < 25) {
+          // Start
+          cameraTime(2, 0);
+          setTopLayer(afgTexture);
           afghanistan = true;
           iceland = true;
           argentina = true;
@@ -390,11 +533,8 @@ export default function Earth(props) {
           korea = true;
           yemen = true;
           syria = true;
-
         }
-
       }
-      
     });
   }, []);
   return (
@@ -417,23 +557,38 @@ export default function Earth(props) {
             geometry={nodes.base2016.geometry}
             // material={materials["Material.001"]}
           >
-            <meshStandardMaterial map={texture} map-flipY={false} needsUpdate={true}/>
+            <meshStandardMaterial
+              map={baseLayer}
+              map-flipY={false}
+              needsUpdate={true}
+            />
           </mesh>
           {/* <mesh
             name="mid"
             geometry={nodes.mid.geometry}
             // material={materials.mid}
           >
-            <meshStandardMaterial  needsUpdate={true} transparent={true} opacity={0}/>
+            <meshStandardMaterial
+              map={midLayer}
+              map-flipY={false}
+              needsUpdate={true}
+              transparent={true}
+              opacity={midLayerOpacity}
+            />
           </mesh> */}
-          {/* <mesh
+          <mesh
             name="top"
             geometry={nodes.top.geometry}
             // material={materials.top}
           >
-            <meshStandardMaterial map={topLayerTexture} map-flipY={false} needsUpdate={true} transparent={true}/>
-          </mesh> */}
-          
+            <meshStandardMaterial
+              map={topLayer}
+              map-flipY={false}
+              needsUpdate={true}
+              transparent={true}
+              opacity={topLayerOpacity}
+            />
+          </mesh>
         </group>
       </group>
 
@@ -441,4 +596,4 @@ export default function Earth(props) {
     </>
   );
 }
-useGLTF.preload('/assets/model/nasaBlackMarble/black_marble_no_texture.glb');
+useGLTF.preload("/assets/model/nasaBlackMarble/black_marble_no_texture.glb");
