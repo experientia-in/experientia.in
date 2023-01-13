@@ -7,6 +7,7 @@ import "../style/overlay.css";
 
 export default function Overlay() {
   const [year, setYear] = useState('2016')
+  const [type, setType] = useState('')
 
   useEffect(() => {
     
@@ -151,6 +152,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 325 && scrollPosition < 425 && argentina2){
           windowScrollTo(4);
+          setType('Railway')
           argentina2 = false;
           argentina = false;
           iceland = false;
@@ -158,6 +160,7 @@ export default function Overlay() {
         }
         if(scrollPosition > 425 && scrollPosition < 525 && russia){
           windowScrollTo(5)
+          setType('')
           russia = false;
           argentina2 = false
           argentina = false;
@@ -563,6 +566,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 399 && scrollPosition < 499 && !russia){ 
         windowScrollTo(4);
+        setType('Railway')
         russia = true;
         australia = true;
         usa = true;
@@ -581,6 +585,7 @@ export default function Overlay() {
       }
       if(scrollPosition > 299 && scrollPosition < 399 && !argentina2){ 
         windowScrollTo(3);
+        setType('')
         argentina2 = true
         russia = true;
         australia = true;
@@ -746,7 +751,7 @@ export default function Overlay() {
         </div>
         <div className="country_section arg pin">
           <div className="country_name">
-            Argentina
+            Argentina <span className="country_year">{type}</span>
           </div>
           <div className="country_card">
             <div className="country_feature_image">
