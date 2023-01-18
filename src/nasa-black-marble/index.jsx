@@ -8,6 +8,8 @@ export default function BlackMarble() {
   const [canvasLoaded, setCanvasLoaded] = useState(false);
   const [earthGlb, setEarthGlb] = useState(null);
   useLayoutEffect(()=>{
+    sessionStorage.setItem('glbTime', 0);
+    sessionStorage.setItem('feature', '');
     const isMobile = window.innerWidth < 501; 
     setEarthGlb(isMobile ? '/assets/model/nasaBlackMarble/black_marble_no_texture_m.glb' : '/assets/model/nasaBlackMarble/black_marble_no_texture.glb');
   },[])
@@ -16,7 +18,7 @@ export default function BlackMarble() {
     <>
       <section className={styles.container}>
         <div className={styles.canvas_area}>
-          <Canvas flat dpr={2}>
+          <Canvas flat>
             <Suspense fallback={null}>
               <Earth
                 canvasStatus={(canvasLoaded) => {
@@ -28,7 +30,7 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
-      <Overlay />
+      <Overlay/>
       {/* <OpenLayers /> */}
     </>
   );

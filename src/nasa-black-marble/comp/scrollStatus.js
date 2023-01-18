@@ -14,7 +14,7 @@ export default function Scroll(delay) {
         handle : null,
     };
     this.handler = Scroll.handler.bind(this);
-    window.addEventListener("scroll", this.handler);
+    window.addEventListener("wheel", this.handler);
 }
 
 Scroll.handler = function (e) {
