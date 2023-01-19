@@ -74,7 +74,7 @@ export default function Earth(props) {
   ]);
   const [baseLayer, setBaseLayer] = useState(nasa2016);
   const [topLayer, setTopLayer] = useState(afgTexture);
-  const [topLayerOpacity, setTopLayerOpacity] = useState(1);
+  const [topLayerOpacity, setTopLayerOpacity] = useState(0);
 
   // const [midLayer, setMidLayer] = useState(india2012Texture);
   // const [midLayerOpacity, setMidLayerOpacity] = useState(0);
@@ -100,6 +100,7 @@ export default function Earth(props) {
   useEffect(() => {
     let scrollDirection;
     console.log("loaded");
+    actions["CameraAction.001"].play()
     // sessionStorage.setItem('glbTime', 0);
     // let scroll = new Scroll(50);
     // window.addEventListener("scroll", () => {
@@ -116,38 +117,47 @@ export default function Earth(props) {
       gsap.to(actions["CameraAction.001"], {
         time: t,
         duration: d,
-        // snap: 0.01,
-        onComplete: () => {
+        snap: 0.01,
+        onUpdate: () => {
           sessionStorage.setItem("glbTime", actions["CameraAction.001"].time);
         },
       });
     };
-    const topLayerOpacityController = (opacity, time) => {
+    const topLayerOpacityController = (opacity, time, delay) => {
       setTimeout(() => {
-        setTopLayerOpacity(opacity);
-      }, time * 1000);
+        let sample = { value: 0 };
+        gsap.to(sample, {
+          value : opacity,
+          snap : 0.1,
+          duration: time,
+          ease : "power4.out",
+          onUpdate: () => {
+            setTopLayerOpacity(sample.value)
+          }
+        })
+      }, delay * 1000);
     };
 
-    const scrollUpLogic = () => {
-      let scrollPosition = Math.floor(
-        (window.scrollY / window.innerHeight) * 100
-      );
-      let glbTime = parseInt(sessionStorage.getItem("glbTime"));
-      let feature = sessionStorage.getItem("feature");
+    const scrollUpLogic = (scrollPosition, glbTime, feature) => {
+      
       if (scrollPosition === 0 && glbTime === 0) {
         // windowScrollTo(1)
         cameraTime(2, 2);
+        topLayerOpacityController(1, 0.5, 2);
       }
       if (scrollPosition === 99 && glbTime === 2) {
         cameraTime(3, 1);
+        topLayerOpacityController(0, 0.25, 0);
       }
       if (scrollPosition === 199 && glbTime === 3) {
         cameraTime(6, 3);
         setTopLayer(argTexture);
+        topLayerOpacityController(1, 0.5, 3);
       }
       if (scrollPosition === 299 && glbTime === 6) {
-        // cameraTime(6, 3)
         setTopLayer(argRailwayTexture);
+        topLayerOpacityController(0, 0.25, 0);
+        topLayerOpacityController(1, 0.25, 0);
       }
       if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
         cameraTime(9, 3);
@@ -155,6 +165,7 @@ export default function Earth(props) {
       }
       if (scrollPosition === 399 && glbTime === 9) {
         cameraTime(12, 3);
+        topLayerOpacityController(0, 0.5, 0);
       }
       if (scrollPosition === 499 && glbTime === 12) {
         cameraTime(14, 2);
@@ -165,25 +176,31 @@ export default function Earth(props) {
       if (scrollPosition === 699 && glbTime === 16) {
         cameraTime(18, 2);
         setTopLayer(pakTexture);
+        topLayerOpacityController(1, 0.5, 2);
       }
       if (scrollPosition === 799 && glbTime === 18) {
         cameraTime(19, 1);
+        topLayerOpacityController(0, 0.5, 0);
       }
-      if (scrollPosition = 899 && feature === "2012" && glbTime === 19) {
+      if (scrollPosition = 899 && feature === "india2012" && glbTime === 19) {
         setTopLayer(india2012Texture);
+        topLayerOpacityController(1, 0.5, 0);
       }
-      if ((scrollPosition = 899 && feature === "2016" && glbTime === 19)) {
+      if ((scrollPosition = 899 && feature === "china2016" && glbTime === 19)) {
         cameraTime(20, 1);
-        console.log("india 2012");
-        setTopLayer(india2012Texture);
+        // console.log("india 2012");
+        // setTopLayer(india2012Texture);
       }
       if ((scrollPosition = 999 && glbTime === 20)) {
         setBaseLayer(nasa2012);
         setTopLayer(china2012Texture);
+        topLayerOpacityController(0, 0, 0);
+        topLayerOpacityController(1, 0.5, 0);
       }
-      if ((scrollPosition = 999 && feature === "2012" && glbTime === 20)) {
+      if ((scrollPosition = 999 && feature === "china2012" && glbTime === 20)) {
         cameraTime(22, 2);
         setBaseLayer(nasa2016);
+        topLayerOpacityController(0, 0.5, 2);
       }
       if ((scrollPosition = 1099 && glbTime === 22)) {
         cameraTime(24, 2);
@@ -191,19 +208,113 @@ export default function Earth(props) {
       if ((scrollPosition = 1199 && glbTime === 24)) {
         cameraTime(26, 2);
         setTopLayer(yemTexture);
+        topLayerOpacityController(1, 0.5, 2);
       }
       if ((scrollPosition = 1299 && glbTime === 26)) {
         setBaseLayer(nasa2012)
       }
-      if ((scrollPosition = 1299 && feature === "2016" && glbTime === 26)) {
+      if ((scrollPosition = 1299 && feature === "yemen2012" && glbTime === 26)) {
         cameraTime(27, 1);
         setTopLayer(syrTexture);
-        setBaseLayer(nasa2016)
+        setBaseLayer(nasa2016);
+        topLayerOpacityController(0, 0, 0);
+        topLayerOpacityController(1, 0.5, 1);
       }
       if ((scrollPosition = 1399 && glbTime === 27)) {
         setBaseLayer(nasa2012)
       }
+      if ((scrollPosition = 1299 && feature === "syria2012" && glbTime === 26)) {
+        // setBaseLayer(nasa2016);
+        setBaseLayer(nasa2012);
+        
+      }
     };
+
+    const scrollDownLogic = (scrollPosition, glbTime, feature) => {
+      
+      if ((scrollPosition = 1399 && feature === "syria2012" && glbTime === 27)) {
+        setBaseLayer(nasa2016)
+      }
+      if ((scrollPosition = 1399 && feature === "yemen2012" && glbTime === 27)) {
+        cameraTime(26, 1);
+        setBaseLayer(nasa2012);
+        setTopLayer(yemTexture);
+        topLayerOpacityController(0, 0, 0);
+        topLayerOpacityController(1, 0.5, 1);
+      }
+      if ((scrollPosition = 1299 && glbTime === 26)) {
+        setBaseLayer(nasa2016);
+        // windowScrollTo(13);
+      }
+      if ((scrollPosition = 1299 && feature === "yemen2016" && glbTime === 26)) {
+        cameraTime(24, 2);
+        topLayerOpacityController(0, 0.5, 0);
+      }
+      if ((scrollPosition = 1199 && glbTime === 24)) {
+        cameraTime(22, 2);
+      }
+      if ((scrollPosition = 1099 && glbTime === 22)) {
+        cameraTime(20, 2);
+        setBaseLayer(nasa2012);
+        setTopLayer(china2012Texture);
+        topLayerOpacityController(1, 0, 0);
+
+      }
+      if ((scrollPosition = 1099 && glbTime === 20)) {
+        setBaseLayer(nasa2016);
+        setTopLayer(india2012Texture);
+      }
+      if ((scrollPosition = 999 && feature === "china2016" && glbTime === 20)) {
+        cameraTime(19, 1);
+      }
+      if ((scrollPosition = 899 && glbTime === 19)) {
+        topLayerOpacityController(0, 0.5, 0);
+      }
+      if ((scrollPosition = 899 && feature === "india2012" && glbTime === 19)) {
+        cameraTime(18, 1);
+        setTopLayer(pakTexture);
+        topLayerOpacityController(1, 0.5, 1);
+      }
+      if ((scrollPosition = 799 && glbTime === 18)) {
+        cameraTime(16, 2);
+        topLayerOpacityController(0, 0.5, 0);
+      }
+      if ((scrollPosition = 699 && glbTime === 16)) {
+        cameraTime(14, 2);
+      }
+      if ((scrollPosition = 599 && glbTime === 14)) {
+        cameraTime(12, 2);
+      }
+      if ((scrollPosition = 499 && glbTime === 12)) {
+        cameraTime(8, 4);
+        setTopLayer(rusTexture);
+        topLayerOpacityController(1, 0.5, 2);
+      }
+      if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
+        cameraTime(6, 2);
+        setTopLayer(argRailwayTexture);
+        topLayerOpacityController(0, 0, 0);
+        topLayerOpacityController(1, 0.5, 2);
+      }
+      if ((scrollPosition = 399 && feature === "railway" && glbTime === 6)) {
+        setTopLayer(argTexture);
+        topLayerOpacityController(0, 0, 0);
+        topLayerOpacityController(1, 0.5, 0);
+      }
+      if ((scrollPosition = 299 && feature === '' && glbTime === 6)) {
+        cameraTime(3, 3);
+        topLayerOpacityController(0, 0.5, 0);
+      }
+      if ((scrollPosition = 199 && glbTime === 3)) {
+        cameraTime(2, 1);
+        setTopLayer(afgTexture)
+        topLayerOpacityController(1, 0.5, 1);
+      }
+      if ((scrollPosition = 99 && glbTime === 2)) {
+        cameraTime(0, 2);
+        topLayerOpacityController(0, 0.5, 0);
+      }
+    }
 
     let afghanistan = true;
     let iceland = true;
@@ -650,8 +761,12 @@ export default function Earth(props) {
 
     let lethargy = new Lethargy();
     window.addEventListener("wheel", (event) => {
+      let scrollPosition = Math.floor(
+        (window.scrollY / window.innerHeight) * 100
+      );
       let glbTime = parseInt(sessionStorage.getItem("glbTime"));
-      // console.log(event.wheelDelta)
+      let feature = sessionStorage.getItem("feature");
+
       if (event.deltaY < 0) {
         scrollDirection = "down";
       }
@@ -661,20 +776,14 @@ export default function Earth(props) {
       // let scrollPosition = Math.floor(window.scrollY / window.innerHeight * 100);
       if (scrollDirection === "up") {
         if (lethargy.check(event) !== false) {
-          scrollUpLogic();
+          scrollUpLogic(scrollPosition, glbTime, feature);
         }
       }
-      // if(scrollDirection === 'down'){
-      //       if(scrollPosition > 299 && scrollPosition < 300){
-      //         windowScrollTo(2)
-      //       }
-      //       if(scrollPosition > 199 && scrollPosition < 200){
-      //         windowScrollTo(1)
-      //       }
-      //       if(scrollPosition > 99 && scrollPosition < 100){
-      //         windowScrollTo(0)
-      //       }
-      // }
+      if (scrollDirection === "down") {
+        if (lethargy.check(event) !== false) {
+          scrollDownLogic(scrollPosition, glbTime, feature);
+        }
+      }
     });
   }, []);
   return (

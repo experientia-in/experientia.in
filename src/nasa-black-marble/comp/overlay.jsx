@@ -98,13 +98,8 @@ export default function Overlay(props) {
         sessionStorage.setItem("feature", featureName);
       }, 1000 * time);
     };
-    const scrollUpLogic = () => {
-      let glbTime = parseInt(sessionStorage.getItem("glbTime"));
-      let scrollPosition = Math.floor(
-        (window.scrollY / window.innerHeight) * 100
-      );
-      console.log(scrollPosition);
-      let feature = sessionStorage.getItem("feature");
+    const scrollUpLogic = (scrollPosition, glbTime, feature) => {
+      
       if (scrollPosition == 0 && glbTime === 0) {
         windowScrollTo(1);
       }
@@ -113,6 +108,7 @@ export default function Overlay(props) {
       }
       if ((scrollPosition = 199 && glbTime === 3)) {
         windowScrollTo(3);
+        setType("");
       }
       if ((scrollPosition = 299 && glbTime === 6)) {
         setType("Railway");
@@ -136,23 +132,23 @@ export default function Overlay(props) {
       }
       if ((scrollPosition = 799 && glbTime === 18)) {
         windowScrollTo(9);
-        setFeature(2012, 0.5);
+        setFeature('india2012', 0.5);
       }
-      if ((scrollPosition = 799 && feature === "2012" && glbTime === 19)) {
+      if ((scrollPosition = 799 && feature === "india2012" && glbTime === 19)) {
         // windowScrollTo(9);
         setYear(2012);
-        setFeature(2016, 0.5);
+        setFeature('china2016', 0.5);
       }
-      if ((scrollPosition = 899 && feature === "2016" && glbTime === 19)) {
+      if ((scrollPosition = 899 && feature === "china2016" && glbTime === 19)) {
         setYear(2016);
         windowScrollTo(10);
         // setFeature(2012, 0.5);
       }
       if ((scrollPosition = 999 && glbTime === 20)) {
         setYear(2012);
-        setFeature(2012, 0.5);
+        setFeature('china2012', 0.5);
       }
-      if ((scrollPosition = 999 && feature === "2012" && glbTime === 20)) {
+      if ((scrollPosition = 999 && feature === "china2012" && glbTime === 20)) {
         setYear(2016);
         windowScrollTo(11);
       }
@@ -164,17 +160,87 @@ export default function Overlay(props) {
       }
       if ((scrollPosition = 1299 && glbTime === 26)) {
         setYear(2012);
-        setFeature(2016, 0.5);
+        setFeature('yemen2012', 0.5);
       }
-      if ((scrollPosition = 1299 && feature === "2016" && glbTime === 26)) {
+      if ((scrollPosition = 1299 && feature === "yemen2012" && glbTime === 26)) {
         setYear(2016);
         windowScrollTo(14);
       }
       if ((scrollPosition = 1399 && glbTime === 27)) {
         setYear(2012);
-        setFeature(2012, 0.5);
+        setFeature('syria2012', 0.5);
       }
     };
+
+    const scrollDownLogic = (scrollPosition, glbTime, feature) => {
+      
+      if ((scrollPosition = 1399 && feature === "syria2012" && glbTime === 27)) {
+        setYear(2016);
+        setFeature('yemen2012', 0.5);
+      }
+      if ((scrollPosition = 1399 && feature === "yemen2012" && glbTime === 27)) {
+        setYear(2012);
+        windowScrollTo(13);
+      }
+      if ((scrollPosition = 1299 && glbTime === 26)) {
+        setYear(2016);
+        setFeature('yemen2016', 0.5);
+      }
+      if ((scrollPosition = 1299 && feature === "yemen2016" && glbTime === 26)) {
+        windowScrollTo(12);
+      }
+      if ((scrollPosition = 1199 && glbTime === 24)) {
+        windowScrollTo(11);
+      }
+      if ((scrollPosition = 1099 && glbTime === 22)) {
+        setYear(2012)
+        windowScrollTo(10);    
+      }
+      if ((scrollPosition = 999 && glbTime === 20)) {
+        setYear(2016);
+        setFeature('china2016', 0.5);
+      }
+      if ((scrollPosition = 999 && feature === "china2016" && glbTime === 20)) {
+        setYear(2012)
+        windowScrollTo(9);
+      }
+      if ((scrollPosition = 899 && glbTime === 19)) {
+        setYear(2016);
+        setFeature('india2012', 0.5);
+      }
+      if ((scrollPosition = 899 && feature === "india2012" && glbTime === 19)) {
+        windowScrollTo(8);
+      }
+      if ((scrollPosition = 799 && glbTime === 18)) {
+        windowScrollTo(7);
+      }
+      if ((scrollPosition = 699 && glbTime === 16)) {
+        windowScrollTo(6);
+      }
+      if ((scrollPosition = 599 && glbTime === 14)) {
+        windowScrollTo(5);
+      }
+      if ((scrollPosition = 499 && glbTime === 12)) {
+        windowScrollTo(4);
+      }
+      if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
+        windowScrollTo(3);
+        setType('Railway');
+      }
+      if ((scrollPosition = 299 && glbTime === 6)) {
+        setType('');
+        setFeature('', 0.5);
+      }
+      if ((scrollPosition = 299 && feature === '' && glbTime === 6)) {
+        windowScrollTo(2)
+      }
+      if ((scrollPosition = 199 && glbTime === 3)) {
+        windowScrollTo(1);
+      }
+      if ((scrollPosition = 99 && glbTime === 2)) {
+        windowScrollTo(0);
+      }
+    }
 
     // window.addEventListener("scroll", () => {
     //   newValue = window.pageYOffset;
@@ -189,6 +255,12 @@ export default function Overlay(props) {
     let lethargy = new Lethargy();
     window.addEventListener("wheel", (event) => {
       let glbTime = parseInt(sessionStorage.getItem("glbTime"));
+      let scrollPosition = Math.floor(
+        (window.scrollY / window.innerHeight) * 100
+      );
+      let feature = sessionStorage.getItem("feature");
+
+      // console.log(scrollPosition, sessionStorage.getItem("glbTime"));
       if (event.deltaY < 0) {
         scrollDirection = "down";
       }
@@ -198,20 +270,15 @@ export default function Overlay(props) {
 
       if (scrollDirection === "up") {
         if (lethargy.check(event) !== false) {
-          scrollUpLogic();
+          scrollUpLogic(scrollPosition, glbTime, feature);
         }
       }
-      // if (scrollDirection === "down") {
-      //   if (scrollPosition > 299 && scrollPosition < 300) {
-      //     windowScrollTo(2);
-      //   }
-      //   if (scrollPosition > 199 && scrollPosition < 200) {
-      //     windowScrollTo(1);
-      //   }
-      //   if (scrollPosition > 99 && scrollPosition < 100) {
-      //     windowScrollTo(0);
-      //   }
-      // }
+
+      if (scrollDirection === "down") {
+        if (lethargy.check(event) !== false) {
+          scrollDownLogic(scrollPosition, glbTime, feature);
+        }
+      }
     });
 
     let afghanistan = true;
