@@ -95,11 +95,10 @@ export default function Earth(props) {
   //   }, 1000);
   // }, []);
 
-  // useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
+  useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
     let scrollDirection;
-    actions["CameraAction.001"].play()
     // sessionStorage.setItem('glbTime', 0);
     // let scroll = new Scroll(50);
     // window.addEventListener("scroll", () => {

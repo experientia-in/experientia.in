@@ -30,7 +30,7 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
-      {/* <Overlay/> */}
+      <Overlay/>
       {/* <OpenLayers /> */}
     </>
   );
