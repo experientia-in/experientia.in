@@ -98,7 +98,6 @@ export default function Earth(props) {
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
-    let scrollDirection;
     // sessionStorage.setItem('glbTime', 0);
     // let scroll = new Scroll(50);
     // window.addEventListener("scroll", () => {
@@ -116,7 +115,7 @@ export default function Earth(props) {
         time: t,
         duration: d,
         snap: 0.01,
-        onUpdate: () => {
+        onComplete: () => {
           sessionStorage.setItem("glbTime", actions["CameraAction.001"].time);
         },
       });
@@ -157,11 +156,11 @@ export default function Earth(props) {
         topLayerOpacityController(0, 0.25, 0);
         topLayerOpacityController(1, 0.25, 0);
       }
-      if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
+      if (scrollPosition === 299  && feature === "railway" && glbTime === 6) {
         cameraTime(9, 3);
         setTopLayer(rusTexture);
       }
-      if (scrollPosition === 399 && glbTime === 9) {
+      if (scrollPosition === 399 && glbTime === 8 || glbTime === 9) {
         cameraTime(12, 3);
         topLayerOpacityController(0, 0.5, 0);
       }
@@ -203,7 +202,7 @@ export default function Earth(props) {
       if ((scrollPosition = 1099 && glbTime === 22)) {
         cameraTime(24, 2);
       }
-      if ((scrollPosition = 1199 && glbTime === 24)) {
+      if ((scrollPosition = 1199 && glbTime === 24 || feature === "yemen2016")) {
         cameraTime(26, 2);
         setTopLayer(yemTexture);
         topLayerOpacityController(1, 0.5, 2);
@@ -757,8 +756,10 @@ export default function Earth(props) {
 
     // })
 
-    let lethargy = new Lethargy();
+    let scrollDirection;
+    let lethargy = new Lethargy(7, 100, 0.05);
     window.addEventListener("wheel", (event) => {
+      
       let scrollPosition = Math.floor(
         (window.scrollY / window.innerHeight) * 100
       );

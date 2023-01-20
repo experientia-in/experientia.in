@@ -118,7 +118,7 @@ export default function Overlay(props) {
         setType("");
         windowScrollTo(4);
       }
-      if ((scrollPosition = 399 && glbTime === 9)) {
+      if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
         windowScrollTo(5);
       }
       if ((scrollPosition = 499 && glbTime === 12)) {
@@ -155,7 +155,7 @@ export default function Overlay(props) {
       if ((scrollPosition = 1099 && glbTime === 22)) {
         windowScrollTo(12);
       }
-      if ((scrollPosition = 1199 && glbTime === 24)) {
+      if ((scrollPosition = 1199 && glbTime === 24 || feature === "yemen2016")) {
         windowScrollTo(13);
       }
       if ((scrollPosition = 1299 && glbTime === 26)) {
@@ -225,7 +225,7 @@ export default function Overlay(props) {
       }
       if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
         windowScrollTo(3);
-        setType('Railway');
+        setType('Railway', 0.5);
       }
       if ((scrollPosition = 299 && glbTime === 6)) {
         setType('');
@@ -252,7 +252,7 @@ export default function Overlay(props) {
     //   oldValue = newValue;
     // })
     let scrollDirection;
-    let lethargy = new Lethargy();
+    let lethargy = new Lethargy(7, 100, 0.05);
     window.addEventListener("wheel", (event) => {
       let glbTime = parseInt(sessionStorage.getItem("glbTime"));
       let scrollPosition = Math.floor(
@@ -260,7 +260,7 @@ export default function Overlay(props) {
       );
       let feature = sessionStorage.getItem("feature");
 
-      // console.log(scrollPosition, sessionStorage.getItem("glbTime"));
+      console.log(scrollDirection);
       if (event.deltaY < 0) {
         scrollDirection = "down";
       }
