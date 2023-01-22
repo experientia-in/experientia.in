@@ -99,148 +99,162 @@ export default function Overlay(props) {
       }, 1000 * time);
     };
     const scrollUpLogic = (scrollPosition, glbTime, feature) => {
-      
-      if (scrollPosition == 0 && glbTime === 0) {
+      if (scrollPosition === 0 && glbTime === 0) {
         windowScrollTo(1);
       }
-      if ((scrollPosition = 99 && glbTime === 2)) {
+      if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(2);
       }
-      if ((scrollPosition = 199 && glbTime === 3)) {
+      if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(3);
         setType("");
       }
-      if ((scrollPosition = 299 && glbTime === 6)) {
+      if (scrollPosition === 299 && glbTime === 6) {
         setType("Railway");
         setFeature("railway", 0.5);
       }
-      if ((scrollPosition = 299 && feature === "railway" && glbTime === 6)) {
+      if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
         setType("");
         windowScrollTo(4);
       }
-      if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
+      if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(5);
       }
-      if ((scrollPosition = 499 && glbTime === 12)) {
+      if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(6);
       }
-      if ((scrollPosition = 599 && glbTime === 14)) {
+      if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(7);
       }
-      if ((scrollPosition = 699 && glbTime === 16)) {
+      if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(8);
       }
-      if ((scrollPosition = 799 && glbTime === 18)) {
+      if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(9);
-        setFeature('india2012', 0.5);
+        setFeature("india2012", 0.5);
       }
-      if ((scrollPosition = 799 && feature === "india2012" && glbTime === 19)) {
+      if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         // windowScrollTo(9);
         setYear(2012);
-        setFeature('china2016', 0.5);
+        setFeature("china2016", 0.5);
       }
-      if ((scrollPosition = 899 && feature === "china2016" && glbTime === 19)) {
+      if (scrollPosition === 899 && feature === "china2016" && glbTime === 19) {
         setYear(2016);
         windowScrollTo(10);
         // setFeature(2012, 0.5);
       }
-      if ((scrollPosition = 999 && glbTime === 20)) {
+      if (scrollPosition === 999 && glbTime === 20) {
         setYear(2012);
-        setFeature('china2012', 0.5);
+        setFeature("china2012", 0.5);
       }
-      if ((scrollPosition = 999 && feature === "china2012" && glbTime === 20)) {
+      if (scrollPosition === 999 && feature === "china2012" && glbTime === 20) {
         setYear(2016);
         windowScrollTo(11);
       }
-      if ((scrollPosition = 1099 && glbTime === 22)) {
+      if (scrollPosition === 1099 && glbTime === 22) {
         windowScrollTo(12);
       }
-      if ((scrollPosition = 1199 && glbTime === 24 || feature === "yemen2016")) {
+      if (scrollPosition === 1199 && glbTime === 24 || feature === "yemen2016") {
         windowScrollTo(13);
       }
-      if ((scrollPosition = 1299 && glbTime === 26)) {
+      if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2012);
-        setFeature('yemen2012', 0.5);
+        setFeature("yemen2012", 0.5);
       }
-      if ((scrollPosition = 1299 && feature === "yemen2012" && glbTime === 26)) {
+      if (
+        scrollPosition === 1299 &&
+        feature === "yemen2012" &&
+        glbTime === 26
+      ) {
         setYear(2016);
         windowScrollTo(14);
       }
-      if ((scrollPosition = 1399 && glbTime === 27)) {
+      if (scrollPosition === 1399 && glbTime === 27) {
         setYear(2012);
-        setFeature('syria2012', 0.5);
+        setFeature("syria2012", 0.5);
       }
     };
 
     const scrollDownLogic = (scrollPosition, glbTime, feature) => {
-      
-      if ((scrollPosition = 1399 && feature === "syria2012" && glbTime === 27)) {
+      if (
+        scrollPosition === 1399 &&
+        feature === "syria2012" &&
+        glbTime === 27
+      ) {
         setYear(2016);
-        setFeature('yemen2012', 0.5);
+        setFeature("yemen2012", 0.5);
       }
-      if ((scrollPosition = 1399 && feature === "yemen2012" && glbTime === 27)) {
+      if (
+        scrollPosition === 1399 &&
+        feature === "yemen2012" &&
+        glbTime === 27
+      ) {
         setYear(2012);
         windowScrollTo(13);
       }
-      if ((scrollPosition = 1299 && glbTime === 26)) {
+      if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2016);
-        setFeature('yemen2016', 0.5);
+        setFeature("yemen2016", 0.5);
       }
-      if ((scrollPosition = 1299 && feature === "yemen2016" && glbTime === 26)) {
+      if (
+        scrollPosition === 1299 &&
+        feature === "yemen2016" &&
+        glbTime === 26
+      ) {
         windowScrollTo(12);
       }
-      if ((scrollPosition = 1199 && glbTime === 24)) {
+      if (scrollPosition === 1199 && glbTime === 24) {
         windowScrollTo(11);
       }
-      if ((scrollPosition = 1099 && glbTime === 22)) {
-        setYear(2012)
-        windowScrollTo(10);    
+      if (scrollPosition === 1099 && glbTime === 22) {
+        setYear(2012);
+        windowScrollTo(10);
       }
-      if ((scrollPosition = 999 && glbTime === 20)) {
+      if (scrollPosition === 999 && glbTime === 20) {
         setYear(2016);
-        setFeature('china2016', 0.5);
+        setFeature("china2016", 0.5);
       }
-      if ((scrollPosition = 999 && feature === "china2016" && glbTime === 20)) {
-        setYear(2012)
+      if (scrollPosition === 999 && feature === "china2016" && glbTime === 20) {
+        setYear(2012);
         windowScrollTo(9);
       }
-      if ((scrollPosition = 899 && glbTime === 19)) {
+      if (scrollPosition === 899 && glbTime === 19) {
         setYear(2016);
-        setFeature('india2012', 0.5);
+        setFeature("india2012", 0.5);
       }
-      if ((scrollPosition = 899 && feature === "india2012" && glbTime === 19)) {
+      if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         windowScrollTo(8);
       }
-      if ((scrollPosition = 799 && glbTime === 18)) {
+      if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(7);
       }
-      if ((scrollPosition = 699 && glbTime === 16)) {
+      if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(6);
       }
-      if ((scrollPosition = 599 && glbTime === 14)) {
+      if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(5);
       }
-      if ((scrollPosition = 499 && glbTime === 12)) {
+      if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(4);
       }
-      if ((scrollPosition = 399 && glbTime === 8 || glbTime === 9)) {
+      if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(3);
-        setType('Railway', 0.5);
+        setType("Railway", 0.5);
       }
-      if ((scrollPosition = 299 && glbTime === 6)) {
-        setType('');
-        setFeature('', 0.5);
+      if (scrollPosition === 299 && glbTime === 6) {
+        setType("");
+        setFeature("", 0.5);
       }
-      if ((scrollPosition = 299 && feature === '' && glbTime === 6)) {
-        windowScrollTo(2)
+      if (scrollPosition === 299 && feature === "" && glbTime === 6) {
+        windowScrollTo(2);
       }
-      if ((scrollPosition = 199 && glbTime === 3)) {
+      if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(1);
       }
-      if ((scrollPosition = 99 && glbTime === 2)) {
+      if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(0);
       }
-    }
+    };
 
     // window.addEventListener("scroll", () => {
     //   newValue = window.pageYOffset;
@@ -252,7 +266,7 @@ export default function Overlay(props) {
     //   oldValue = newValue;
     // })
     let scrollDirection;
-    let lethargy = new Lethargy(7, 100, 0.05);
+    let lethargy = new Lethargy();
     window.addEventListener("wheel", (event) => {
       let glbTime = parseInt(sessionStorage.getItem("glbTime"));
       let scrollPosition = Math.floor(
@@ -260,7 +274,6 @@ export default function Overlay(props) {
       );
       let feature = sessionStorage.getItem("feature");
 
-      console.log(scrollDirection);
       if (event.deltaY < 0) {
         scrollDirection = "down";
       }
@@ -268,14 +281,12 @@ export default function Overlay(props) {
         scrollDirection = "up";
       }
 
-      if (scrollDirection === "up") {
-        if (lethargy.check(event) !== false) {
+      if (lethargy.check(event) !== false && sessionStorage.getItem('isGlbReady') === 'true') {
+        if (scrollDirection === "up") {
           scrollUpLogic(scrollPosition, glbTime, feature);
         }
-      }
 
-      if (scrollDirection === "down") {
-        if (lethargy.check(event) !== false) {
+        if (scrollDirection === "down") {
           scrollDownLogic(scrollPosition, glbTime, feature);
         }
       }
