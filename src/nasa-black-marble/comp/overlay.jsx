@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { Lethargy } from "lethargy";
+import OpenLayers from "./openLayers";
 // import Scroll from "./scrollStatus";
 import "../style/overlay.css";
 
@@ -154,7 +155,10 @@ export default function Overlay(props) {
       if (scrollPosition === 1099 && glbTime === 22) {
         windowScrollTo(12);
       }
-      if (scrollPosition === 1199 && glbTime === 24 || feature === "yemen2016") {
+      if (
+        (scrollPosition === 1199 && glbTime === 24) ||
+        feature === "yemen2016"
+      ) {
         windowScrollTo(13);
         setFeature("yemen2016", 0.5);
       }
@@ -266,6 +270,7 @@ export default function Overlay(props) {
         (window.scrollY / window.innerHeight) * 100
       );
       let feature = sessionStorage.getItem("feature");
+      let mapCover = sessionStorage.getItem("mapCover");
 
       if (event.deltaY < 0) {
         scrollDirection = "down";
@@ -274,7 +279,11 @@ export default function Overlay(props) {
         scrollDirection = "up";
       }
 
-      if (lethargy.check(event) !== false && sessionStorage.getItem('isGlbReady') === 'true') {
+      if (
+        lethargy.check(event) !== false &&
+        sessionStorage.getItem("isGlbReady") === "true" &&
+        mapCover === "false"
+      ) {
         if (scrollDirection === "up") {
           scrollUpLogic(scrollPosition, glbTime, feature);
         }
@@ -284,13 +293,14 @@ export default function Overlay(props) {
         }
       }
     });
-    
+
     return () => {
       ctx.revert();
     };
   }, []);
   return (
     <>
+      {/* <OpenLayers /> */}
       <section className="overlay_wrapper" id="fullscreen">
         <div className="intro">
           <div className="bigScreen ">

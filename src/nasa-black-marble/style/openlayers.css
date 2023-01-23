@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: gilroy-bold;
+  src: url("/assets/fonts/Gilroy-ExtraBold.otf");
+}
+@font-face {
+  font-family: openSans-regular;
+  src: url("/assets/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: openSans-medium;
+  src: url("/assets/fonts/OpenSans-Medium.ttf");
+}
+@font-face {
+  font-family: playFair-regular;
+  src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: spaceMono-regular;
+  src: url("/assets/fonts/SpaceMono-Regular.ttf");
+}
+
+#mapContainer {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 21;
+  background-color: rgba(0, 0, 0, 0.75);
+  clip-path: circle(0% at 100% 100%);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+#map {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.mapLayerController {
+  width: 400px;
+  height: auto;
+  background-color: #212121;
+  z-index: 22;
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  border-radius: 15px;
+}
+
+.headTitle {
+  color: #e2e2e2;
+  font-family: gilroy-bold;
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 1.5rem;
+}
+
+.sliderBox {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0.75rem;
+  width: 90%;
+}
+.lastbox {
+  margin-bottom: 30px;
+}
+.layer {
+  color: #7b7b7b;
+  font-family: openSans-medium;
+  font-size: 0.75rem;
+  margin-left: 10px;
+}
+.sliderInput {
+  width: 100%;
+  height: 55px;
+  background-color: #303030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+}
+.inputRange {
+  width: 70%;
+  appearance: none;
+  height: 7px;
+  background: #7b7b7b;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  /* overflow: hidden; */
+  background-image: linear-gradient(
+    to right,
+    #30cfd0 0%,
+    #330867 0%,
+    #7b7b7b 0%,
+    #7b7b7b 100%
+  );
+}
+.inputRange::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 7px;
+  background: #fbfbfb;
+  border-radius: 10px;
+  transition: 0.1s ease-in-out;
+}
+.inputRange::-webkit-slider-thumb:hover {
+  width: 30px;
+  height: 15px;
+}
+.rangeValue {
+  margin-left: 1.5rem;
+  height: 35px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 10px;
+  font-family: spaceMono-regular;
+  font-size: 0.75rem;
+  background-image: linear-gradient(120deg, #30cfd0 0%, #330867 100%);
+}
+.sliderBoxOpener {
+  position: fixed;
+  z-index: 23;
+  height: 60px;
+  width: 60px;
+  background: linear-gradient(45deg, #30cfd0 0%, #330867 100%);
+  border-radius: 10px;
+  bottom: 25px;
+  right: 100px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  outline: none;
+}
+.sliderBoxOpener img {
+  filter: invert(1);
+  height: 30px;
+}
+.compassIcon {
+  position: fixed;
+  z-index: 24;
+  background: linear-gradient(145deg, #1e1e1e, #232323);
+  box-shadow: 20px 20px 60px #1d1d1d, -20px -20px 60px #252525;
+  height: 60px;
+  width: 60px;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  display: grid;
+  place-items: center;
+}
+.compassIcon img {
+  filter: invert(1);
+  height: 30px;
+  width: 30px;
+}

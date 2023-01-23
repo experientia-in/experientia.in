@@ -1,232 +1,238 @@
+import "../style/openlayers.css";
+
 import Map from "ol/Map";
 import View from "ol/View";
-import ImageLayer from "ol/layer/Image";
-import Static from "ol/source/ImageStatic";
-import GeoJSON from "ol/format/GeoJSON.js";
-import VectorLayer from "ol/layer/Vector";
-import VectorSource from "ol/source/Vector";
-import { Style, Stroke } from "ol/style";
-import { useEffect } from "react";
-import Scroll from "./scrollStatus";
+import TileLayer from "ol/layer/Tile";
+import XYZ from "ol/source/XYZ";
 import gsap from "gsap";
-
+import { useEffect } from "react";
 export default function OpenLayers() {
   useEffect(() => {
-    let layerOpacity = {
-      afghanistan_hlg: 0,
-      argentina_hlg: 0,
-      argentinaRailway_hlg: 0,
-      russia_hlg: 0,
-      pakistan_hlg : 0,
-      indPakAfg2012 : 0,
-      china2012: 0,
-      yemen_hlg : 0,
-      yemen2012: 0,
-      syria_hlg: 0,
-      syria2012: 0,
-
-    }
-
-    const opacitySwitcher = (layerName, delay) => {
-      gsap.to(layerOpacity, {
-        layerName : 0, 
-        delay: delay
-      })
-    }
-    
-    
-
-
-    // Base layer
-    const image_2016 = new ImageLayer({
-      source: new Static({
-        url: "/assets/img/nasaBlackMarble/2016_nasaBlackMarble_8K_bin.webp",
-        interpolate: false,
-        imageExtent: [-180, -90, 180, 90],
+    sessionStorage.setItem("mapCover", false);
+    const nasa2016Layer = new TileLayer({
+      source: new XYZ({
+        url: "https://carto.experientia.in/NasaBlackMarble/XYZ/2016/{z}/{x}/{y}.png",
+        crossOrigin: "anonymous",
       }),
     });
-    
-    // Additional feature layers for highlighting the difference between 2012 and 2016
-    // const indPakAfg2012 = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/ind_pak_afg_2012.webp",
-    //     interpolate: false,
-    //     imageExtent: [61.229166667,4.983333333,95.216666667,34.704166667],
-    //   }),
-    // });
-    // indPakAfg2012.setOpacity(layerOpacity.indPakAfg2012)
-    
-    // const china2012 = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/china2012.webp",
-    //     interpolate: false,
-    //     imageExtent: [96.445833333,18.741666667,123.125000000,41.041666667],
-    //   }),
-    // });
-    // china2012.setOpacity(layerOpacity.china2012)
-
-    // const yemen2012 = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/yemen2012.webp",
-    //     interpolate: false,
-    //     imageExtent: [42.0416666670000012, 12.5250000000000004, 52.4791666670000012,16.3958333329999988],
-    //   }),
-    // });
-    // yemen2012.setOpacity(layerOpacity.yemen2012)
-
-    // const syria2012 = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/syriaIraq2012.webp",
-    //     interpolate: false,
-    //     imageExtent: [33.820833333,27.800000000,49.250000000,37.425000000],
-    //   }),
-    // });
-    // syria2012.setOpacity(layerOpacity.syria2012)
-
-    
-    // // country political border and argentina railway
-    // const argentina_hlg = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/argentina_hlg.webp",
-    //     interpolate: false,
-    //     imageExtent: [
-    //       -81.7322609200979002, -55.8143338331348104, -47.0468499384507126,
-    //       -21.1289228514876335,
-    //     ],
-    //   }),
-    // });
-    // argentina_hlg.setOpacity(layerOpacity.argentina_hlg)
-
-    // const argentinaRailway_hlg = new ImageLayer({
-    //   source: new Static({
-    //     url: "/assets/img/nasaBlackMarble/argentinaRailway_hlg.webp",
-    //     interpolate: false,
-    //     imageExtent: [
-    //       -73.8762994533019537, -42.336142923010641, -52.6533259761340986,
-    //       -21.1131694458428036,
-    //     ],
-    //   }),
-    // });
-    // argentinaRailway_hlg.setOpacity(layerOpacity.argentinaRailway_hlg)
-
-    const vectorStroke = new Stroke({
-      color: [247, 247, 247, 1],
-      width: 1,
-    });
-    const afghanistan_hlg = new VectorLayer({
-      source: new VectorSource({
-        format: new GeoJSON(),
-        url: "/data/afghanistan.geojson",
-        
+    nasa2016Layer.setZIndex(1);
+    nasa2016Layer.setOpacity(1);
+    const nasa2012Layer = new TileLayer({
+      source: new XYZ({
+        url: "https://carto.experientia.in/NasaBlackMarble/XYZ/2012/{z}/{x}/{y}.png",
+        crossOrigin: "anonymous",
       }),
-      style : new Style({
-        stroke: vectorStroke
-      })
     });
-
-    // const pakistan_hlg = new VectorLayer({
-    //   source: new VectorSource({
-    //     format: new GeoJSON(),
-    //     url: "/data/pakistan.geojson",
-        
-    //   }),
-    //   style : new Style({
-    //     stroke: vectorStroke
-    //   })
-    // });
-    // pakistan_hlg.setOpacity(layerOpacity.pakistan_hlg)
-
-    // const russia_hlg = new VectorLayer({
-    //   source: new VectorSource({
-    //     format: new GeoJSON(),
-    //     url: "/data/russia.geojson",
-        
-    //   }),
-    //   style : new Style({
-    //     stroke: vectorStroke
-    //   })
-    // });
-    // russia_hlg.setOpacity(layerOpacity.russia_hlg)
-
-    // const yemen_hlg = new VectorLayer({
-    //   source: new VectorSource({
-    //     format: new GeoJSON(),
-    //     url: "/data/yemen.geojson",
-        
-    //   }),
-    //   style : new Style({
-    //     stroke: vectorStroke
-    //   })
-    // });
-    // yemen_hlg.setOpacity(layerOpacity.yemen_hlg)
-
-    // const syria_hlg = new VectorLayer({
-    //   source: new VectorSource({
-    //     format: new GeoJSON(),
-    //     url: "/data/syria.geojson",
-        
-    //   }),
-    //   style : new Style({
-    //     stroke: vectorStroke
-    //   })
-    // });
-    // syria_hlg.setOpacity(layerOpacity.syria_hlg)
+    nasa2012Layer.setZIndex(2);
+    nasa2012Layer.setOpacity(0);
+    const osmLayer = new TileLayer({
+      source: new XYZ({
+        url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        crossOrigin: "anonymous",
+      }),
+    });
+    osmLayer.setZIndex(3);
+    osmLayer.setOpacity(0);
 
     var map = new Map({
-      layers: [
-        image_2016,
-        // indPakAfg2012,
-        // china2012,
-        // yemen2012,
-        // syria2012,
-        afghanistan_hlg,
-        // argentina_hlg,
-        // argentinaRailway_hlg,
-        // pakistan_hlg,
-        // syria_hlg,
-        // yemen_hlg,
-        // russia_hlg,
-      ],
+      layers: [nasa2016Layer, nasa2012Layer, osmLayer],
       target: "map",
-      pixelRatio: 1,
+      // pixelRatio: 1,
       view: new View({
         projection: "EPSG:4326",
         extent: [-180, -90, 180, 90],
         center: [0, 0],
-        zoom: 0,
+        zoom: 3,
+        maxZoom: 10,
       }),
+      controls: [],
     });
 
+    const mapOpener = document.getElementById("mapOpener");
+    mapOpener.addEventListener("click", () => {
+      let mapCover = sessionStorage.getItem("mapCover");
 
-    let windowHeight = window.innerHeight
-    window.addEventListener('resize', () => {
-      windowHeight = window.innerHeight;
-      console.log(windowHeight)
-    })
-    
-    // let scroll = new Scroll(50)
-    window.addEventListener("scroll", () => {
-      console.log("scrolled");
-      afghanistan_hlg.setOpacity(0);
-
-      if (window.scrollY > 200) {
-        afghanistan_hlg.setOpacity(0.1);
-        console.log(">200");
+      if (mapCover === "false") {
+        gsap.to("#mapContainer", {
+          clipPath: "circle(100% at 50% 50%)",
+          duration: 1,
+          ease: "power4.out",
+          onStart: () => {
+            sessionStorage.setItem("mapCover", true);
+          },
+        });
+        gsap.to("#mapOpener", {
+          background: "linear-gradient(42deg,#c0114e, #e13974)",
+          // boxShadow: "20px 20px 60px #a30e42, -20px -20px 60px #dd145a",
+          duration: 1,
+          ease: "power4.out",
+        });
+      }
+      if (mapCover === "true") {
+        gsap.to("#mapContainer", {
+          clipPath: "circle(0% at 100% 100%)",
+          duration: 1,
+          ease: "power4.out",
+          onStart: () => {
+            sessionStorage.setItem("mapCover", false);
+          },
+        });
+        gsap.to("#mapOpener", {
+          background: "linear-gradient(145deg, #1e1e1e, #232323)",
+          boxShadow: "20px 20px 60px #1d1d1d, -20px -20px 60px #252525",
+          duration: 1,
+          ease: "power4.out",
+        });
       }
     });
+
+    const sliderBoxOpener = document.getElementById("sliderBoxOpener");
+    sessionStorage.setItem("isLayerBoxOpen", true);
+
+    sliderBoxOpener.addEventListener("click", () => {
+      let isLayerBoxOpen = sessionStorage.getItem("isLayerBoxOpen");
+      if (isLayerBoxOpen === "true") {
+        gsap.to(".mapLayerController", {
+          right: "-500px",
+          duration: 0.5,
+          ease: "power4.out",
+          onComplete: () => {
+            sessionStorage.setItem("isLayerBoxOpen", false);
+          },
+        });
+        gsap.to("#sliderBoxOpener", {
+          opacity: 0.5,
+          duration: 1,
+          ease: "power4.out",
+        });
+      }
+      if (isLayerBoxOpen === "false") {
+        gsap.to(".mapLayerController", {
+          right: "25px",
+          duration: 0.5,
+          ease: "power4.out",
+          onComplete: () => {
+            sessionStorage.setItem("isLayerBoxOpen", true);
+          },
+        });
+        gsap.to("#sliderBoxOpener", {
+          opacity: 1,
+          duration: 0.5,
+          ease: "power4.out",
+        });
+      }
+    });
+
+    const osmSlider = document.getElementById("osmSlider");
+    osmSlider.value = 0;
+
+    osmSlider.addEventListener("input", (event) => {
+      let osmInputvalue = parseFloat(event.target.value);
+      const osmValue = document.getElementById('osmValue');
+      osmSlider.style.backgroundImage =
+        `linear-gradient(to right,#30cfd0 0%, #330867 ${osmInputvalue * 100}%,#7b7b7b 0%,#7b7b7b 100%)`;
+      osmValue.textContent = parseInt(osmInputvalue * 100); 
+      
+      osmLayer.setOpacity(osmInputvalue);
+    });
+
+
+    const nasa2012 = document.getElementById("nasa2012");
+    nasa2012.value = 0;
+
+    nasa2012.addEventListener("input", (event) => {
+      let nasa2012Inputvalue = parseFloat(event.target.value);
+      const nasa2012Value = document.getElementById('nasa2012Value');
+      nasa2012.style.backgroundImage =
+        `linear-gradient(to right,#30cfd0 0%, #330867 ${nasa2012Inputvalue * 100}%,#7b7b7b 0%,#7b7b7b 100%)`;
+      nasa2012Value.textContent = parseInt(nasa2012Inputvalue * 100); 
+      
+      nasa2012Layer.setOpacity(nasa2012Inputvalue);
+    });
+
+
+    const nasa2016 = document.getElementById("nasa2016");
+    nasa2016.value = 100;
+    nasa2016.style.backgroundImage =
+        `linear-gradient(to right,#30cfd0 0%, #330867 100%,#7b7b7b 0%,#7b7b7b 100%)`;
+    nasa2016.addEventListener("input", (event) => {
+      let nasa2016Inputvalue = parseFloat(event.target.value);
+      const nasa2016Value = document.getElementById('nasa2016Value');
+      nasa2016.style.backgroundImage =
+        `linear-gradient(to right,#30cfd0 0%, #330867 ${nasa2016Inputvalue * 100}%,#7b7b7b 0%,#7b7b7b 100%)`;
+      nasa2016Value.textContent = parseInt(nasa2016Inputvalue * 100); 
+      
+      nasa2016Layer.setOpacity(nasa2016Inputvalue);
+    });
   }, []);
+
   return (
     <>
-      <div id="container">
-        <div
-          id="map"
-          style={{
-            height: "4096px",
-            width: "8192px",
-            visibility: "hidden",
-            position: "fixed",
-          }}
-        ></div>
+      <div id="mapContainer">
+        <div id="map"></div>
+        <div className="mapLayerController">
+          <div className="headTitle">Adjust Layer Opacity</div>
+          <div className="sliderBox">
+            <div className="layer">Open Street Maps</div>
+            <div className="sliderInput">
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                name=""
+                id="osmSlider"
+                className="inputRange"
+              />
+              <div className="rangeValue" id="osmValue">
+                0
+              </div>
+            </div>
+          </div>
+          <div className="sliderBox">
+            <div className="layer">Nasa Black Marble 2012</div>
+            <div className="sliderInput">
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                name=""
+                id="nasa2012"
+                className="inputRange"
+              />
+              <div className="rangeValue" id="nasa2012Value">
+                0
+              </div>
+            </div>
+          </div>
+          <div className="sliderBox lastbox">
+            <div className="layer">Nasa Black Marble 2016</div>
+            <div className="sliderInput">
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                name=""
+                id="nasa2016"
+                className="inputRange"
+              />
+              <div className="rangeValue" id="nasa2016Value">
+                100
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="sliderBoxOpener" id="sliderBoxOpener">
+          <img
+            src="/assets/img/nasaBlackMarble/listMenuIcon.svg"
+            alt="compass-icon"
+          />
+        </div>
+      </div>
+      <div className="compassIcon" id="mapOpener">
+        <img src="/assets/img/nasaBlackMarble/compass.svg" alt="compass-icon" />
       </div>
     </>
   );

@@ -10,7 +10,7 @@ import gsap from "gsap";
 import { Lethargy } from "lethargy";
 import { useRef, useEffect, useState } from "react";
 export default function Earth(props) {
-  let { earthGlb, canvasStatus } = props;
+  let { earthGlb, glbStatus } = props;
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(earthGlb);
   const { actions } = useAnimations(animations, group);
@@ -76,28 +76,10 @@ export default function Earth(props) {
   const [topLayer, setTopLayer] = useState(afgTexture);
   const [topLayerOpacity, setTopLayerOpacity] = useState(0);
 
-  // const [midLayer, setMidLayer] = useState(india2012Texture);
-  // const [midLayerOpacity, setMidLayerOpacity] = useState(0);
-
-  // if (textureRef.current) {
-  //   textureRef.current.needsUpdate = true;
-  // }
-  // const [canvasTexture, setCanvasTexture] = useState(null);
-  // useEffect(() => {
-  //   const canvasIntervalCheck = setInterval(() => {
-  //     const mapContainer = document.getElementById("map");
-  //     const mapCanvas = mapContainer.getElementsByTagName("canvas")[0];
-  //     if (mapCanvas) {
-  //       setCanvasTexture(mapCanvas);
-  //       canvasStatus(true);
-  //       clearInterval(canvasIntervalCheck);
-  //     }
-  //   }, 1000);
-  // }, []);
-
   useEffect(() => void (actions["CameraAction.001"].play().paused = true), []);
 
   useEffect(() => {
+    glbStatus(true)
     sessionStorage.setItem("isGlbReady", true);
     const cameraTime = (t, d) => {
       gsap.to(actions["CameraAction.001"], {
@@ -194,7 +176,10 @@ export default function Earth(props) {
       if (scrollPosition === 1099 && glbTime === 22) {
         cameraTime(24, 2);
       }
-      if (scrollPosition === 1199 && glbTime === 24 || feature === "yemen2016") {
+      if (
+        (scrollPosition === 1199 && glbTime === 24) ||
+        feature === "yemen2016"
+      ) {
         cameraTime(26, 2);
         setTopLayer(yemTexture);
         topLayerOpacityController(1, 0.5, 2);
@@ -330,6 +315,7 @@ export default function Earth(props) {
       );
       let glbTime = parseInt(sessionStorage.getItem("glbTime"));
       let feature = sessionStorage.getItem("feature");
+      let mapCover = sessionStorage.getItem("mapCover");
 
       if (event.deltaY < 0) {
         scrollDirection = "down";
@@ -337,7 +323,11 @@ export default function Earth(props) {
       if (event.deltaY > 0) {
         scrollDirection = "up";
       }
-      if (lethargy.check(event) !== false && sessionStorage.getItem('isGlbReady') === 'true') {
+      if (
+        lethargy.check(event) !== false &&
+        sessionStorage.getItem("isGlbReady") === "true" &&
+        mapCover === "false"
+      ) {
         if (scrollDirection === "up") {
           scrollUpLogic(scrollPosition, glbTime, feature);
         }
