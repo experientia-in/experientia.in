@@ -162,4 +162,9 @@
   filter: invert(1);
   height: 30px;
   width: 30px;
+  transition: 0.1s ease-in-out;
+}
+.compassIcon img:hover{
+  height: 35px;
+  width: 35px;
 }
