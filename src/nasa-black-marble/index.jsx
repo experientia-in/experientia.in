@@ -4,6 +4,7 @@ import Earth from "./comp/earth";
 import OpenLayers from "./comp/openLayers";
 import styles from "./style/main.module.css";
 import Overlay from "./comp/overlay";
+import Preload from "./comp/preload";
 export default function BlackMarble() {
   const [glbLoaded, setGlbLoaded] = useState(false);
   const [earthGlb, setEarthGlb] = useState(null);
@@ -26,9 +27,10 @@ export default function BlackMarble() {
       }, 4000);
     }
   },[glbLoaded])
-
+  
   return (
     <>
+    {!glbLoaded &&<Preload/>}
       <section className={styles.container}>
         <div className={styles.canvas_area}>
           <Canvas flat>

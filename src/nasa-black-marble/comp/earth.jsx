@@ -6,7 +6,6 @@ import {
   useKTX2,
 } from "@react-three/drei";
 import gsap from "gsap";
-// import Scroll from "./scrollStatus";
 import { Lethargy } from "lethargy";
 import { useRef, useEffect, useState } from "react";
 export default function Earth(props) {
@@ -29,21 +28,6 @@ export default function Earth(props) {
   const rus_hlg = "assets/img/nasaBlackMarble/russia_hlg.ktx2";
   const syr_hlg = "assets/img/nasaBlackMarble/syria_hlg.ktx2";
   const yem_hlg = "assets/img/nasaBlackMarble/yemen_hlg.ktx2";
-
-  // const [preload, setPreLoad] = useState({afg: afg_hlg, arg: arg_hlg})
-  // const [topLayer, setTopLayer] = useState(afg_hlg);
-
-  // useKTX2.preload(afg_hlg);
-  // useKTX2.preload(arg_hlg);
-  // useKTX2.preload(argRailway_hlg);
-  // useKTX2.preload(rus_hlg);
-  // useKTX2.preload(pak_hlg);
-  // useKTX2.preload(syr_hlg);
-  // useKTX2.preload(yem_hlg);
-  // useKTX2.preload(china2012);
-  // useKTX2.preload(egypt2012);
-  // useKTX2.preload(india2012);
-  // useKTX2.preload(nasaBlackMarble2012);
 
   const [
     nasa2016,

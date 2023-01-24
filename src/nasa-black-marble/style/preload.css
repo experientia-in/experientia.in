@@ -1,0 +1,39 @@
+@font-face {
+    font-family: gilroy-bold;
+    src: url("/assets/fonts/Gilroy-ExtraBold.otf");
+  }
+  @font-face {
+    font-family: openSans-regular;
+    src: url("/assets/fonts/OpenSans-Regular.ttf");
+  }
+  @font-face {
+    font-family: openSans-medium;
+    src: url("/assets/fonts/OpenSans-Medium.ttf");
+  }
+  @font-face {
+    font-family: playFair-regular;
+    src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: spaceMono-regular;
+    src: url("/assets/fonts/SpaceMono-Regular.ttf");
+  }
+#preloadContainer{
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    position: fixed;
+    z-index: 30;
+    background: linear-gradient(90deg, #414141, #000000);
+    display: grid;
+    place-items: center;
+}
+#lottie{
+    height: 800px;
+    
+}
+.loading{
+    transform: translateY(-200px);
+    color: #f7f7f7;
+    font-family: openSans-medium;
+}
