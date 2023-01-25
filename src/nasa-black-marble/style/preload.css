@@ -36,4 +36,7 @@
     transform: translateY(-200px);
     color: #f7f7f7;
     font-family: openSans-medium;
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: center;
 }

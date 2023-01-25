@@ -98,6 +98,13 @@
   font-family: gilroy-bold;
   font-size: var(--headingFontSize);
   padding-top: 200px;
+  width: 600px;
+}
+.betaMark{
+  font-size: 0.75rem;
+  font-family: spaceMono-regular;
+  color: #FF6863;
+  border: 1px solid #FF6863;
 }
 .data_paragraph{
   color: #f7f7f7;
@@ -267,6 +274,80 @@
 .country_year{
   font-size: 1.25rem;
   font-family: spaceMono-regular;
+}
+
+.inspirationFrom{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+/* .inspirationFromWrapper{
+height: 500px;
+} */
+.inspirationHead{
+  font-size: 2rem;
+  font-family: gilroy-bold;
+  margin-bottom: 2rem;
+  color: #f7f7f7;
+}
+.inspirationInfo{
+  margin-left: 100px;
+  margin-right: 100px;
+  font-family: playFair-regular;
+  font-size: 1.25rem;
+  color: #f7f7f7;
+  margin-bottom: 1.5rem;
+}
+.inspirationInfo a{
+  text-decoration: underline;
+  color: #f7f7f7;
+
+}
+.nasaBlackMarblePdf{
+  margin-top: 1.5rem;
+  height: 40px;
+  margin-left: 40%;
+  margin-right: 40%;
+  background-color: #de4540;
+  
+}
+.nasaBlackMarblePdf a {
+  color: #f7f7f7;
+  text-decoration: none;
+  font-family: gilroy-bold;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.contributionCredits{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to left, #0c3483, #547dce);
+}
+.contributionHead{
+  color: white;
+  margin-left: 50px;
+  padding-top: 50px;
+  font-family: gilroy-bold;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.contributionPeopleList{
+  margin-left: 50px;
+  margin-right: 200px;
+  font-family: openSans-regular;
+  color: #f7f7f7;
+  font-size: 1rem;
+}
+.contributionPeopleList a{
+  color: #0eeb97
+}
+.contributionPeopleList li{
+  margin-bottom: 1rem;
 }
 /* ------------ Mobile Section--------------------- */
 

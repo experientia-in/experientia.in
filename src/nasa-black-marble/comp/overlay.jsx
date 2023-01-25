@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { Lethargy } from "lethargy";
-import OpenLayers from "./openLayers";
-// import Scroll from "./scrollStatus";
+import Footer from "../../utils/comp/footer";
 import "../style/overlay.css";
 
 export default function Overlay(props) {
@@ -99,40 +98,54 @@ export default function Overlay(props) {
         sessionStorage.setItem("feature", featureName);
       }, 1000 * time);
     };
+    sessionStorage.setItem("scrollSection", 0);
+    const scrollSection = (sectionNumber) => {
+      sessionStorage.setItem("scrollSection", sectionNumber);
+    };
     const scrollUpLogic = (scrollPosition, glbTime, feature) => {
       if (scrollPosition === 0 && glbTime === 0) {
         windowScrollTo(1);
+        scrollSection(1);
       }
       if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(2);
+        scrollSection(2);
       }
       if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(3);
         setType("");
+        scrollSection(3);
       }
       if (scrollPosition === 299 && glbTime === 6) {
         setType("Railway");
         setFeature("railway", 0.5);
+        
       }
       if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
         setType("");
         windowScrollTo(4);
+        scrollSection(4);
       }
       if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(5);
+        scrollSection(5);
       }
       if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(6);
+        scrollSection(6);
       }
       if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(7);
+        scrollSection(7);
       }
       if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(8);
+        scrollSection(8);
       }
       if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(9);
         setFeature("india2012", 0.5);
+        scrollSection(9);
       }
       if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         // windowScrollTo(9);
@@ -143,6 +156,7 @@ export default function Overlay(props) {
         setYear(2016);
         windowScrollTo(10);
         // setFeature(2012, 0.5);
+        scrollSection(10);
       }
       if (scrollPosition === 999 && glbTime === 20) {
         setYear(2012);
@@ -151,9 +165,11 @@ export default function Overlay(props) {
       if (scrollPosition === 999 && feature === "china2012" && glbTime === 20) {
         setYear(2016);
         windowScrollTo(11);
+        scrollSection(11);
       }
       if (scrollPosition === 1099 && glbTime === 22) {
         windowScrollTo(12);
+        scrollSection(12);
       }
       if (
         (scrollPosition === 1199 && glbTime === 24) ||
@@ -161,6 +177,7 @@ export default function Overlay(props) {
       ) {
         windowScrollTo(13);
         setFeature("yemen2016", 0.5);
+        scrollSection(13);
       }
       if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2012);
@@ -173,14 +190,49 @@ export default function Overlay(props) {
       ) {
         setYear(2016);
         windowScrollTo(14);
+        scrollSection(14);
       }
       if (scrollPosition === 1399 && glbTime === 27) {
         setYear(2012);
         setFeature("syria2012", 0.5);
       }
+      if (
+        scrollPosition === 1399 &&
+        feature === "syria2012" &&
+        glbTime === 27
+      ) {
+        windowScrollTo(15);
+        setFeature("inspiration", 0.5);
+        scrollSection(15);
+      }
+      if (scrollPosition === 1499 && feature === "inspiration") {
+        windowScrollTo(16);
+        setFeature("contribution", 0.5);
+        scrollSection(16);
+      }
+      if (scrollPosition === 1599 && feature === "contribution") {
+        windowScrollTo(16.46);
+        setFeature("footer", 0.5);
+        scrollSection(17);
+      }
     };
 
     const scrollDownLogic = (scrollPosition, glbTime, feature) => {
+      if (scrollPosition > 1640) {
+        windowScrollTo(16);
+        setFeature("contribution", 0.5);
+        scrollSection(16);
+      }
+      if (scrollPosition === 1599 && feature === "contribution") {
+        windowScrollTo(15);
+        setFeature("inspiration", 0.5);
+        scrollSection(15);
+      }
+      if (scrollPosition === 1499 && feature === "inspiration") {
+        windowScrollTo(14);
+        setFeature("syria2012", 0.5);
+        scrollSection(14);
+      }
       if (
         scrollPosition === 1399 &&
         feature === "syria2012" &&
@@ -196,6 +248,7 @@ export default function Overlay(props) {
       ) {
         setYear(2012);
         windowScrollTo(13);
+        scrollSection(13);
       }
       if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2016);
@@ -207,14 +260,17 @@ export default function Overlay(props) {
         glbTime === 26
       ) {
         windowScrollTo(12);
+        scrollSection(12);
       }
       if (scrollPosition === 1199 && glbTime === 24) {
         windowScrollTo(11);
         setFeature("", 0.5);
+        scrollSection(11);
       }
       if (scrollPosition === 1099 && glbTime === 22) {
         setYear(2012);
         windowScrollTo(10);
+        scrollSection(10);
       }
       if (scrollPosition === 999 && glbTime === 20) {
         setYear(2016);
@@ -223,6 +279,7 @@ export default function Overlay(props) {
       if (scrollPosition === 999 && feature === "china2016" && glbTime === 20) {
         setYear(2012);
         windowScrollTo(9);
+        scrollSection(9);
       }
       if (scrollPosition === 899 && glbTime === 19) {
         setYear(2016);
@@ -230,22 +287,28 @@ export default function Overlay(props) {
       }
       if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         windowScrollTo(8);
+        scrollSection(8);
       }
       if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(7);
+        scrollSection(7);
       }
       if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(6);
+        scrollSection(6);
       }
       if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(5);
+        scrollSection(5);
       }
       if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(4);
+        scrollSection(4);
       }
       if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(3);
         setType("Railway", 0.5);
+        scrollSection(3);
       }
       if (scrollPosition === 299 && glbTime === 6) {
         setType("");
@@ -253,12 +316,15 @@ export default function Overlay(props) {
       }
       if (scrollPosition === 299 && feature === "" && glbTime === 6) {
         windowScrollTo(2);
+        scrollSection(2);
       }
       if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(1);
+        scrollSection(1);
       }
       if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(0);
+        scrollSection(0);
       }
     };
 
@@ -300,7 +366,6 @@ export default function Overlay(props) {
   }, []);
   return (
     <>
-      {/* <OpenLayers /> */}
       <section className="overlay_wrapper" id="fullscreen">
         <div className="intro">
           <div className="bigScreen ">
@@ -326,7 +391,10 @@ export default function Overlay(props) {
               <div className="info_data">
                 <div className="data_backGround_control">
                   <div className="data_grid_holder">
-                    <div className="data_heading">Nasa Black Marble</div>
+                    <div className="data_heading">
+                      Nasa Black Marble{" "}
+                      <span className="betaMark">Beta Release</span>
+                    </div>
                     <div className="data_paragraph">
                       Maps gives us critical awareness about the world that we
                       live in. But, none of them tells us the maginificient
@@ -881,6 +949,169 @@ Why is Russia So DAMN BIG?"
             </div>
           </div>
         </div>
+        <div className="inspirationFrom">
+          <div className="inspirationFromWrapper">
+            <div className="inspirationHead">An Inspiration from...</div>
+            <div className="inspirationInfo">
+              It was long ago when I had watched this video and was really
+              surprised with it. I knew{" "}
+              <a
+                href="https://threejs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Three.js
+              </a>{" "}
+              since 2019 and the portfolio people created with it was truly
+              refreshing and I always wanted to make my own demo. I really like
+              the intersection of stats, data and visual representation and this
+              demo seemed perfect in my eyes as a beginning step. Starting from
+              Sept 2022 I started learning numberous things to make it live and
+              after months of trial and error finally I launched it on 27 Jan
+              2023. - Rahul Ahire.
+            </div>
+            <a href="https://youtu.be/ki-hoy-3ea8" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://static.experientia.in/nasaBlackMarble/rllNasaBlackMarbleVideo.webp"
+                alt=""
+                height={300}
+              />
+            </a>
+            <div className="nasaBlackMarblePdf">
+              <a
+                href="https://static.experientia.in/nasaBlackMarble/earth_at_night_508.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download the PDF Report
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="contributionCredits">
+          <div className="contributionHead">
+            Special thanks to these folks who helped me during all these process
+          </div>
+          <div className="contributionPeopleList">
+            <ol>
+              <li>
+                Paul Henshel{" "}
+                <a
+                  href="https://twitter.com/0xca0a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @0xca0a
+                </a>{" "}
+                for answering all my doubts in React Three Fiber Github Repo
+                <a
+                  href="https://github.com/pmndrs/react-three-fiber/discussions?discussions_q=author:MeRahulAhire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  [1]
+                </a>
+                , Reddit
+                <a
+                  href="https://www.reddit.com/r/reactjs/comments/z1yxyu/comment/ixdw2ve/?utm_source=share&utm_medium=web2x&context=3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  [2]
+                </a>{" "}
+                and Threejs Discourse
+                <a
+                  href="https://discourse.threejs.org/t/how-to-preload-the-texture-and-assets-upfront-before-using-it/46802"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  [3]
+                </a>
+                .
+              </li>
+              <li>
+                Don McCurdy{" "}
+                <a
+                  href="https://twitter.com/donrmccurdy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @donrmccurdy
+                </a>{" "}
+                for patiently answering all my queries in Discord
+                <a
+                  href="https://discord.com/channels/685241246557667386/1046483007608987678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  [1]
+                </a>{" "}
+                and Threejs Discourse
+                <a
+                  href="https://discourse.threejs.org/t/why-doesnt-my-canvas-texture-look-crisper-and-accurate-when-i-zoom-it/46122"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  [2]
+                </a>
+                .
+              </li>
+              <li>
+                Bruno Simons{" "}
+                <a
+                  href="https://twitter.com/bruno_simon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @bruno_simon
+                </a>{" "}
+                for his Threejs Journey Course [This is not sponsered].
+              </li>
+              <li>
+                Mike on{" "}
+                <a
+                  href="https://gis.stackexchange.com/a/444846/213228"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GIS StackExchange
+                </a>{" "}
+                for helping me with Openlayers.
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/devdattat/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Devdetta Tengshe
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://www.linkedin.com/in/chinmayshaligram/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Chinmay Shaligram
+                </a>{" "}
+                for helping me a bit on Qgis for creating map tiles.
+              </li>
+              <li>
+                My friend Vinayak Thube{" "}
+                <a
+                  href="http://instagram.com/vindrawins"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @vindrawins
+                </a>{" "}
+                for testing and giving me continuous feedback during the
+                development phase.
+              </li>
+            </ol>
+          </div>
+        </div>
+        <Footer />
       </section>
     </>
   );

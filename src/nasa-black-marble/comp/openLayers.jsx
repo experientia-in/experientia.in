@@ -79,7 +79,7 @@ export default function OpenLayers() {
         });
         gsap.to("#mapOpener", {
           background: "linear-gradient(145deg, #1e1e1e, #232323)",
-          boxShadow: "20px 20px 60px #1d1d1d, -20px -20px 60px #252525",
+          // boxShadow: "20px 20px 60px #1d1d1d, -20px -20px 60px #252525",
           duration: 1,
           ease: "power4.out",
         });

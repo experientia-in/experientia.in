@@ -1,0 +1,43 @@
+@font-face {
+  font-family: gilroy-bold;
+  src: url("/assets/fonts/Gilroy-ExtraBold.otf");
+}
+@font-face {
+  font-family: openSans-regular;
+  src: url("/assets/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: openSans-medium;
+  src: url("/assets/fonts/OpenSans-Medium.ttf");
+}
+@font-face {
+  font-family: playFair-regular;
+  src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: spaceMono-regular;
+  src: url("/assets/fonts/SpaceMono-Regular.ttf");
+}
+
+.footer {
+  height: 400px;
+  width: 100%;
+  background-color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  color: #f7f7f7;
+}
+.experientiaName {
+  font-family: gilroy-bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 50px;
+}
+.sendEmail{
+    margin-left: 50px;
+    font-family: openSans-medium;
+}
+.sendEmail a{
+    color: #39ff14;
+    text-decoration: none;
+}

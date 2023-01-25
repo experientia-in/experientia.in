@@ -1,0 +1,65 @@
+@font-face {
+  font-family: gilroy-bold;
+  src: url("/assets/fonts/Gilroy-ExtraBold.otf");
+}
+@font-face {
+  font-family: openSans-regular;
+  src: url("/assets/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: openSans-medium;
+  src: url("/assets/fonts/OpenSans-Medium.ttf");
+}
+@font-face {
+  font-family: playFair-regular;
+  src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: spaceMono-regular;
+  src: url("/assets/fonts/SpaceMono-Regular.ttf");
+}
+
+body {
+  height: 100%;
+}
+#mobileLogo {
+  position: fixed;
+  z-index: 21;
+  top: 25px;
+  left: 25px;
+  color: #f7f7f7;
+  font-family: gilroy-bold;
+  font-size: 2rem;
+}
+.mobileContainer {
+  height: 100%;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  background-image: linear-gradient(145deg, #262655, #2a3050, #1a182e);
+  display: grid;
+  place-items: center;
+}
+
+.mobileMessage {
+  width: 100%;
+  height: 300px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.mobileMessageWrap{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.mobileMessage img {
+  align-self: center;
+  position: relative;
+  filter: invert(0.85);
+}
+.mobileMessage p {
+  color: #f7f7f7;
+  font-family: playFair-regular;
+  font-size: 1.25rem;
+
+}

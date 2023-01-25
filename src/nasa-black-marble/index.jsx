@@ -5,10 +5,15 @@ import OpenLayers from "./comp/openLayers";
 import styles from "./style/main.module.css";
 import Overlay from "./comp/overlay";
 import Preload from "./comp/preload";
+import Mobile from "./comp/mobile";
+import Scrollbar from "./comp/scrollbar";
 export default function BlackMarble() {
   const [glbLoaded, setGlbLoaded] = useState(false);
   const [earthGlb, setEarthGlb] = useState(null);
-  const [showOpenLayer, setShowOpenLayer] = useState(false)
+  const [showOpenLayer, setShowOpenLayer] = useState(false);
+
+  const bigScreen = window.innerWidth > 500;
+  const mobileHeight = window.innerHeight < 500;
   useLayoutEffect(() => {
     sessionStorage.setItem("glbTime", 0);
     sessionStorage.setItem("feature", "");
@@ -21,16 +26,18 @@ export default function BlackMarble() {
   }, []);
 
   useEffect(() => {
-    if(glbLoaded === true){
+    if (glbLoaded === true) {
       setTimeout(() => {
         setShowOpenLayer(true);
       }, 4000);
     }
-  },[glbLoaded])
-  
+  }, [glbLoaded]);
+
   return (
     <>
-    {!glbLoaded &&<Preload/>}
+      {mobileHeight && <Mobile />}
+      {!bigScreen && <Mobile />}
+      {bigScreen && !glbLoaded && <Preload />}
       <section className={styles.container}>
         <div className={styles.canvas_area}>
           <Canvas flat>
@@ -45,8 +52,9 @@ export default function BlackMarble() {
           </Canvas>
         </div>
       </section>
-      {glbLoaded && <Overlay />}
-      {showOpenLayer && <OpenLayers />}
+      {bigScreen && glbLoaded && <Overlay />}
+      {bigScreen && showOpenLayer && <OpenLayers />}
+      <Scrollbar/>
     </>
   );
 }
