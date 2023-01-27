@@ -14,20 +14,20 @@ export default function Earth(props) {
   const { nodes, materials, animations } = useGLTF(earthGlb);
   const { actions } = useAnimations(animations, group);
 
-  const china2012 = "assets/img/nasaBlackMarble/2012_china.ktx2";
-  const egypt2012 = "assets/img/nasaBlackMarble/2012_egyptMiddleEast.ktx2";
-  const india2012 = "assets/img/nasaBlackMarble/2012_india.ktx2";
+  const china2012 = "assets/img/nasaBlackMarble/8k/2012_china.ktx2";
+  const egypt2012 = "assets/img/nasaBlackMarble/8k/2012_egyptMiddleEast.ktx2";
+  const india2012 = "assets/img/nasaBlackMarble/8k/2012_india.ktx2";
   const nasaBlackMarble2016 =
-    "assets/img/nasaBlackMarble/2016_nasaBlackMarble_16K_bin.ktx2";
+    "assets/img/nasaBlackMarble/8k/2016_nasaBlackMarble_bin.ktx2";
   const nasaBlackMarble2012 =
-    "assets/img/nasaBlackMarble/2012_nasaBlackMarble_16K_bin.ktx2";
-  const afg_hlg = "assets/img/nasaBlackMarble/afghanistan_hlg.ktx2";
-  const arg_hlg = "assets/img/nasaBlackMarble/argentina_hlg.ktx2";
-  const argRailway_hlg = "assets/img/nasaBlackMarble/argentinaRailway_hlg.ktx2";
-  const pak_hlg = "assets/img/nasaBlackMarble/pakistan_hlg.ktx2";
-  const rus_hlg = "assets/img/nasaBlackMarble/russia_hlg.ktx2";
-  const syr_hlg = "assets/img/nasaBlackMarble/syria_hlg.ktx2";
-  const yem_hlg = "assets/img/nasaBlackMarble/yemen_hlg.ktx2";
+    "assets/img/nasaBlackMarble/8k/2012_nasaBlackMarble_bin.ktx2";
+  const afg_hlg = "assets/img/nasaBlackMarble/8k/afghanistan_hlg.ktx2";
+  const arg_hlg = "assets/img/nasaBlackMarble/4k/argentina_hlg.ktx2";
+  const argRailway_hlg = "assets/img/nasaBlackMarble/4k/argentinaRailway_hlg.ktx2";
+  const pak_hlg = "assets/img/nasaBlackMarble/8k/pakistan_hlg.ktx2";
+  const rus_hlg = "assets/img/nasaBlackMarble/4k/russia_hlg.ktx2";
+  const syr_hlg = "assets/img/nasaBlackMarble/8k/syria_hlg.ktx2";
+  const yem_hlg = "assets/img/nasaBlackMarble/8k/yemen_hlg.ktx2";
 
   const [
     nasa2016,

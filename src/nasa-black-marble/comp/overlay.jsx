@@ -6,13 +6,11 @@ import { Lethargy } from "lethargy";
 import Footer from "../../utils/comp/footer";
 import "../style/overlay.css";
 
-export default function Overlay(props) {
+export default function Overlay() {
   const [year, setYear] = useState("2016");
   const [type, setType] = useState("");
 
   useEffect(() => {
-    // let {glbTime} = props;
-    // window.scrollTo(0,0)
     document.body.style.overflow = "hidden";
     const ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -86,35 +84,42 @@ export default function Overlay(props) {
       //   });
       // });
     });
+    sessionStorage.setItem("scrollSection", 0);
     const windowScrollTo = (number) => {
       gsap.to(window, {
         duration: 0.5,
         scrollTo: window.innerHeight * number,
         ease: "circ.out",
       });
+
+      if (number > 16) {
+        sessionStorage.setItem("scrollSection", 17);
+      } else {
+        sessionStorage.setItem("scrollSection", number);
+      }
     };
     const setFeature = (featureName, time) => {
       setTimeout(() => {
         sessionStorage.setItem("feature", featureName);
       }, 1000 * time);
     };
-    sessionStorage.setItem("scrollSection", 0);
-    const scrollSection = (sectionNumber) => {
-      sessionStorage.setItem("scrollSection", sectionNumber);
-    };
+
+    // const scrollSection = (sectionNumber) => {
+    //   sessionStorage.setItem("scrollSection", sectionNumber);
+    // };
     const scrollUpLogic = (scrollPosition, glbTime, feature) => {
       if (scrollPosition === 0 && glbTime === 0) {
         windowScrollTo(1);
-        scrollSection(1);
+        // scrollSection(1);
       }
       if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(2);
-        scrollSection(2);
+        // scrollSection(2);
       }
       if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(3);
         setType("");
-        scrollSection(3);
+        // scrollSection(3);
       }
       if (scrollPosition === 299 && glbTime === 6) {
         setType("Railway");
@@ -123,28 +128,28 @@ export default function Overlay(props) {
       if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
         setType("");
         windowScrollTo(4);
-        scrollSection(4);
+        // scrollSection(4);
       }
       if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(5);
-        scrollSection(5);
+        // scrollSection(5);
       }
       if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(6);
-        scrollSection(6);
+        // scrollSection(6);
       }
       if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(7);
-        scrollSection(7);
+        // scrollSection(7);
       }
       if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(8);
-        scrollSection(8);
+        // scrollSection(8);
       }
       if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(9);
         setFeature("india2012", 0.5);
-        scrollSection(9);
+        // scrollSection(9);
       }
       if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         // windowScrollTo(9);
@@ -155,7 +160,7 @@ export default function Overlay(props) {
         setYear(2016);
         windowScrollTo(10);
         // setFeature(2012, 0.5);
-        scrollSection(10);
+        // scrollSection(10);
       }
       if (scrollPosition === 999 && glbTime === 20) {
         setYear(2012);
@@ -164,11 +169,11 @@ export default function Overlay(props) {
       if (scrollPosition === 999 && feature === "china2012" && glbTime === 20) {
         setYear(2016);
         windowScrollTo(11);
-        scrollSection(11);
+        // scrollSection(11);
       }
       if (scrollPosition === 1099 && glbTime === 22) {
         windowScrollTo(12);
-        scrollSection(12);
+        // scrollSection(12);
       }
       if (
         (scrollPosition === 1199 && glbTime === 24) ||
@@ -176,7 +181,7 @@ export default function Overlay(props) {
       ) {
         windowScrollTo(13);
         setFeature("yemen2016", 0.5);
-        scrollSection(13);
+        // scrollSection(13);
       }
       if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2012);
@@ -189,7 +194,7 @@ export default function Overlay(props) {
       ) {
         setYear(2016);
         windowScrollTo(14);
-        scrollSection(14);
+        // scrollSection(14);
       }
       if (scrollPosition === 1399 && glbTime === 27) {
         setYear(2012);
@@ -202,17 +207,17 @@ export default function Overlay(props) {
       ) {
         windowScrollTo(15);
         setFeature("inspiration", 0.5);
-        scrollSection(15);
+        // scrollSection(15);
       }
       if (scrollPosition === 1499 && feature === "inspiration") {
         windowScrollTo(16);
         setFeature("contribution", 0.5);
-        scrollSection(16);
+        // scrollSection(16);
       }
       if (scrollPosition === 1599 && feature === "contribution") {
         windowScrollTo(16.46);
         setFeature("footer", 0.5);
-        scrollSection(17);
+        // scrollSection(17);
       }
     };
 
@@ -220,17 +225,17 @@ export default function Overlay(props) {
       if (scrollPosition > 1640) {
         windowScrollTo(16);
         setFeature("contribution", 0.5);
-        scrollSection(16);
+        // scrollSection(16);
       }
       if (scrollPosition === 1599 && feature === "contribution") {
         windowScrollTo(15);
         setFeature("inspiration", 0.5);
-        scrollSection(15);
+        // scrollSection(15);
       }
       if (scrollPosition === 1499 && feature === "inspiration") {
         windowScrollTo(14);
         setFeature("syria2012", 0.5);
-        scrollSection(14);
+        // scrollSection(14);
       }
       if (
         scrollPosition === 1399 &&
@@ -247,7 +252,7 @@ export default function Overlay(props) {
       ) {
         setYear(2012);
         windowScrollTo(13);
-        scrollSection(13);
+        // scrollSection(13);
       }
       if (scrollPosition === 1299 && glbTime === 26) {
         setYear(2016);
@@ -259,17 +264,17 @@ export default function Overlay(props) {
         glbTime === 26
       ) {
         windowScrollTo(12);
-        scrollSection(12);
+        // scrollSection(12);
       }
       if (scrollPosition === 1199 && glbTime === 24) {
         windowScrollTo(11);
         setFeature("", 0.5);
-        scrollSection(11);
+        // scrollSection(11);
       }
       if (scrollPosition === 1099 && glbTime === 22) {
         setYear(2012);
         windowScrollTo(10);
-        scrollSection(10);
+        // scrollSection(10);
       }
       if (scrollPosition === 999 && glbTime === 20) {
         setYear(2016);
@@ -278,7 +283,7 @@ export default function Overlay(props) {
       if (scrollPosition === 999 && feature === "china2016" && glbTime === 20) {
         setYear(2012);
         windowScrollTo(9);
-        scrollSection(9);
+        // scrollSection(9);
       }
       if (scrollPosition === 899 && glbTime === 19) {
         setYear(2016);
@@ -286,28 +291,28 @@ export default function Overlay(props) {
       }
       if (scrollPosition === 899 && feature === "india2012" && glbTime === 19) {
         windowScrollTo(8);
-        scrollSection(8);
+        // scrollSection(8);
       }
       if (scrollPosition === 799 && glbTime === 18) {
         windowScrollTo(7);
-        scrollSection(7);
+        // scrollSection(7);
       }
       if (scrollPosition === 699 && glbTime === 16) {
         windowScrollTo(6);
-        scrollSection(6);
+        // scrollSection(6);
       }
       if (scrollPosition === 599 && glbTime === 14) {
         windowScrollTo(5);
-        scrollSection(5);
+        // scrollSection(5);
       }
       if (scrollPosition === 499 && glbTime === 12) {
         windowScrollTo(4);
-        scrollSection(4);
+        // scrollSection(4);
       }
       if (scrollPosition === 399 && (glbTime === 8 || glbTime === 9)) {
         windowScrollTo(3);
         setType("Railway", 0.5);
-        scrollSection(3);
+        // scrollSection(3);
       }
       if (scrollPosition === 299 && glbTime === 6) {
         setType("");
@@ -315,15 +320,15 @@ export default function Overlay(props) {
       }
       if (scrollPosition === 299 && feature === "" && glbTime === 6) {
         windowScrollTo(2);
-        scrollSection(2);
+        // scrollSection(2);
       }
       if (scrollPosition === 199 && glbTime === 3) {
         windowScrollTo(1);
-        scrollSection(1);
+        // scrollSection(1);
       }
       if (scrollPosition === 99 && glbTime === 2) {
         windowScrollTo(0);
-        scrollSection(0);
+        // scrollSection(0);
       }
     };
 
@@ -366,11 +371,17 @@ export default function Overlay(props) {
       );
       let feature = sessionStorage.getItem("feature");
       // let mapCover = sessionStorage.getItem("mapCover");
-      console.log(event);
-      if (event.key === "ArrowDown" && sessionStorage.getItem("isGlbReady") === "true") {
+      // console.log(event);
+      if (
+        event.key === "ArrowDown" &&
+        sessionStorage.getItem("isGlbReady") === "true"
+      ) {
         scrollUpLogic(scrollPosition, glbTime, feature);
       }
-      if (event.key === "ArrowUp" && sessionStorage.getItem("isGlbReady") === "true") {
+      if (
+        event.key === "ArrowUp" &&
+        sessionStorage.getItem("isGlbReady") === "true"
+      ) {
         scrollDownLogic(scrollPosition, glbTime, feature);
       }
     });

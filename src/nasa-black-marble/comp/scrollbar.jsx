@@ -16,6 +16,17 @@ export default function Scrollbar() {
         });
       }
     });
+    window.addEventListener("keyup", () => {
+      setTimeout(() => {
+        let scrollSection = parseInt(sessionStorage.getItem("scrollSection"));
+        let scrollPercent = parseInt((scrollSection / 17) * 100);
+        gsap.to("#nbm_scrollbar", {
+          height: `${scrollPercent}vh`,
+          duration: 1.5,
+          ease: "power4.out",
+        });
+      }, 100);
+    });
   }, []);
   return (
     <div
