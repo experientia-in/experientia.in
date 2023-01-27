@@ -119,7 +119,6 @@ export default function Overlay(props) {
       if (scrollPosition === 299 && glbTime === 6) {
         setType("Railway");
         setFeature("railway", 0.5);
-        
       }
       if (scrollPosition === 299 && feature === "railway" && glbTime === 6) {
         setType("");
@@ -357,6 +356,22 @@ export default function Overlay(props) {
         if (scrollDirection === "down") {
           scrollDownLogic(scrollPosition, glbTime, feature);
         }
+      }
+    });
+
+    window.addEventListener("keyup", (event) => {
+      let glbTime = parseInt(sessionStorage.getItem("glbTime"));
+      let scrollPosition = Math.floor(
+        (window.scrollY / window.innerHeight) * 100
+      );
+      let feature = sessionStorage.getItem("feature");
+      // let mapCover = sessionStorage.getItem("mapCover");
+      console.log(event);
+      if (event.key === "ArrowDown" && sessionStorage.getItem("isGlbReady") === "true") {
+        scrollUpLogic(scrollPosition, glbTime, feature);
+      }
+      if (event.key === "ArrowUp" && sessionStorage.getItem("isGlbReady") === "true") {
+        scrollDownLogic(scrollPosition, glbTime, feature);
       }
     });
 
@@ -970,7 +985,11 @@ Why is Russia So DAMN BIG?"
               after months of trial and error finally I launched it on 27 Jan
               2023. - Rahul Ahire.
             </div>
-            <a href="https://youtu.be/ki-hoy-3ea8" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://youtu.be/ki-hoy-3ea8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src="https://static.experientia.in/nasaBlackMarble/rllNasaBlackMarbleVideo.webp"
                 alt=""

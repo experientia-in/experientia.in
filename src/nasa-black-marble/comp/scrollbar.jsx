@@ -4,8 +4,9 @@ import { Lethargy } from "lethargy";
 export default function Scrollbar() {
   useEffect(() => {
     let lethargy = new Lethargy();
-    if (lethargy.check(event) !== false) {
-      window.addEventListener("wheel", () => {
+
+    window.addEventListener("wheel", (event) => {
+      if (lethargy.check(event) !== false) {
         let scrollSection = parseInt(sessionStorage.getItem("scrollSection"));
         let scrollPercent = parseInt((scrollSection / 17) * 100);
         gsap.to("#nbm_scrollbar", {
@@ -13,8 +14,8 @@ export default function Scrollbar() {
           duration: 1.5,
           ease: "power4.out",
         });
-      });
-    }
+      }
+    });
   }, []);
   return (
     <div

@@ -320,6 +320,21 @@ export default function Earth(props) {
         }
       }
     });
+    window.addEventListener("keyup", (event) => {
+      let glbTime = parseInt(sessionStorage.getItem("glbTime"));
+      let scrollPosition = Math.floor(
+        (window.scrollY / window.innerHeight) * 100
+      );
+      let feature = sessionStorage.getItem("feature");
+      // let mapCover = sessionStorage.getItem("mapCover");
+      // console.log(event)
+      if(event.key === "ArrowDown" && sessionStorage.getItem("isGlbReady") === "true"){
+        scrollUpLogic(scrollPosition, glbTime, feature);
+      }
+      if(event.key === "ArrowUp" && sessionStorage.getItem("isGlbReady") === "true"){
+        scrollDownLogic(scrollPosition, glbTime, feature);
+      }
+    })
   }, []);
   return (
     <>
