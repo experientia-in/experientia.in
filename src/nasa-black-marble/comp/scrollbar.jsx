@@ -5,28 +5,37 @@ export default function Scrollbar() {
   useEffect(() => {
     let lethargy = new Lethargy();
 
-    window.addEventListener("wheel", (event) => {
+    const mouseWheelScroll = (event) => {
       if (lethargy.check(event) !== false) {
         let scrollSection = parseInt(sessionStorage.getItem("scrollSection"));
         let scrollPercent = parseInt((scrollSection / 17) * 100);
         gsap.to("#nbm_scrollbar", {
           height: `${scrollPercent}vh`,
-          duration: 1.5,
+          duration: 1,
           ease: "power4.out",
         });
       }
-    });
-    window.addEventListener("keyup", () => {
+    };
+
+    const keyPressScroll = () => {
       setTimeout(() => {
         let scrollSection = parseInt(sessionStorage.getItem("scrollSection"));
         let scrollPercent = parseInt((scrollSection / 17) * 100);
         gsap.to("#nbm_scrollbar", {
           height: `${scrollPercent}vh`,
-          duration: 1.5,
+          duration: 1,
           ease: "power4.out",
         });
-      }, 100);
-    });
+      }, 50);
+    };
+
+    window.addEventListener("wheel", mouseWheelScroll);
+    window.addEventListener("keyup", keyPressScroll);
+
+    return () => {
+      window.removeEventListener("wheel", mouseWheelScroll);
+      window.removeEventListener("keyup", keyPressScroll);
+    };
   }, []);
   return (
     <div

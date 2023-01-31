@@ -27,6 +27,42 @@
     text-shadow: white 5px solid;
   
   }
+  .nbm_section{
+    height: 600px;
+    width: 100%;
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+    display: grid;
+    place-items: center;
+
+  }
+  .nbm_wrapper{
+    height: auto;
+    color: #f7f7f7;
+    font-family: gilroy-bold;
+    background-color: #e3e3e3;
+    border-radius: 20px;
+  }
+  .nbm_wrapper img{
+    height: 150px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+  }
+  .nbm_wrapper p{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  .nbm_wrapper a{
+    color: #212121;
+    outline: none;
+    text-decoration: none;
+  }
+  .nbm_wrapper a::hover{
+    scale: 0.5;
+  }
   
   @font-face {
     font-family: Righteous;
@@ -39,6 +75,26 @@
   @font-face {
     font-family: Playfair-Italics;
     src: url("/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: gilroy-bold;
+    src: url("/assets/fonts/Gilroy-ExtraBold.otf");
+  }
+  @font-face {
+    font-family: openSans-regular;
+    src: url("/assets/fonts/OpenSans-Regular.ttf");
+  }
+  @font-face {
+    font-family: openSans-medium;
+    src: url("/assets/fonts/OpenSans-Medium.ttf");
+  }
+  @font-face {
+    font-family: playFair-regular;
+    src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: spaceMono-regular;
+    src: url("/assets/fonts/SpaceMono-Regular.ttf");
   }
   
   @media screen and (max-width: 480px) {
