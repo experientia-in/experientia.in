@@ -489,7 +489,7 @@ export default function Overlay() {
               />
             </div>
             <div className="country_feature_info">
-              Perhaps you may recognise Argentina by Leonal Messi. The
+              Perhaps you may recognise Argentina by Lionel Messi. The
               population distribution of Argentines is rather interesting as
               most of cities and town are situated around the railway station
               that seems evenly spread out throughout the country.
@@ -758,7 +758,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-              Perhaps you may recognise Argentina by Leonal Messi. The
+              Perhaps you may recognise Argentina by Lionel Messi. The
               population distribution of Argentines is rather interesting as
               most of cities and town are situated around the railway station
               that seems evenly spread out throughout the country.
