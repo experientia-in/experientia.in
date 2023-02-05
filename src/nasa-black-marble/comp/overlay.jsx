@@ -1001,7 +1001,7 @@ Why is Russia So DAMN BIG?"
                 .
               </li>
               <li>
-                Bruno Simons{" "}
+                Bruno Simon{" "}
                 <a
                   href="https://twitter.com/bruno_simon"
                   target="_blank"
