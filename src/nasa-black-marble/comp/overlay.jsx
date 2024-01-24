@@ -125,7 +125,11 @@ export default function Overlay() {
         setType("Railway");
         setFeature("railway", 0.5);
       }
-      if ((scrollPosition === 299 || 300) && feature === "railway" && glbTime === 6) {
+      if (
+        (scrollPosition === 299 || 300) &&
+        feature === "railway" &&
+        glbTime === 6
+      ) {
         setType("");
         windowScrollTo(4);
         // scrollSection(4);
@@ -151,12 +155,20 @@ export default function Overlay() {
         setFeature("india2012", 0.5);
         // scrollSection(9);
       }
-      if ((scrollPosition === 899 || 900) && feature === "india2012" && glbTime === 19) {
+      if (
+        (scrollPosition === 899 || 900) &&
+        feature === "india2012" &&
+        glbTime === 19
+      ) {
         // windowScrollTo(9);
         setYear(2012);
         setFeature("china2016", 0.5);
       }
-      if ((scrollPosition === 899 || 900) && feature === "china2016" && glbTime === 19) {
+      if (
+        (scrollPosition === 899 || 900) &&
+        feature === "china2016" &&
+        glbTime === 19
+      ) {
         setYear(2016);
         windowScrollTo(10);
         // setFeature(2012, 0.5);
@@ -166,7 +178,11 @@ export default function Overlay() {
         setYear(2012);
         setFeature("china2012", 0.5);
       }
-      if ((scrollPosition === 999 || 1000) && feature === "china2012" && glbTime === 20) {
+      if (
+        (scrollPosition === 999 || 1000) &&
+        feature === "china2012" &&
+        glbTime === 20
+      ) {
         setYear(2016);
         windowScrollTo(11);
         // scrollSection(11);
@@ -176,14 +192,18 @@ export default function Overlay() {
         // scrollSection(12);
       }
       if (
-        (scrollPosition === 1199 || 1200) && glbTime === 24 ||
+        ((scrollPosition === 1199 || 1200) && glbTime === 24) ||
         feature === "yemen2016"
       ) {
         windowScrollTo(13);
         setFeature("yemen2016", 0.5);
         // scrollSection(13);
       }
-      if ((scrollPosition === 1299 || 1300) && feature === "yemen2016" && glbTime === 26) {
+      if (
+        (scrollPosition === 1299 || 1300) &&
+        feature === "yemen2016" &&
+        glbTime === 26
+      ) {
         setYear(2012);
         setFeature("yemen2012", 0.5);
       }
@@ -280,7 +300,11 @@ export default function Overlay() {
         setYear(2016);
         setFeature("china2016", 0.5);
       }
-      if ((scrollPosition === 999 || 1000) && feature === "china2016" && glbTime === 20) {
+      if (
+        (scrollPosition === 999 || 1000) &&
+        feature === "china2016" &&
+        glbTime === 20
+      ) {
         setYear(2012);
         windowScrollTo(9);
         // scrollSection(9);
@@ -289,7 +313,11 @@ export default function Overlay() {
         setYear(2016);
         setFeature("india2012", 0.5);
       }
-      if ((scrollPosition === 899 || 900) && feature === "india2012" && glbTime === 19) {
+      if (
+        (scrollPosition === 899 || 900) &&
+        feature === "india2012" &&
+        glbTime === 19
+      ) {
         windowScrollTo(8);
         // scrollSection(8);
       }
@@ -423,9 +451,9 @@ export default function Overlay() {
                     </div>
                     <div className="data_paragraph">
                       Maps give us critical awareness about the world that we
-                      live in. But, none of them tells us the maginificient
-                      story about humanity and where we actually live as what
-                      Nasa's Black Marble does.
+                      live in. But, none of them tells us the magnificent story
+                      about humanity and where we actually live, as NASA's Black
+                      Marble does.
                     </div>
                     <div className="author_info">
                       Made by{" "}
@@ -453,7 +481,11 @@ export default function Overlay() {
               />
             </div>
             <div className="country_feature_info">
-            On map, Afghanistan may look like a decent size country but majority of its land is covered by tall mountains in central area, some of them ranging more than 7Km. Cities in Afghanistan mostly form a ring pattern that is connected by highways.
+              On a map, Afghanistan may look like a decent-sized country, but
+              the majority of its land is covered by tall mountains in the
+              central area, some of them ranging more than 7 km. Cities in
+              Afghanistan mostly form a ring pattern that is connected by
+              highways.
             </div>
           </div>
         </div>
@@ -467,7 +499,10 @@ export default function Overlay() {
               />
             </div>
             <div className="country_feature_info">
-            Similar to Afghanistan, vast areas of Iceland are covered by glaciers and ice caps, making them unsuitable for human activity. The majority of Iceland's population lives in its capital city, Reykjavík.
+              Similar to Afghanistan, vast areas of Iceland are covered by
+              glaciers and ice caps, making them unsuitable for human activity.
+              The majority of Iceland's population lives in its capital city,
+              Reykjavík.
             </div>
           </div>
         </div>
@@ -483,7 +518,7 @@ export default function Overlay() {
               />
             </div>
             <div className="country_feature_info">
-            Perhaps you may recognise Argentina by Lionel Messi. The population distribution in Argentina is rather interesting, as most of its cities and towns are situated around the railway station, which seems evenly spread out throughout the country.
+            Perhaps you may recognize Argentina by Lionel Messi. The population distribution in Argentina is rather interesting, as most of its cities and towns are situated around railway stations, which are evenly spread out throughout the country.
             </div>
           </div>
         </div>
@@ -497,7 +532,7 @@ export default function Overlay() {
               />
             </div>
             <div className="country_feature_info">
-            If you believe size matters then Russia is of your kind, spanning across 9,000Km and 11 time zones which obviously make it the largest country on our planet. Learn more about it{" "}
+            If you believe size matters, then Russia is for you, spanning across 9,000 km and 11 time zones, which obviously makes it the largest country on our planet. Learn more about it{" "}
               <a
                 href="https://youtu.be/HBlZlmXyR5M"
                 target="_blank"
@@ -521,7 +556,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            For a country as big as Australia, very few people actually live on this continent due to most of its land being a dry desert, making it one of the least densely populated countries. 90% of Australians live in coastal areas.
+              For a country as big as Australia, very few people actually live
+              on this continent due to most of its land being a dry desert,
+              making it one of the least densely populated countries. 90% of
+              Australians live in coastal areas.
             </div>
           </div>
         </div>
@@ -535,7 +573,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            In terms of population distribution, the USA truly reflects its East vs. West divide. The tall rocky mountains in the central region stop the rainy wind travelling war in the West as compared to the East side where land is more fertile thus supporting many lives.
+            In terms of population distribution, the USA truly reflects its East vs. West divide. The tall Rocky Mountains in the central region block the rainy winds, creating a drier climate in the West compared to the more fertile land in the East, which supports many lives.
             </div>
           </div>
         </div>
@@ -549,7 +587,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Egypt being situated in the middle of Desert, the river Nile support almost every Egyptian's lifeline as a result 90% of Egypt's population live near to the river.
+            Being situated in the middle of the desert, Egypt heavily relies on the River Nile, which serves as the lifeline for almost every Egyptian. As a result, 90% of Egypt's population lives near the river.
             </div>
           </div>
         </div>
@@ -563,7 +601,8 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Similar to Egypt, most Pakistanis live around the Indus river which carries fresh water from the Himalayas.
+              Similar to Egypt, most Pakistanis live around the Indus river
+              which carries fresh water from the Himalayas.
             </div>
           </div>
         </div>
@@ -579,7 +618,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition shows us the drastic change as just in span of 4 years 100's of Million of Indians have got access to electricity which previous they were deprived of. Learn more about it{" "}
+            India, the land of cultural diversity and perhaps the brightest nation at night. The difference between the 2012 and 2016 editions of NASA's Black Marble map shows us a drastic change. In just a span of 4 years, hundreds of millions of Indians have gained access to electricity, a privilege they were previously deprived of. Learn more about it{" "}
               <a
                 href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics"
                 target="_blank"
@@ -602,7 +641,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Compared to India, the case for China has been completely opposite. Compared to 2012, the 2016 version of the map appears to be more dim as many people have moved toward urban areas in search of jobs.
+            Compared to India, the situation in China has been completely opposite. In contrast to the 2012 map, the 2016 version appears to be dimmer, indicating that many people have moved toward urban areas in search of jobs.
             </div>
           </div>
         </div>
@@ -616,7 +655,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Country's economics often tell us the living standard of people and normally African aren't that rich compared to other nation and since most of them don't have access to electricity, this picture tells us why Africa is the way it is.
+            A country's economics often reflects the living standards of its people, and generally, African nations aren't as economically prosperous as others. The lack of access to electricity for many in Africa is a significant factor contributing to the continent's current situation.
             </div>
           </div>
         </div>
@@ -630,7 +669,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            In recent times, the Korean culture may have become popular because of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to the authoritarian regime in North Korea. Learn more about it{" "}
+            In recent times, Korean culture has gained popularity globally, thanks to phenomena like K-POP and films. The impact of the Cold War between the USA and Soviets still resonates today, evident in the division of people with the same background, language, and culture into North and South Korea. This division also symbolizes the contrasting progress of democratic South Korea in comparison to the authoritarian regime in North Korea. Learn more about it{" "}
               <a
                 href="https://youtu.be/Jt7hE12n11s"
                 target="_blank"
@@ -654,7 +693,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            The Middle East has always been unstable due to its internal conflicts. Compared to 2012, the 2016 map shows us how Yemenese have been deeply affected as many properties have succumbed to mass destruction.
+            The Middle East has long been marked by internal conflicts, resulting in instability. A comparison between the 2012 and 2016 maps illustrates the profound impact on Yemen, where widespread destruction is evident with many properties succumbing to mass destruction.
             </div>
           </div>
         </div>
@@ -670,8 +709,7 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-              Similar has been the case for Syrians as many of them have to
-              leave their home in order to survive.
+            A similar situation has unfolded for Syrians, where many have been compelled to leave their homes in order to survive.
             </div>
           </div>
         </div>
@@ -685,7 +723,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            On map, Afghanistan may look like a decent size country but majority of its land is covered by tall mountains in central area, some of them ranging more than 7Km. Cities in Afghanistan mostly form a ring pattern that is connected by highways.
+              On map, Afghanistan may look like a decent size country but
+              majority of its land is covered by tall mountains in central area,
+              some of them ranging more than 7Km. Cities in Afghanistan mostly
+              form a ring pattern that is connected by highways.
             </div>
           </div>
         </div>
@@ -699,7 +740,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Similar to Afghanistan, vast areas of Iceland are covered by glaciers and ice caps, making them unsuitable for human activity. The majority of Iceland's population lives in its capital city, Reykjavík.
+              Similar to Afghanistan, vast areas of Iceland are covered by
+              glaciers and ice caps, making them unsuitable for human activity.
+              The majority of Iceland's population lives in its capital city,
+              Reykjavík.
             </div>
           </div>
         </div>
@@ -713,7 +757,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Perhaps you may recognise Argentina by Lionel Messi. The population distribution in Argentina is rather interesting, as most of its cities and towns are situated around the railway station, which seems evenly spread out throughout the country.
+              Perhaps you may recognise Argentina by Lionel Messi. The
+              population distribution in Argentina is rather interesting, as
+              most of its cities and towns are situated around the railway
+              station, which seems evenly spread out throughout the country.
             </div>
           </div>
         </div>
@@ -727,7 +774,9 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            If you believe size matters then Russia is of your kind, spanning across 9,000Km and 11 time zones which obviously make it the largest country on our planet. Learn more about it{" "}
+              If you believe size matters then Russia is of your kind, spanning
+              across 9,000Km and 11 time zones which obviously make it the
+              largest country on our planet. Learn more about it{" "}
               <a
                 href="https://youtu.be/HBlZlmXyR5M"
                 target="_blank"
@@ -751,7 +800,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            For a country as big as Australia, very few people actually live on this continent due to most of its land being a dry desert, making it one of the least densely populated countries. 90% of Australians live in coastal areas.
+              For a country as big as Australia, very few people actually live
+              on this continent due to most of its land being a dry desert,
+              making it one of the least densely populated countries. 90% of
+              Australians live in coastal areas.
             </div>
           </div>
         </div>
@@ -765,7 +817,11 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            In terms of population distribution, the USA truly reflects its East vs. West divide. The tall rocky mountains in the central region stop the rainy wind travelling war in the West as compared to the East side where land is more fertile thus supporting many lives.
+              In terms of population distribution, the USA truly reflects its
+              East vs. West divide. The tall rocky mountains in the central
+              region stop the rainy wind travelling war in the West as compared
+              to the East side where land is more fertile thus supporting many
+              lives.
             </div>
           </div>
         </div>
@@ -779,7 +835,9 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Egypt being situated in the middle of Desert, the river Nile support almost every Egyptian's lifeline as a result 90% of Egypt's population live near to the river.
+              Egypt being situated in the middle of Desert, the river Nile
+              support almost every Egyptian's lifeline as a result 90% of
+              Egypt's population live near to the river.
             </div>
           </div>
         </div>
@@ -793,7 +851,8 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Similar to Egypt, most Pakistanis live around the Indus river which carries fresh water from the Himalayas.
+              Similar to Egypt, most Pakistanis live around the Indus river
+              which carries fresh water from the Himalayas.
             </div>
           </div>
         </div>
@@ -809,7 +868,12 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            India, the land of cultural diversity and also perhaps the most brightest nation in the night. The difference between 2012 and 2016 Nasa's Black Map edition shows us the drastic change as just in span of 4 years 100's of Million of Indians have got access to electricity which previous they were deprived of. Learn more about it{" "}
+              India, the land of cultural diversity and also perhaps the most
+              brightest nation in the night. The difference between 2012 and
+              2016 Nasa's Black Map edition shows us the drastic change as just
+              in span of 4 years 100's of Million of Indians have got access to
+              electricity which previous they were deprived of. Learn more about
+              it{" "}
               <a
                 href="https://www.macrotrends.net/countries/IND/india/electricity-access-statistics"
                 target="_blank"
@@ -832,7 +896,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Compared to India, the case for China has been completely opposite. Compared to 2012, the 2016 version of the map appears to be more dim as many people have moved toward urban areas in search of jobs.
+              Compared to India, the case for China has been completely
+              opposite. Compared to 2012, the 2016 version of the map appears to
+              be more dim as many people have moved toward urban areas in search
+              of jobs.
             </div>
           </div>
         </div>
@@ -846,7 +913,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Country's economics often tell us the living standard of people and normally African aren't that rich compared to other nation and since most of them don't have access to electricity, this picture tells us why Africa is the way it is.
+              Country's economics often tell us the living standard of people
+              and normally African aren't that rich compared to other nation and
+              since most of them don't have access to electricity, this picture
+              tells us why Africa is the way it is.
             </div>
           </div>
         </div>
@@ -860,7 +930,13 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            In recent times, the Korean culture may have become popular because of K-POP, films, etc. The effect of cold war with USA and Soviets still reflects till today in form in North and South Korea diving people with same background, language, culture, etc. It also signifies the progress of democratic South Korea as opposed to the authoritarian regime in North Korea. Learn more about it here.
+              In recent times, the Korean culture may have become popular
+              because of K-POP, films, etc. The effect of cold war with USA and
+              Soviets still reflects till today in form in North and South Korea
+              diving people with same background, language, culture, etc. It
+              also signifies the progress of democratic South Korea as opposed
+              to the authoritarian regime in North Korea. Learn more about it
+              here.
             </div>
           </div>
         </div>
@@ -876,7 +952,10 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            The Middle East has always been unstable due to its internal conflicts. Compared to 2012, the 2016 map shows us how Yemenese have been deeply affected as many properties have succumbed to mass destruction.
+              The Middle East has always been unstable due to its internal
+              conflicts. Compared to 2012, the 2016 map shows us how Yemenese
+              have been deeply affected as many properties have succumbed to
+              mass destruction.
             </div>
           </div>
         </div>
@@ -892,7 +971,8 @@ Why is Russia So DAMN BIG?"
               />
             </div>
             <div className="country_feature_info">
-            Similar has been the case for Syrians as many of them have to leave their home in order to survive.
+              Similar has been the case for Syrians as many of them have to
+              leave their home in order to survive.
             </div>
           </div>
         </div>
@@ -900,7 +980,8 @@ Why is Russia So DAMN BIG?"
           <div className="inspirationFromWrapper">
             <div className="inspirationHead">An Inspiration from...</div>
             <div className="inspirationInfo">
-            It was long ago when I watched this video and was really surprised by it. I've known{" "}
+              It was long ago when I watched this video and was really surprised
+              by it. I've known{" "}
               <a
                 href="https://threejs.org"
                 target="_blank"
@@ -908,7 +989,13 @@ Why is Russia So DAMN BIG?"
               >
                 Three.js
               </a>{" "}
-              since 2019, and the portfolios people created with it were truly refreshing, and I always wanted to make my own demo. I really like the intersection of statistics, data and visual representation and this demo seemed perfect in my eyes as a beginning step. Starting from Sept 2022 I started learning numberous things to make it live and after months of trial and error finally I launched it on 27 Jan 2023 - Rahul Ahire.
+              since 2019, and the portfolios people created with it were truly
+              refreshing, and I always wanted to make my own demo. I really like
+              the intersection of statistics, data and visual representation and
+              this demo seemed perfect in my eyes as a beginning step. Starting
+              from Sept 2022 I started learning numberous things to make it live
+              and after months of trial and error finally I launched it on 27
+              Jan 2023 - Rahul Ahire.
             </div>
             <a
               href="https://youtu.be/ki-hoy-3ea8"
